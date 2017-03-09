@@ -87,7 +87,7 @@
                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de la donación<span class="required">*</span>
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="fecha_don" class="date-picker form-control col-md-7 col-xs-12" type="date" min="2016-01-01" max="2100-01-01"  required>
+                                                    <input id="fecha_don" class="date-picker form-control col-md-7 col-xs-12" type="text" required>
                                                     <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
                                                     <span class="alert-dismissible form-control-static"> Ejemplo 10/10/2016</span>
                                                 </div>

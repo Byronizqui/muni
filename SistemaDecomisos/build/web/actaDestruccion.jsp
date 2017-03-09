@@ -19,12 +19,15 @@
         <!-- Bootstrap -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/chosen.css">
         <!-- Font Awesome -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
         <!-- NProgress -->
         <link href="css/nprogress.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+     
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link href="fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
 
         <!-- Custom Theme Style -->
         <link href="css/custom.min.css" rel="stylesheet">
@@ -66,7 +69,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Registrar Acta de Destucción</h2><small>Nº de Acta <label id="nActa_dest"></label></small>
+                                    <h2>Registrar Acta de Destrucción </h2><small>Nº de Acta <label id="nActa_dest"></label></small>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="alert alert-danger" id="errorListDe" style="background: #fff">
@@ -78,7 +81,7 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha en la que se realiza la destrrucción<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="fechaDes" class="date-picker form-control col-md-7 col-xs-12" type="date" min="2016-01-01" max="2100-01-01"  required>
+                                                <input id="fechaDes" class="date-picker form-control col-md-7 col-xs-12" type="text" required>
                                                 <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
                                                 <span class="alert-dismissible form-control-static"> Ejemplo 10/10/2016</span>
                                             </div>
@@ -99,7 +102,7 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <div class="col-md-5">
-                                                    <select class="form-control" name="distrito" id="distritoDes">
+                                                    <select class="form-control" data-rel="chosen" name="distrito" id="distritoDes">
                                                         <option value="heredia">Heredia</option>
                                                         <option value="mercedes">Mercedes</option>
                                                         <option value="san_frencisco">San Francisco</option>
@@ -108,7 +111,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-7" id="groupLugar">
-                                                    <textarea required class="form-control" id="direccionDes" type="text"></textarea>
+                                                    <textarea required class="form-control" id="direccionDes"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -187,6 +190,9 @@
     
     <!-- jQuery -->
         <script src="js/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="js/chosen.jquery.js"></script>
         <!-- Bootstrap -->
         <script src="js/bootstrap.min.js"></script>
         <!-- FastClick -->

@@ -45,6 +45,7 @@ public class Servlet extends HttpServlet {
             response.setContentType("text/xml");
             RuntimeTypeAdapterFactory<Jsonable> rta = RuntimeTypeAdapterFactory.of(Jsonable.class, "_class")
                     .registerSubtype(Usuario.class, "Usuario")
+                    .registerSubtype(Contenedor.class, "Contenedor")
                     .registerSubtype(ActaDecomiso.class, "ActaDecomiso")
                     .registerSubtype(ActaDonacion.class, "ActaDonacion")
                     .registerSubtype(ActaDevolucion.class, "ActaDevolucion")

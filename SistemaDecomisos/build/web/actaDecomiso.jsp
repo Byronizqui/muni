@@ -276,12 +276,12 @@ Author     : Mery Zúñiga
                                                     <tr>
                                                         <td>
                                                             <select class="form-control categoria" id="categoria">
-                                                                <option value="perecederos">Perecedero</option>
-                                                                <option value="no_perecederos">No Perecedero</option>
+                                                                <option value="perecedero">Perecedero</option>
+                                                                <option value="no_perecedero">No Perecedero</option>
                                                             </select>
                                                         </td>
                                                         <td><input required type="number" min="1" class="form-control cantidad"/></td>
-                                                        <td><textarea required id="proobs" class="resizable_textarea form-control observaciones"></textarea></td>
+                                                        <td><textarea id="proobs" class="resizable_textarea form-control observaciones"></textarea></td>
                                                         <td class="eliminar btn-danger btn-xs btn-group-justified btn-round">Eliminar</td>
                                                     </tr>
 
@@ -387,6 +387,7 @@ Author     : Mery Zúñiga
         <script src="js/actaDecomiso.js"></script>
         <script src="js/Proxy.js"></script>
         <script src="js/BaseDatos.js"></script>        
+        <script src="js/objects/Contenedor.js"></script>
         <script src="js/objects/ActaDecomiso.js"></script>
         <script src="js/objects/ActaDevolucion.js"></script>
         <script src="js/objects/ActaDonacion.js"></script>

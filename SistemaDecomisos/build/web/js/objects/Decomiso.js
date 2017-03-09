@@ -1,15 +1,15 @@
-function Decomiso(idDecomiso, nombre, cantidad, observaciones) {
-    this.Decomiso(idDecomiso, nombre, cantidad, observaciones);
+function Decomiso(idDecomiso, categoria, cantidad, observaciones) {
+    this.Decomiso(idDecomiso, categoria, cantidad, observaciones);
 }
 
 Decomiso.prototype = {
     idDecomiso: 0, 
-    nombre: "", 
+    categoria: "", 
     cantidad: 0,
     observaciones: "",
-    Decomiso: function (idDecomiso, nombre, cantidad, observaciones) {
+    Decomiso: function (idDecomiso, categoria, cantidad, observaciones) {
         this.idDecomiso = idDecomiso;
-        this.nombre = nombre;
+        this.categoria = categoria;
         this.cantidad = cantidad;
         this.observaciones = observaciones;
     }
@@ -18,7 +18,7 @@ Decomiso.prototype = {
 Decomiso.from = function (plain) {
     decomiso = new Decomiso(
     plain.idDecomiso, 
-    plain.nombre,
+    plain.categoria,
     plain.cantidad,
     plain.observaciones);
     return decomiso;
@@ -28,7 +28,7 @@ Decomiso.to = function (decomiso) {
     return {
         _class: 'Decomiso',
         idDecomiso: decomiso.idDecomiso, 
-        nombre : decomiso.decomiso,
+        categoria : decomiso.categoria,
         cantidad : decomiso.cantidad,
         observaciones: decomiso.observaciones
     };

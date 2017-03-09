@@ -205,7 +205,8 @@
         <script src="js/validator.js"></script>
         <script src="js/actaDestruccion.js"></script>
         <script src="js/Proxy.js"></script>
-        <script src="js/BaseDatos.js"></script>        
+        <script src="js/BaseDatos.js"></script>     
+        <script src="js/objects/Contenedor.js"></script>
         <script src="js/objects/ActaDecomiso.js"></script>
         <script src="js/objects/ActaDonacion.js"></script>
         <script src="js/objects/ActaDevolucion.js"></script>       

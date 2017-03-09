@@ -21,13 +21,13 @@ public class ActaDecomiso implements Serializable,Jsonable{
     private Date fecha;
     private String hora;
     private Interesado interesado;
-    private List<Decomiso> decomisos;
+    private Contenedor decomisos;
     private String observaciones;
 
     public ActaDecomiso() {
     }
 
-    public ActaDecomiso(int idDecomiso, Policia policia, Testigo testigo, Lugar lugar, Date fecha, String hora, Interesado interesado, List<Decomiso> decomisos, String observaciones) {
+    public ActaDecomiso(int idDecomiso, Policia policia, Testigo testigo, Lugar lugar, Date fecha, String hora, Interesado interesado, Contenedor decomisos, String observaciones) {
         this.idDecomiso = idDecomiso;
         this.policia = policia;
         this.testigo = testigo;
@@ -95,11 +95,11 @@ public class ActaDecomiso implements Serializable,Jsonable{
         this.interesado = interesado;
     }
 
-    public List<Decomiso> getDecomisos() {
+    public Contenedor getDecomisos() {
         return decomisos;
     }
 
-    public void setDecomisos(List<Decomiso> decomisos) {
+    public void setDecomisos(Contenedor decomisos) {
         this.decomisos = decomisos;
     }
 

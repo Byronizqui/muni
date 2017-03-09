@@ -42,9 +42,21 @@ function putNumActa() {
     Proxy.ultimaActa();
     Proxy.completePolicias();
 }
-
+function obtenerDecomisosTabla(){
+    var x=document.getElementById('tabla').rows;  //Toma las filas de la tabla
+    var contenedor = new Contenedor();
+    for (var i =2; i < x.length; i++){   //Toma una por una las filas de la tabla, i representa la fila
+        var y=x[i].cells;  //y representa las columnas, por ejemplo y[3] es el precio en la tabla
+        var categoria= y[0].childNodes[1].value;
+        var cantidad = y[1].childNodes[0].value;
+        var observaciones = y[2].childNodes[0].value;
+        
+        contenedor.add(new Decomiso(0,categoria,Number(cantidad),observaciones));
+    }
+    return contenedor;
+}
 function enviarActa() {
-
+    
     var pDistrito = document.getElementById("distrito");
     var pTestigo = document.getElementById("nombre_testigo");
     var idDecomiso = 0;
@@ -67,8 +79,8 @@ function enviarActa() {
             $('#apellido1_interesado').val() === "" ? "NA" : $('#apellido1_interesado').val(),
             $('#apellido2_interesado').val() === "" ? "NA" : $('#apellido2_interesado').val(),
             "En algun lugar de heredia");
-    var decomisos = [new Decomiso(5, "a", 1, "xxx"), new Decomiso(6, "a", 1, "xxx")];
-    var observaciones = "a";
+    var decomisos = obtenerDecomisosTabla();
+    var observaciones = $("#observaciones").val();
     var actaDecomiso = new ActaDecomiso(0, policia, testigo, lugar,
             fechaDecomiso, horaDecomiso, interesado,
             decomisos, observaciones);

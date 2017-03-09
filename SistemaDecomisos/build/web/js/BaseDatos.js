@@ -31,6 +31,9 @@ function revive(k,v) {
 	if (v instanceof Object && v._class == 'Usuario') {
 		return Usuario.from(v);
 	}
+        if (v instanceof Object && v._class == 'Contenedor') {
+		return Contenedor.from(v);
+	}
         if (v instanceof Object && v._class == 'Testigo') {
 		return Testigo.from(v);
 	}
@@ -75,6 +78,9 @@ function revive(k,v) {
 function replacer(k,v) {
 	if (v instanceof Usuario) {
 		return Usuario.to(v);
+	}
+        if (v instanceof Contenedor) {
+		return Contenedor.to(v);
 	}
         if (v instanceof Testigo){
             return Testigo.to(v);

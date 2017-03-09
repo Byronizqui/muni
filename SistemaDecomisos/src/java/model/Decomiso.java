@@ -13,16 +13,16 @@ import java.io.Serializable;
  */
 public class Decomiso implements Serializable, Jsonable{
     private int idDecomiso;
-    private String nombre;
+    private String categoria;
     private int cantidad;
     private String observaciones;
 
     public Decomiso() {
     }
 
-    public Decomiso(int idDecomiso, String nombre, int cantidad, String observaciones) {
+    public Decomiso(int idDecomiso, String categoria, int cantidad, String observaciones) {
         this.idDecomiso = idDecomiso;
-        this.nombre = nombre;
+        this.categoria = categoria;
         this.cantidad = cantidad;
         this.observaciones = observaciones;
     }
@@ -35,12 +35,12 @@ public class Decomiso implements Serializable, Jsonable{
         this.idDecomiso = idDecomiso;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public int getCantidad() {

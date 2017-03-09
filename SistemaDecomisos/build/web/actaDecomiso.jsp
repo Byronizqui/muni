@@ -2,6 +2,7 @@
 Document   : actaDecomiso
 Created on : 26-oct-2016, 11:52:35
 Author     : Mery Zúñiga
+aaaaaaaaaaaaa
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -23,6 +24,7 @@ Author     : Mery Zúñiga
         <!-- Font Awesome -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
         <!-- NProgress -->
+        <script src="js/objects/ActaDecomiso.js"></script>
         <link href="css/nprogress.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -116,7 +118,7 @@ Author     : Mery Zúñiga
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha del decomiso<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="fecha" class="date-picker form-control col-md-7 col-xs-12" type="date" min="2016-01-01" max="2100-01-01"  required>
+                                                <input type="text" id="datepicker">
                                                 <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
                                                 <span class="alert-dismissible form-control-static"> Ejemplo 10/10/2016</span>
                                             </div>
@@ -193,7 +195,7 @@ Author     : Mery Zúñiga
                                                 <div class="kv-avatar center-block" style="width:200px">
                                                     <input id="avatar-2" name="avatar-2" type="file" class="file-loading">
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="form-group status" id="groupIdInteresado">
@@ -232,7 +234,7 @@ Author     : Mery Zúñiga
                                                 <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="form-group status"  id="groupFechaNac">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fecha_Nac">Fecha de nacimiento del interesado</label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -275,13 +277,13 @@ Author     : Mery Zúñiga
                                                     <!-- Fila de ejemplo -->
                                                     <tr>
                                                         <td>
-                                                            <select class="form-control categoria" id="categoria">
-                                                                <option value="perecedero">Perecedero</option>
-                                                                <option value="no_perecedero">No Perecedero</option>
+                                                            <select class="form-control" name="cate" id="categoria">
+                                                                <option  value="perecederos">Perecedero</option>
+                                                                <option selected="selected" value="no_perecederos">No Perecedero</option>
                                                             </select>
                                                         </td>
                                                         <td><input required type="number" min="1" class="form-control cantidad"/></td>
-                                                        <td><textarea id="proobs" class="resizable_textarea form-control observaciones"></textarea></td>
+                                                        <td><textarea required id="proobs" class="resizable_textarea form-control observaciones"></textarea></td>
                                                         <td class="eliminar btn-danger btn-xs btn-group-justified btn-round">Eliminar</td>
                                                     </tr>
 
@@ -290,6 +292,7 @@ Author     : Mery Zúñiga
                                             </table>
                                             <div class="ln_solid"></div>
                                             <button type="button" class="btn btn-dark" id="agregar"><i class="fa fa-plus"> Agregar fila</i></button>
+                                            
                                         </div>
 
                                         <!-- Botón para agregar filas -->
@@ -320,7 +323,7 @@ Author     : Mery Zúñiga
 
 
                 <!-- /page content -->
-
+                <!--uno, dos y tres ********  -->
 
                 <!-- footer content -->
                 <footer>
@@ -364,6 +367,7 @@ Author     : Mery Zúñiga
 </div>
         <!-- jQuery -->
         <script src="js/jquery.min.js"></script>
+
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="js/chosen.jquery.js"></script>
@@ -387,11 +391,9 @@ Author     : Mery Zúñiga
         <script src="js/actaDecomiso.js"></script>
         <script src="js/Proxy.js"></script>
         <script src="js/BaseDatos.js"></script>        
-        <script src="js/objects/Contenedor.js"></script>
-        <script src="js/objects/ActaDecomiso.js"></script>
-        <script src="js/objects/ActaDevolucion.js"></script>
+        
         <script src="js/objects/ActaDonacion.js"></script>
-        <script src="js/objects/ActaDestruccion.js"></script>
+        <script src="js/objects/ActaDevolucion.js"></script>
         <script src="js/objects/Decomiso.js"></script>
         <script src="js/objects/Distrito.js"></script>
         <script src="js/objects/Funcionario.js"></script>

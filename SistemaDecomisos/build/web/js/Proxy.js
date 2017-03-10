@@ -125,8 +125,9 @@ Proxy.listadoPolicias = function () {
                     $("#nomPoli").append(d);
                     $("#nomPoli2").append(d);
                 }
+                //$('[data-rel="chos"],[rel="chos"]').chosen({ width:"100%" });
                 $('[data-rel="chos"],[rel="chos"]').chosen();
-                $('[data-rel="chos2"],[rel="chos2"]').chosen({ width:"100%" });
+                $('[data-rel="chos2"],[rel="chos2"]').chosen({ width:"50%" });
                 $('[data-rel="chos2"],[rel="chos2"]').chosen();
             } else {
                 var opt = document.createElement('option');

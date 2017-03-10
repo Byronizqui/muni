@@ -21,6 +21,7 @@ $(document).ready(function () {
         showMonthAfterYear: false,
         yearSuffix: ''
     });
+    $(".time_element").timepicki();
     $("#datepicker").datepicker({ 
         dateFormat: "dd/mm/yy",
         closeText: 'Cerrar',

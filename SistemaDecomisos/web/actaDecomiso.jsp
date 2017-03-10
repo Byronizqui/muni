@@ -21,6 +21,7 @@ aaaaaaaaaaaaa
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/chosen.css">
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/timepicki.css">
         <!-- Font Awesome -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
         <!-- NProgress -->
@@ -127,9 +128,7 @@ aaaaaaaaaaaaa
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Hora del decomiso<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="hora" class="form-control col-md-7 col-xs-12" type="time" required>
-                                                <span class="fa fa-clock-o form-control-feedback right" aria-hidden="true"></span>
-                                                <span class="alert-dismissible form-control-static"> Ejemplo 10:30 a.m</span>
+                                                <input type="text" id="horaPicker" class="time_element">
                                             </div>
                                         </div>
                                         <div class="form-group status">
@@ -374,6 +373,7 @@ aaaaaaaaaaaaa
         <!-- NProgress -->
         <script src="js/nprogress.js"></script>
         <!--Date-->
+        <script src="js/timepicki.js"></script>
         <script src="js/daterangepicker.js"></script>
         <script src="js/moment.min.js"></script>
         <!-- Custom Theme Scripts -->

@@ -22,7 +22,7 @@ function ver_info_testigo(){
         }
         if($("#nombre_testigo").val() == "policia"){
             $('#info_testigo_civil').hide(); //muestro mediante id
-            $('#info_testigo_policia').show()();
+            $('#info_testigo_policia').show();
         }
         if($("#nombre_testigo").val() == "vacio"){
             $('#info_testigo_civil').hide(); //muestro mediante id

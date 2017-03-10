@@ -2,38 +2,35 @@ var erroresDes = new Array();
 
 $(document).ready(function () {
     $('[data-rel="chosen"],[rel="chosen"]').chosen();
-    $("#fechaDes").datepicker({ 
+    $("#fechaDes").datepicker({
         dateFormat: "dd/mm/yy",
         closeText: 'Cerrar',
         prevText: '<Ant',
         nextText: 'Sig>',
         currentText: 'Hoy',
         monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-        monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
         dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-        dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
-        dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+        dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
         weekHeader: 'Sm',
         firstDay: 1,
         isRTL: false,
         showMonthAfterYear: false,
         yearSuffix: ''
-    }).val();
-    $('#enviarActa_Des').click(function () {
-        if (checkActaDes())
-            enviarActaDes();
-        else
-            erroresActaDes();
     });
-    putNumActaDestruccion(); 
+    $('#enviarActa_Des').click(function () {
+        checkActaDes() ? enviarActaDes() : erroresActaDes();
+    });
+    putNumActaDestruccion();
 });
 
 
-function putNumActaDestruccion(){
+function putNumActaDestruccion() {
     Proxy.ultimaActaDestruccion();
 }
 
-function checkActaDes(){
+function checkActaDes() {
     var bool = true;
     if ($('#nom_policiaDes').val() === "") {
         bool = false;
@@ -58,7 +55,7 @@ function checkActaDes(){
     return bool;
 }
 
-function enviarActaDes() {  
+function enviarActaDes() {
     var policia = new Policia("2", "a", "b", "c", 1);
     var testigo1 = new Testigo(1, "1", $('#nombre_testigo1').val(), $('#apellido1_testigo1').val(), $('#apellido2_testigo1').val());
     var testigo2 = new Testigo(1, "1", $('#nombre_testigo2').val(), $('#apellido1_testigo2').val(), $('#apellido2_testigo2').val());
@@ -74,7 +71,7 @@ function enviarActaDes() {
     Proxy.actaDestruccion(JSON.stringify(actaDestruccion, replacer));
 }
 
-function erroresActaDes(){
+function erroresActaDes() {
     $('#errorListDe').html(' ');
     $('#errorListDe').append("<strong>Atención, se presentaron los siguientes errores:\n</strong>");
     for (var i = 0; i < erroresDes.length; i++) {

@@ -238,7 +238,7 @@ aaaaaaaaaaaaa
                                         <div class="form-group status"  id="groupFechaNac">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fecha_Nac">Fecha de nacimiento del interesado</label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="fechaNac" class="form-control col-md-7 col-xs-12" type="date">
+                                                <input id="fechaNac" class="form-control col-md-7 col-xs-12" type="text">
                                                 <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
                                             </div>
                                         </div>
@@ -310,7 +310,7 @@ aaaaaaaaaaaaa
                                         <span class="alert">¡Datos requeridos (*) incompletos! <br/>Complete la información correctamente</span>
                                         <div class="form-group">
                                             <div class="col-md-9 col-md-offset-3">
-                                                <button type="submit" class="btn btn-primary" id="enviarActa_Dec"><i class="fa fa-save"></i> Guardar </button>
+                                                <button type="button" class="btn btn-primary" id="enviarActa_Dec"><i class="fa fa-save"></i> Guardar </button>
                                                 <button type="reset" class="btn btn-danger" id="cancelarActa_Dec"><i class="fa fa-remove"></i> Cancelar </button>
                                             </div>
                                         </div>

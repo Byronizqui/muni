@@ -107,7 +107,7 @@
                                         <span class="alert">¡Datos requeridos (*) incompletos! <br/>Complete la información correctamente</span>
                                         <div class="form-group">
                                             <div class="col-md-9 col-md-offset-3">
-                                                <button type="submit" class="btn btn-primary" id="enviarActa_Dev"><i class="fa fa-save"></i> Guardar </button>
+                                                <button type="button" class="btn btn-primary" id="enviarActa_Dev"><i class="fa fa-save"></i> Guardar </button>
                                                 <button type="reset" class="btn btn-danger" id="cancelarActa_Dev"><i class="fa fa-remove"></i> Cancelar </button>
                                             </div>
                                         </div>

@@ -1,6 +1,7 @@
 var errores = new Array();
 
 $(document).ready(function () {
+    Proxy.listadoPolicias();
     $('[data-rel="chosen"],[rel="chosen"]').chosen();
     $("#id_interesado").mask("9-9999-9999");
     $("#fechaNac").datepicker({

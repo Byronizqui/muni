@@ -136,10 +136,9 @@ aaaaaaaaaaaaa
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre_policia">Nombre del Policía Municipal encargado<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <div id="groupNombrePolicia">
-                                                    <input type="text" id="id_policia" class="form-control col-md-7 col-xs-12" required="required">
-                                                    <span class="fa fa-search form-control-feedback right" aria-hidden="true"></span>
-                                                </div>
+                                                <select class="form-control" data-rel="chos" name="nomPoli" id="nomPoli">
+
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group status" id="groupNombreTestigo">
@@ -153,17 +152,13 @@ aaaaaaaaaaaaa
                                                 <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
                                             </div>
                                         </div>
-
-
                                         <div class="form-group status" hidden id="info_testigo_policia">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="info_policia">Identificacion del Policía Municipal testigo<span class="required">*</span>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="info_policia">Nombre del Policía Municipal testigo<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <div id="info_test_policia">
-                                                    <input type="text" id="info_policia" class="form-control col-md-7 col-xs-12" required="required">
-                                                    <span class="fa fa-search form-control-feedback right" aria-hidden="true"></span>
+                                                <select class="form-control chosen-select" data-rel="chos2" name="nomPoli" id="nomPoli2">
 
-                                                </div>
+                                                </select>
                                             </div>
                                         </div>
                                         <div id="info_testigo_civil" hidden> 
@@ -292,7 +287,7 @@ aaaaaaaaaaaaa
                                             </table>
                                             <div class="ln_solid"></div>
                                             <button type="button" class="btn btn-dark" id="agregar"><i class="fa fa-plus"> Agregar fila</i></button>
-                                            
+
                                         </div>
 
                                         <!-- Botón para agregar filas -->
@@ -391,7 +386,7 @@ aaaaaaaaaaaaa
         <script src="js/actaDecomiso.js"></script>
         <script src="js/Proxy.js"></script>
         <script src="js/BaseDatos.js"></script>        
-        
+
         <script src="js/objects/ActaDonacion.js"></script>
         <script src="js/objects/ActaDevolucion.js"></script>
         <script src="js/objects/Decomiso.js"></script>

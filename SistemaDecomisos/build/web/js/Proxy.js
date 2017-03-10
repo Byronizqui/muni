@@ -119,19 +119,15 @@ Proxy.listadoPolicias = function () {
         dataType: 'json',
         contentType: "application/x-www-form-urlencoded",
         success: function (data) {
-            var select = document.getElementById("listadoNombre");
-            clearRoot(select);
-
             if (data != null) {
-                policias = new Contenedor();
-                policias.items = data;
-                for (var i = 0; i < policias.size(); i++) {
-                    var opt = document.createElement('option');
-                    policia = policias.get(i);
-                    opt.value = policia.idPolicia;
-                    opt.innerHTML = policia.nombre + " " + policia.apellido1 + " " + policia.apellido2;
-                    select.appendChild(opt);
+                for (var i = 0; i < data.length; i++) {
+                    var d = "<option value='" + data[i].nombre + "'>" + data[i].nombre + "</option>";
+                    $("#nomPoli").append(d);
+                    $("#nomPoli2").append(d);
                 }
+                $('[data-rel="chos"],[rel="chos"]').chosen();
+                $('[data-rel="chos2"],[rel="chos2"]').chosen({ width:"100%" });
+                $('[data-rel="chos2"],[rel="chos2"]').chosen();
             } else {
                 var opt = document.createElement('option');
                 opt.value = 0;

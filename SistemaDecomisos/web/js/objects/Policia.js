@@ -34,7 +34,7 @@ Policia.to = function (policia) {
         identificacion: policia.identificacion,
         nombre: policia.nombre,
         apellido1: policia.apellido1,
-        apellido2: policia.apellido2,
+        apellido2: policia.apellido2
     };
 };
  

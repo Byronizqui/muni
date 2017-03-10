@@ -121,13 +121,13 @@ Proxy.listadoPolicias = function () {
         success: function (data) {
             if (data != null) {
                 for (var i = 0; i < data.length; i++) {
-                    var d = "<option value='" + data[i].nombre + "'>" + data[i].nombre + "</option>";
+                    var d = "<option value='" + data[i].idPolicia + "'>" + data[i].nombre + "</option>";
                     $("#nomPoli").append(d);
                     $("#nomPoli2").append(d);
                 }
-                //$('[data-rel="chos"],[rel="chos"]').chosen({ width:"100%" });
+                $('[data-rel="chos"],[rel="chos"]').chosen({ width:"100%" });
                 $('[data-rel="chos"],[rel="chos"]').chosen();
-                $('[data-rel="chos2"],[rel="chos2"]').chosen({ width:"50%" });
+                $('[data-rel="chos2"],[rel="chos2"]').chosen({ width:"100%" });
                 $('[data-rel="chos2"],[rel="chos2"]').chosen();
             } else {
                 var opt = document.createElement('option');

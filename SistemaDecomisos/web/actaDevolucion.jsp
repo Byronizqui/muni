@@ -14,7 +14,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Sistema de Gestión de Decomisos</title>
-        
+
         <!-- Bootstrap -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <!-- /top navigation -->
-                
+
                 <!-- page content -->
                 <div class="right_col" role="main">
                     <div class="form_devoluvion">
@@ -79,12 +79,12 @@
                                             </div>
                                         </div> 
                                         <div class="form-group status" id="groupNombrePolicia">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre_policia">Nombre del Policía Municipal que realizó la devolución<span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input type="text" id="nom_policiaDev" required="required" class="form-control col-md-7 col-xs-12">
-                                                        <span class="fa fa-search form-control-feedback right" aria-hidden="true"></span>
-                                                </div>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre_policia">Nombre del Policía Municipal que realizó la devolución<span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" id="nom_policiaDev" required="required" class="form-control col-md-7 col-xs-12">
+                                                <span class="fa fa-search form-control-feedback right" aria-hidden="true"></span>
+                                            </div>
                                         </div>
                                         <div class="form-group status" id="groupIdInteresado">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_interesado">Identificación del interesado</label>
@@ -94,13 +94,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group status"  id="groupFecha">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de la devolución<span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="fecha_dev" class="date-picker form-control col-md-7 col-xs-12" type="date" min="2016-01-01" max="2100-01-01"  required>
-                                                    <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
-                                                    <span class="alert-dismissible form-control-static"> Ejemplo 10/10/2016</span>
-                                                </div>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de la devolución<span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="fecha_dev" class="date-picker form-control col-md-7 col-xs-12" type="date" min="2016-01-01" max="2100-01-01"  required>
+                                                <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
+                                                <span class="alert-dismissible form-control-static"> Ejemplo 10/10/2016</span>
+                                            </div>
                                         </div>
                                         <div class="ln_solid"></div>
 
@@ -118,7 +118,7 @@
                     </div>
                 </div>
                 <!-- page content -->
-                
+
                 <!-- footer content -->
                 <footer>
                     <div class="pull-right">
@@ -127,8 +127,8 @@
                     <div class="clearfix"></div>
                 </footer>
                 <!-- /footer content -->
-                
-              </div>
+
+            </div>
         </div>
         <div id="exitoDev" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
@@ -143,9 +143,9 @@
                 </div>
             </div>
         </div>     
-    </body>
-    
-    <!-- jQuery -->
+
+
+        <!-- jQuery -->
         <script src="js/jquery.min.js"></script>
         <!-- Bootstrap -->
         <script src="js/bootstrap.min.js"></script>
@@ -180,4 +180,5 @@
         <script src="js/objects/Policia.js"></script>
         <script src="js/objects/Testigo.js"></script>  
         <script src="js/objects/Usuario.js"></script>  
+    </body>
 </html>

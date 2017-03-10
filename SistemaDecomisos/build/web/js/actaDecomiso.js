@@ -22,24 +22,24 @@ $(document).ready(function () {
         yearSuffix: ''
     });
     $(".time_element").timepicki();
-    $("#datepicker").datepicker({ 
+    $("#datepicker").datepicker({
         dateFormat: "dd/mm/yy",
         closeText: 'Cerrar',
         prevText: '<Ant',
         nextText: 'Sig>',
         currentText: 'Hoy',
         monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-        monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
         dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-        dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
-        dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+        dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
         weekHeader: 'Sm',
         firstDay: 1,
         isRTL: false,
         showMonthAfterYear: false,
         yearSuffix: ''
     }).val();
-    
+
     $('#enviarActa_Dec').click(function () {
         if (checkActa())
             enviarActa();
@@ -79,34 +79,35 @@ function putNumActa() {
     Proxy.ultimaActa();
     Proxy.completePolicias();
 }
-function obtenerDecomisosTabla(){
-    var x=document.getElementById('tabla').rows;  //Toma las filas de la tabla
+function obtenerDecomisosTabla() {
+    var x = document.getElementById('tabla').rows;  //Toma las filas de la tabla
     var contenedor = new Contenedor();
-    for (var i =2; i < x.length; i++){   //Toma una por una las filas de la tabla, i representa la fila
-        var y=x[i].cells;  //y representa las columnas, por ejemplo y[3] es el precio en la tabla
-        var categoria= y[0].childNodes[1].value;
+    for (var i = 2; i < x.length; i++) {   //Toma una por una las filas de la tabla, i representa la fila
+        var y = x[i].cells;  //y representa las columnas, por ejemplo y[3] es el precio en la tabla
+        var categoria = y[0].childNodes[1].value;
         var cantidad = y[1].childNodes[0].value;
         var observaciones = y[2].childNodes[0].value;
-        
-        contenedor.add(new Decomiso(0,categoria,Number(cantidad),observaciones));
+
+        contenedor.add(new Decomiso(0, categoria, Number(cantidad), observaciones));
     }
     return contenedor;
 }
 function enviarActa() {
-    
+
     var pDistrito = document.getElementById("distrito");
     var pTestigo = document.getElementById("nombre_testigo");
     var idDecomiso = 0;
-
-    var policia = new Policia("2", "a", "b", "c", 1);
+    var idPoli = $("#nomPoli").val();
+    var nomPoli = $("#nomPoli option:selected").text();
+    var policia = new Policia(idPoli, "a", nomPoli, "c", 1);
     var testigo;
     if (pTestigo.selectedIndex === 1)
         testigo = new Testigo(1, $('#id_testigo').val(), $('#nombre_testigoText').val(), "asd", "asd");
-    else
+    else 
         testigo = new Testigo(1, " ", " ", " ", " ");
     var lugar = new Lugar(new Distrito(pDistrito.selectedIndex, pDistrito.options[pDistrito.selectedIndex].value), "Por el parque central");
-    var fechaDecomiso = $('#fecha').val();
-    var horaDecomiso = $('#hora').val();
+    var fechaDecomiso = $('#datepicker').val();
+    var horaDecomiso = $('#horaPicker').val();
     var iDate = formatDate(new Date().getUTCDate());
     var cedulaInteresado = $('#id_interesado').val();
     cedulaInteresado = cedulaInteresado.split("-").join("");

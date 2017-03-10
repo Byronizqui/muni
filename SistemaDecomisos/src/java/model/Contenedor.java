@@ -29,6 +29,4 @@ public class Contenedor implements Serializable,Jsonable{
     public void setItems(List<Decomiso> items) {
         this.items = items;
     }
-    
-    
 }

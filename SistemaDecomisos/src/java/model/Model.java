@@ -230,7 +230,7 @@ public class Model {
             if (con != null) {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
                 String sql = "{call prc_ins_adecomiso('" + acta.getIdDecomiso() + "',"
-                        + "'" + 1 + "',"
+                        + "'" + acta.getPolicia().getIdPolicia() + "',"
                         + "'" + acta.getInteresado().getIdInteresado() + "',"
                         + "'1',"
                         + "'" + sdf.format(acta.getFecha()) + "',"
@@ -254,16 +254,16 @@ public class Model {
         }
         return res;
     }
-    
+
     //{call prc_ins_adonacion('1','ahda','1','1')}
     public int guardarActaDonacion(ActaDonacion actaDon) throws SQLException {
         Connection con = null;
         int res = 0;
-        try{
+        try {
             con = Pool.getConnection();
             CallableStatement pstmt = null;
-            if(con != null) { 
-                String sql = "{call prc_ins_adonacion('" + actaDon.getIdDonacion()+ "',"
+            if (con != null) {
+                String sql = "{call prc_ins_adonacion('" + actaDon.getIdDonacion() + "',"
                         + "'" + actaDon.getInstitucion() + "',"
                         + "'" + actaDon.getPolicia().getIdPolicia() + "',"
                         + "'" + actaDon.getDecomiso().getIdDecomiso()
@@ -272,7 +272,7 @@ public class Model {
                 pstmt.executeUpdate();
                 res = 2;
             }
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             res = 1;
         } finally {
             try {
@@ -283,8 +283,8 @@ public class Model {
         }
         return res;
     }
-    
-    public int guardarActaDestruccion(ActaDestruccion actaDestruccion) throws SQLException{
+
+    public int guardarActaDestruccion(ActaDestruccion actaDestruccion) throws SQLException {
         Connection con = null;
         int res = 0;
         try {
@@ -292,13 +292,13 @@ public class Model {
             CallableStatement pstmt = null;
             if (con != null) {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
-                String sql = "{call prc_ins_adestruccion('" + actaDestruccion.getIdDestruccion()+ "',"
+                String sql = "{call prc_ins_adestruccion('" + actaDestruccion.getIdDestruccion() + "',"
                         + "'" + sdf.format(actaDestruccion.getFecha()) + "',"
-                      //  + "'" + actaDestruccion.getPolicia().getIdPolicia() + "',"
-                        + "'" + actaDestruccion.getTestigo1().getIdTestigo()+ "',"
-                        + "'" + actaDestruccion.getTestigo2().getIdTestigo()+ "',"
-                        + "'" + actaDestruccion.getLugar().getDireccionExacta()+ "',"
-                        + "'" + actaDestruccion.getEncargado()+ "',"
+                        //  + "'" + actaDestruccion.getPolicia().getIdPolicia() + "',"
+                        + "'" + actaDestruccion.getTestigo1().getIdTestigo() + "',"
+                        + "'" + actaDestruccion.getTestigo2().getIdTestigo() + "',"
+                        + "'" + actaDestruccion.getLugar().getDireccionExacta() + "',"
+                        + "'" + actaDestruccion.getEncargado() + "',"
                         + "'" + actaDestruccion.getActaDecomiso().getIdDecomiso()
                         + "')}";
                 pstmt = con.prepareCall(sql);
@@ -316,7 +316,8 @@ public class Model {
         }
         return res;
     }
-    public int guardarActaDevolucion(ActaDevolucion actaDevolucion) throws SQLException{
+
+    public int guardarActaDevolucion(ActaDevolucion actaDevolucion) throws SQLException {
         Connection con = null;
         int res = 0;
         try {
@@ -325,10 +326,10 @@ public class Model {
             if (con != null) {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
                 String sql = "{call prc_ins_adevolucion('" + actaDevolucion.getIdDevolucion() + "',"
-                        + "'" + actaDevolucion.getPolicia().getIdPolicia()+ "',"
+                        + "'" + actaDevolucion.getPolicia().getIdPolicia() + "',"
                         + "'" + actaDevolucion.getDecomiso().getIdDecomiso() + "',"
                         + "'" + actaDevolucion.getInteresado().getIdInteresado() + "',"
-                        + "'" + sdf.format(actaDevolucion.getFecha()) 
+                        + "'" + sdf.format(actaDevolucion.getFecha())
                         + "')}";
                 pstmt = con.prepareCall(sql);
                 pstmt.executeUpdate();
@@ -346,6 +347,7 @@ public class Model {
         }
         return res;
     }
+
     public int ultimaActaDonacion() {
         Connection con = null;
         int last = -1;
@@ -374,8 +376,8 @@ public class Model {
         }
         return last;
     }
-    
-    public int ultimaActaDestruccion(){
+
+    public int ultimaActaDestruccion() {
         Connection con = null;
         int last = -1;
         try {
@@ -403,8 +405,8 @@ public class Model {
         }
         return last;
     }
-    
-    public int ultimaActaDevolucion(){
+
+    public int ultimaActaDevolucion() {
         Connection con = null;
         int last = -1;
         try {
@@ -511,7 +513,7 @@ public class Model {
             ResultSet rs = null;
             if (con != null) {
 
-                String sql = "{call prc_ins_test('"+ testigo.getNombre() + "',"
+                String sql = "{call prc_ins_test('" + testigo.getNombre() + "',"
                         + "'" + testigo.getApellido1() + "',"
                         + "'" + testigo.getApellido2()
                         + "')}";
@@ -582,7 +584,7 @@ public class Model {
             ResultSet rs = null;
             if (con != null) {
 
-                String sql = "select idInteresado from Interesado where cedula='" + cedula +"'";
+                String sql = "select idInteresado from Interesado where cedula='" + cedula + "'";
                 pstmt = con.createStatement();
                 rs = pstmt.executeQuery(sql);
                 if (rs.next()) {
@@ -631,5 +633,40 @@ public class Model {
         return id;
     }
 
+    public int guardarObjetos(Contenedor lD, int uAc) {
+        Connection con = null;
+        int res = 0;//res =0 cuando hay error en conexion
+        try {
+            con = Pool.getConnection();
+            CallableStatement pstmt = null;
+
+            ResultSet rs = null;
+            if (con != null) {
+                for (Decomiso d : lD.getItems()) {
+                    String sql = "{call prc_ins_obj('" + d.getObservaciones() + "',"
+                            + d.getCantidad() + ","
+                            + uAc + ","
+                            + "'" + d.getCategoria()
+                            + "')}";
+                    pstmt = con.prepareCall(sql);
+                    pstmt.executeUpdate();
+                }
+
+                res = 2;// res = 2 cuando indica exito!
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            res = 1;//res  = 1 cuando hay excepcion, ejemplo: llave primaria repetida
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+                res = 1;//res  = 1 cuando hay excepcion, ejemplo: llave primaria repetida
+            }
+        }
+        return res;
+    }
 
 }

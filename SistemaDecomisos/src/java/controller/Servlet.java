@@ -146,6 +146,10 @@ public class Servlet extends HttpServlet {
                         actaDecomiso.setIdDecomiso(fin + 1);
                     }
                     res = model.guardarActaDecomiso(actaDecomiso);
+                    if (res == 2){
+                        int uAc = model.ultimaActaDecomiso();
+                        int r = model.guardarObjetos(actaDecomiso.getDecomisos(), uAc);
+                    }
                     out.write(res.toString());// Se envía el objeto Usuario como json al cliente
                     break;
                 case "guardarActaDonacion":

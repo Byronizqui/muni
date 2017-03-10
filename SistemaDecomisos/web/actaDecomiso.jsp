@@ -120,8 +120,6 @@ aaaaaaaaaaaaa
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input type="text" id="datepicker">
-                                                <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
-                                                <span class="alert-dismissible form-control-static"> Ejemplo 10/10/2016</span>
                                             </div>
                                         </div>
                                         <div class="form-group status"  id="groupHora">
@@ -388,6 +386,8 @@ aaaaaaaaaaaaa
         <script src="js/BaseDatos.js"></script>        
 
         <script src="js/objects/ActaDonacion.js"></script>
+        <script src="js/objects/Contenedor.js"></script>
+        <script src="js/objects/ActaDestruccion.js"></script>
         <script src="js/objects/ActaDevolucion.js"></script>
         <script src="js/objects/Decomiso.js"></script>
         <script src="js/objects/Distrito.js"></script>

@@ -201,6 +201,7 @@ public class Servlet extends HttpServlet {
                     }
                     res = model.guardarActaDestruccion(actaDestruccion);
                     out.write(res.toString());
+                    break;
                 case "listadoFuncionarios":
                     funcionarios = model.listadoFuncionarios();
                     json = gson.toJson(funcionarios);

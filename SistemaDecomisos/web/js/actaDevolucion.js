@@ -46,14 +46,9 @@ function enviarActaDevolucion(){
     var distrito = new Distrito(0, "");
     var lugar = new Lugar(distrito, "");
     var fech = new Date("02/03/2016");
-    var decomisos = [new Decomiso(5, "a", 1, "xxx"), new Decomiso(6, "a", 1, "xxx")];
+    var decomisos = new Contenedor();
+    decomisos.add(new Decomiso(0,"some", 1, "asdad"));
     var interesado = new Interesado(1, fecha, lugar, "", "", "", "", "");
-    /*var interesado = new Interesado(1, $('#fechaNac').val() === "" ? iDate : $('#fechaNac').val(), lugar,
-            cedulaInteresado === "" ? "NA" : cedulaInteresado,
-            $('#nombre_interesado').val() === "" ? "NA" : $('#nombre_interesado').val(),
-            $('#apellido1_interesado').val() === "" ? "NA" : $('#apellido1_interesado').val(),
-            $('#apellido2_interesado').val() === "" ? "NA" : $('#apellido2_interesado').val(),
-            "En algun lugar de heredia"); */
     var test = new Testigo(1, "", "", "", "");
     var actaDecomiso = new ActaDecomiso(1, policia, test, lugar, fech, "", interesado, decomisos, "");
     var actaDevolucion = new ActaDevolucion(0, policia, actaDecomiso, interesado, fecha); 

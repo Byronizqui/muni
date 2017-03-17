@@ -64,7 +64,7 @@ Proxy.ultimaActaDestruccion = function () {
         dataType: 'text',
         contentType: "application/x-www-form-urlencoded",
         success: function (data) {
-            //$('#nActa_dest').html(" ");
+            $('#nActa_dest').html(" ");
             $('#nActa_dest').append("<bl>" + data + "</bl>");
         }
     });

@@ -41,7 +41,8 @@ function enviarActaDonacion(){
     var distrito = new Distrito(0, "");
     var lugar = new Lugar(distrito, "");
     var inter = new Interesado(1, "20/03/2016", lugar, "", "", "", "", "");
-    var decomisos = [new Decomiso(5, "a", 1, "xxx"), new Decomiso(6, "a", 1, "xxx")];
+    var decomisos = new Contenedor();
+    decomisos.add(new Decomiso(0,"some", 1, "asdad"));
     var actaDecomiso = new ActaDecomiso(1, policia, test, lugar, fech, "", inter, decomisos, "");
     //(int idInteresado, Date fechaNacimiento, Lugar domicilio, String identificacion, String nombre, String apellido1, String apellido2)
     var actaDonacion = new ActaDonacion(1, institucion, policia, actaDecomiso); 

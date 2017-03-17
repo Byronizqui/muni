@@ -20,7 +20,10 @@ $(document).ready(function () {
         yearSuffix: ''
     });
     $('#enviarActa_Des').click(function () {
-        checkActaDes() ? enviarActaDes() : erroresActaDes();
+        if (checkActaDes())
+            enviarActaDes();  
+        else
+            erroresActaDes();
     });
     putNumActaDestruccion();
 });
@@ -65,7 +68,8 @@ function enviarActaDes() {
     var fecha = $('#fechaDes').val();
     var test = new Testigo(1, "", "", "", "");
     var interesado = new Interesado(1, fecha, lugar, "", "", "", "", "");
-    var decomisos = [new Decomiso(5, "a", 1, "xxx"), new Decomiso(6, "a", 1, "xxx")];
+    var decomisos = new Contenedor();
+    decomisos.add(new Decomiso(0,"some", 1, "asdad"));
     var decomiso = new ActaDecomiso(1, policia, test, lugar, fecha, "", interesado, decomisos, "");
     var actaDestruccion = new ActaDestruccion(1, fecha, /*policia,*/ testigo1, testigo2, lugar, encargado, decomiso);
     Proxy.actaDestruccion(JSON.stringify(actaDestruccion, replacer));

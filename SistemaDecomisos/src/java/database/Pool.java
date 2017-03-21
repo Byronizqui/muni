@@ -20,7 +20,7 @@ public class Pool {
         System.out.println("OracleDataSource Initialization");
         try {
             ods = new OracleDataSource();
-            ods.setURL("jdbc:oracle:thin:@//localhost:1521/xe");
+            ods.setURL("jdbc:oracle:thin:@//localhost:1521/orcl");
             ods.setUser("muni");
             ods.setPassword("muni123");
             // caching parms

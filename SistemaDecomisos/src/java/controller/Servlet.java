@@ -223,6 +223,12 @@ public class Servlet extends HttpServlet {
                     res = model.guardarUsuario(usuario);
                     out.write(res.toString());// Se envía el objeto Usuario como json al cliente
                     break;
+                case "listaDecomisos":{
+                    List<ActaDecomiso> list = model.imprimeDecomisos();
+                    json = gson.toJson(list);
+                    out.write(json);
+                }
+                break;
             }
         } catch (Exception e) {
             System.out.println(e);

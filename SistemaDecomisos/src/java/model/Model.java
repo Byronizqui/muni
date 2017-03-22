@@ -146,14 +146,13 @@ public class Model {
             ResultSet rs = null;
             if (con != null) {
 
-                String sql = "select * from PoliciaMunicipal ";
+                String sql = "select des_nombre from rh_empleado ";
                 pstmt = con.prepareStatement(sql);
                 rs = pstmt.executeQuery();
                 int idFuncionario = 0;
                 String nombre = "";
                 while (rs.next()) {
-                    idFuncionario = rs.getInt("IdPolicia");
-                    nombre = rs.getString("nombre");
+                    nombre = rs.getString("DES_NOMBRE");
                     policias.add(new Policia(idFuncionario, "", nombre, "", ""));
                 }
             }

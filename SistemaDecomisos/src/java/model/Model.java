@@ -671,7 +671,7 @@ public class Model {
 
     public List<ActaDecomiso> imprimeDecomisos() {
         Connection con = null;
-        String decomisos = "";                
+        String decomisos = "";
         List<ActaDecomiso> list = new ArrayList();
 
         try {
@@ -681,9 +681,9 @@ public class Model {
             if (con != null) {
 
                 String sql = " select A.idDecomiso as idD, A.fecha as fecha, A.lugar as lugar,\n"
-                        + " P.nombre as pNombre, I.nombre as iNombre, O.categoria as categoria\n"
+                        + " DES_NOMBRE as pNombre, I.nombre as iNombre, O.categoria as categoria\n"
                         + " FROM ActaDecomiso A\n"
-                        + " INNER JOIN policiaMunicipal P ON P.idPolicia = A.idPolicia\n"
+                        + " INNER JOIN rh_empleado P ON P.NUM_EMPLEADO = A.idPolicia\n"
                         + " INNER JOIN interesado I ON I.idInteresado = A.idInteresado\n"
                         + " INNER JOIN objeto O ON A.idDecomiso = O.idDecomiso;";
                 pstmt = con.createStatement();
@@ -703,16 +703,16 @@ public class Model {
                     cat = rs.getString("categoria");
                     lugar = rs.getInt("LUGAR");
                     ActaDecomiso acta = new ActaDecomiso(idD, new Policia(0, "0", pName, "", ""),
-                    new Testigo(), new Lugar(new Distrito(lugar, ""), ""), fecha, "", new Interesado(0, fecha, new Lugar(), "",
-                    iName, "", ""), new Contenedor(), "");
+                            new Testigo(), new Lugar(new Distrito(lugar, ""), ""), fecha, "", new Interesado(0, fecha, new Lugar(), "",
+                                    iName, "", ""), new Contenedor(), "");
                     list.add(acta);
                 }
-                
+
             }
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-           // usuarios = null;
+            // usuarios = null;
         } finally {
             try {
                 con.close();

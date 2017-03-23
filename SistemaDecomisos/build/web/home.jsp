@@ -19,16 +19,18 @@
         <title>Sistema de Gestión de Decomisos</title>
 
         <!-- Bootstrap -->
+        <link href="css/matrix-media.css" rel="stylesheet">
+        <link href="css/matrix-style.css" rel="stylesheet">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <!-- Font Awesome -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
         <!-- NProgress -->
         <link href="css/nprogress.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
+        
         <!-- Custom Theme Style -->
         <link href="css/custom.min.css" rel="stylesheet">
+        
         <link rel="shortcut icon" href="media/images/logo2.ico" type="image/x-icon" />
 
     </head>
@@ -62,9 +64,18 @@
                 <!-- page content -->
                 <div class="right_col" role="main">
                     <div class="">
-                        <div class="page-title">
-                            <div class="title_left">
-                                <h3>TODO <small> Todo el contenido va aquí.</small></h3>
+                        <div>
+                            <div>
+                                <div>
+                                    <div class="quick-actions_homepage">
+                                        <ul class="quick-actions">
+                                            <li class="bg_lb"> <a href="actaDecomiso.jsp"> <i class="fa fa-wpforms fa-2x"></i></br>Registrar Acta de Decomiso </a> </li>
+                                            <li class="bg_lb"> <a href="actaDonacion.jsp"> <i class="fa fa-wpforms fa-2x"></i></br>Registrar Acta de Donación</a> </li>
+                                            <li class="bg_lb"> <a href="actaDestruccion.jsp"> <i class="fa fa-wpforms fa-2x"></i></br>Registrar Acta de Destrucción</a> </li>
+                                            <li class="bg_lb"> <a href="actaDevolucion.jsp"> <i class="fa fa-wpforms fa-2x"></i></br>Registrar Acta de Devolucion</a> </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

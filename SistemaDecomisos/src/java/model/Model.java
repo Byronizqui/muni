@@ -38,16 +38,16 @@ public class Model {
             ResultSet rs = null;
             if (con != null) {
 
-                String sql = "select privilegio from UsuarioM "
-                        + "where UsuarioM.nick='" + nick + "' "
-                        + "and UsuarioM.contrasena='" + pass + "' "
-                        + "and UsuarioM.estado=1";
+                String sql = "select 1 from Usuario "
+                        + "where Usuario.nick='" + nick + "' "
+                        + "and Usuario.contrasena='" + pass + "' "
+                        ;
                 pstmt = con.prepareStatement(sql);
                 rs = pstmt.executeQuery();
                 if (rs.next()) {
                     user = new Usuario();
                     user.setNick(nick);
-                    user.setPrivilegio(rs.getInt("privilegio"));
+                    //user.setPrivilegio(rs.getInt("privilegio"));
                 }
             }
 
@@ -146,17 +146,17 @@ public class Model {
             ResultSet rs = null;
             if (con != null) {
 
-                String sql = "select des_nombre from rh_empleado ";
+                String sql = "select * from rh_empleado ";
                 pstmt = con.prepareStatement(sql);
                 rs = pstmt.executeQuery();
                 int idFuncionario = 0;
                 String nombre = "";
                 while (rs.next()) {
                     nombre = rs.getString("DES_NOMBRE");
+                    idFuncionario = rs.getInt("NUM_EMPLEADO");
                     policias.add(new Policia(idFuncionario, "", nombre, "", ""));
                 }
             }
-
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             policias = null;
@@ -235,7 +235,8 @@ public class Model {
                         + "'" + sdf.format(acta.getFecha()) + "',"
                         + "'111',"
                         + "'" + acta.getObservaciones() + "',"
-                        + "'" + acta.getTestigo().getIdTestigo()
+                        + "'" + acta.getTestigo().getIdTestigo() + "',"
+                        + "'" + acta.getHora()
                         + "')}";
                 pstmt = con.prepareCall(sql);
                 pstmt.executeUpdate();
@@ -449,7 +450,9 @@ public class Model {
                         + "'" + interesado.getApellido1() + "',"
                         + "'" + interesado.getApellido2() + "',"
                         + "'" + sdf.format(interesado.getFechaNacimiento()) + "',"
-                        + "'" + interesado.getDomicilio().getDireccionExacta() + "')}";
+                        + "'" + interesado.getDomicilio().getDireccionExacta() + "',"
+                        + "'" + interesado.getFoto()
+                        + "')}";
                 pstmt = con.prepareCall(sql);
 
                 pstmt.executeUpdate();
@@ -703,7 +706,7 @@ public class Model {
                     lugar = rs.getInt("LUGAR");
                     ActaDecomiso acta = new ActaDecomiso(idD, new Policia(0, "0", pName, "", ""),
                             new Testigo(), new Lugar(new Distrito(lugar, ""), ""), fecha, "", new Interesado(0, fecha, new Lugar(), "",
-                                    iName, "", ""), new Contenedor(), "");
+                                    iName, "", "", ""), new Contenedor(), "");
                     list.add(acta);
                 }
 

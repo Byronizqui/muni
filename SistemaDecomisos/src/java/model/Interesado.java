@@ -16,13 +16,22 @@ public class Interesado extends Persona implements Serializable, Jsonable{
     private int idInteresado;
     private Date fechaNacimiento;
     private Lugar domicilio;
+    private String foto;
 
-
-    public Interesado(int idInteresado, Date fechaNacimiento, Lugar domicilio, String identificacion, String nombre, String apellido1, String apellido2) {
+    public Interesado(int idInteresado, Date fechaNacimiento, Lugar domicilio, String identificacion, String nombre, String apellido1, String apellido2, String foto) {
         super(identificacion, nombre, apellido1, apellido2);
         this.idInteresado = idInteresado;
         this.fechaNacimiento = fechaNacimiento;
         this.domicilio = domicilio;
+        this.foto = foto;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public int getIdInteresado() {

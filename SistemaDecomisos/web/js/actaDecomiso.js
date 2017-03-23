@@ -96,10 +96,8 @@ function enviarActa() {
 
     var pDistrito = document.getElementById("distrito");
     var pTestigo = document.getElementById("nombre_testigo");
-    var idDecomiso = 0;
-    var idPoli = $("#nomPoli").val();
-    var nomPoli = $("#nomPoli option:selected").text();
-    var policia = new Policia(idPoli, "a", nomPoli, "c", 1);
+    var policiaID = $("#nomPoli option:selected").val();
+    var policia = new Policia(policiaID, "a", "nomPoli", "c", 1);
     var testigo;
     if (pTestigo.selectedIndex === 1)
         testigo = new Testigo(1, $('#id_testigo').val(), $('#nombre_testigoText').val(), "asd", "asd");
@@ -116,7 +114,7 @@ function enviarActa() {
             $('#nombre_interesado').val() === "" ? "NA" : $('#nombre_interesado').val(),
             $('#apellido1_interesado').val() === "" ? "NA" : $('#apellido1_interesado').val(),
             $('#apellido2_interesado').val() === "" ? "NA" : $('#apellido2_interesado').val(),
-            "En algun lugar de heredia");
+            "En algun lugar de heredia", "");
     var decomisos = obtenerDecomisosTabla();
     var observaciones = $("#observaciones").val();
     var actaDecomiso = new ActaDecomiso(0, policia, testigo, lugar,

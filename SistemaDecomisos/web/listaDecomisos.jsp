@@ -157,7 +157,7 @@
         <script src="js/forms.js"></script>
         <script src="js/multifield.js"></script>
         <script src="js/validator.js"></script>
-        <script src="js/listaDecomisos.js"></script>
+        
         <script src="js/Proxy.js"></script>
         <script src="js/BaseDatos.js"></script>        
         <script src="js/objects/Contenedor.js"></script>
@@ -172,6 +172,7 @@
         <script src="js/objects/Policia.js"></script>
         <script src="js/objects/Testigo.js"></script>  
         <script src="js/objects/Usuario.js"></script>  
+        <script src="js/listaDecomisos.js"></script>
         <script src="fileinput/js/plugins/sortable.js" type="text/javascript"></script>
         <script src="fileinput/js/fileinput.js" type="text/javascript"></script>
         <script src="fileinput/js/locales/es.js" type="text/javascript"></script> 

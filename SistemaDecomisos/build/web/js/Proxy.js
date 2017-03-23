@@ -332,13 +332,13 @@ Proxy.listaDecomisos = function () {
             actasDecomisos = new Contenedor();
             actasDecomisos.items = data;
             var table = $('#decomisosTable').dataTable();
-            for(i=0;i<actasDecomisos.size;i++){
+            for(i=0;i<actasDecomisos.size();i++){
                 var actaDecomiso = actasDecomisos.get(i);
                 table.fnAddData([
                 actaDecomiso.idDecomiso,
                 actaDecomiso.fecha,
                 actaDecomiso.hora,
-                actaDecomiso.lugar.distrito,
+                actaDecomiso.lugar.distrito.idDistrito,
                 actaDecomiso.policia.nombre + " " +actaDecomiso.policia.apellido1+ " " +actaDecomiso.policia.apellido2,
                 actaDecomiso.interesado.nombre + " " +actaDecomiso.interesado.apellido1 + " " +actaDecomiso.interesado.apellido2,
                 "Perecedero",

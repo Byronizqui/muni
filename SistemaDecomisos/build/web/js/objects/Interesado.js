@@ -1,5 +1,5 @@
-function Interesado(idInteresado, fechaNacimiento, domicilio, identificacion, nombre, apellido1, apellido2, direccionExacta) {
-    this.Interesado(idInteresado, fechaNacimiento, domicilio, identificacion, nombre, apellido1, apellido2, direccionExacta);
+function Interesado(idInteresado, fechaNacimiento, domicilio, identificacion, nombre, apellido1, apellido2, direccionExacta, foto) {
+    this.Interesado(idInteresado, fechaNacimiento, domicilio, identificacion, nombre, apellido1, apellido2, direccionExacta, foto);
 }
 
 Interesado.prototype = {

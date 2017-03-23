@@ -114,7 +114,7 @@ function enviarActa() {
             $('#nombre_interesado').val() === "" ? "NA" : $('#nombre_interesado').val(),
             $('#apellido1_interesado').val() === "" ? "NA" : $('#apellido1_interesado').val(),
             $('#apellido2_interesado').val() === "" ? "NA" : $('#apellido2_interesado').val(),
-            "En algun lugar de heredia", "");
+            "En algun lugar de heredia", "NA");
     var decomisos = obtenerDecomisosTabla();
     var observaciones = $("#observaciones").val();
     var actaDecomiso = new ActaDecomiso(0, policia, testigo, lugar,

@@ -687,7 +687,7 @@ public class Model {
                         + " FROM ActaDecomiso A\n"
                         + " INNER JOIN rh_empleado P ON P.NUM_EMPLEADO = A.idPolicia\n"
                         + " INNER JOIN interesado I ON I.idInteresado = A.idInteresado\n"
-                        + " INNER JOIN objeto O ON A.idDecomiso = O.idDecomiso;";
+                        + " INNER JOIN objeto O ON A.idDecomiso = O.idDecomiso ";
                 pstmt = con.createStatement();
                 rs = pstmt.executeQuery(sql);
                 int idD = 0;
@@ -733,6 +733,35 @@ public class Model {
         }
         //return usuarios;
         return list;
+    }
+    
+    public int ultimoInteresado(){
+        Connection con = null;
+        int last = -1;
+        try {
+            con = Pool.getConnection();
+            Statement pstmt = null;
+            ResultSet rs = null;
+            if (con != null) {
+
+                String sql = "select *  from ( select Interesado.*, max(IdInteresado) over () as max_pk from Interesado) where IdInteresado = max_pk";
+                pstmt = con.createStatement();
+                rs = pstmt.executeQuery(sql);
+                while (rs.next()) {
+                    last = rs.getInt("max_pk");
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return last;
     }
 
 }

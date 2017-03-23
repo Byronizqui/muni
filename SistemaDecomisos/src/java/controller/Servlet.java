@@ -139,6 +139,11 @@ public class Servlet extends HttpServlet {
                     }
                     //res = model.guardarPolicia(actaDecomiso.getPolicia()); ya no se hace
                     res = model.guardarTestigo(actaDecomiso.getTestigo());
+                    int ultInte;
+                    if (res == 2){
+                        ultInte = model.ultimoInteresado();
+                        actaDecomiso.getInteresado().setIdInteresado(ultInte);
+                    }
                     int fin = model.ultimaActaDecomiso();
                     if (fin == -1) {
                         actaDecomiso.setIdDecomiso(1);

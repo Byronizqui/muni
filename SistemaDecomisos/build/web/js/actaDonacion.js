@@ -2,6 +2,7 @@ var errores_don = new Array();
 
 
 $(document).ready(function () {
+    $("#num_acta_dec1").val(id);
     $("#fecha_don").datepicker({ 
         dateFormat: "dd/mm/yy",
         closeText: 'Cerrar',

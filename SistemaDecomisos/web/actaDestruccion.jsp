@@ -78,7 +78,7 @@
                                     <br />
                                     <form id="acta_destruccion" role="form" class="form-horizontal form-label-left">
                                         <div class="form-group status"  id="groupFecha">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha en la que se realiza la destrrucción<span class="required">*</span>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha en la que se realiza la destrucción<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input id="fechaDes" class="date-picker form-control col-md-7 col-xs-12" type="text" required>

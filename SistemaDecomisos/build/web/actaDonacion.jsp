@@ -34,6 +34,14 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link href="fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
         <link href="fileinput/themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css"/> 
+
+        <script>
+            "<%
+                String id = "";
+                id = request.getParameter("id");
+            %>"
+                id= "<%=id%>";
+        </script>
     </head>
     <body class="nav-md">
         <div class="container body">
@@ -59,7 +67,7 @@
                         </nav>
                     </div>
                 </div>
-                
+
                 <!--page content-->
                 <div class="right_col" role="main">
                     <div class="form_decomiso">
@@ -79,36 +87,36 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Nº de Acta de Decomiso<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="number" id="num_acta_dec1" required="required" class="form-control col-md-7 col-xs-12">
+                                                <input type="number" id="num_acta_dec1" required="required" class="form-control col-md-7 col-xs-12" disabled>
                                             </div>
                                         </div>
-                                            
+
                                         <div class="form-group status"  id="groupFecha_Don">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de la donación<span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="fecha_don" class="date-picker form-control col-md-7 col-xs-12" type="text" required>
-                                                    <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
-                                                    <span class="alert-dismissible form-control-static"> Ejemplo 10/10/2016</span>
-                                                </div>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de la donación<span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="fecha_don" class="date-picker form-control col-md-7 col-xs-12" type="text" required>
+                                                <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
+                                                <span class="alert-dismissible form-control-static"> Ejemplo 10/10/2016</span>
+                                            </div>
                                         </div>
                                         <div class="form-group status" id="groupInstitucion">
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="institucion">Nombre de la Institución beneficiada<span class="required">*</span>
-                                                    </label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        <input type="text" id="institucion" required="required" class="form-control col-md-7 col-xs-12">
-                                                        <span class="fa fa-institution form-control-feedback right" aria-hidden="true"></span>
-                                                    </div>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="institucion">Nombre de la Institución beneficiada<span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" id="institucion" required="required" class="form-control col-md-7 col-xs-12">
+                                                <span class="fa fa-institution form-control-feedback right" aria-hidden="true"></span>
+                                            </div>
                                         </div>
                                         <div class="form-group status">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre_policia">Nombre del Policía Municipal a cargo de la donación<span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <div id="groupNombrePolicia">
-                                                        <input type="text" id="nom_policia" class="form-control col-md-7 col-xs-12" required="required">
-                                                        <span class="fa fa-search form-control-feedback right" aria-hidden="true"></span>
-                                                    </div>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre_policia">Nombre del Policía Municipal a cargo de la donación<span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div id="groupNombrePolicia">
+                                                    <input type="text" id="nom_policia" class="form-control col-md-7 col-xs-12" required="required">
+                                                    <span class="fa fa-search form-control-feedback right" aria-hidden="true"></span>
                                                 </div>
+                                            </div>
                                         </div>
                                         <div id="groupDonacion" class="form-group status">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="donacion">Detalles de la donación<span class="required">*</span>
@@ -133,8 +141,8 @@
                     </div>
                 </div>
                 <!-- page content -->
-                
-                
+
+
                 <!-- footer content -->
                 <footer>
                     <div class="pull-right">
@@ -143,7 +151,7 @@
                     <div class="clearfix"></div>
                 </footer>
                 <!-- /footer content -->
-                
+
             </div>
         </div>
         <div id="exitoD" class="modal fade" role="dialog">
@@ -161,46 +169,46 @@
         </div>            
     </body>
     <!-- jQuery -->
-        <script src="js/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="js/chosen.jquery.js"></script>
-        <script src="js/jquery.maskedinput.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- FastClick -->
-        <script src="js/fastclick.js"></script>
-        <!-- NProgress -->
-        <script src="js/nprogress.js"></script>
-        <!--Date-->
-        <script src="js/daterangepicker.js"></script>
-        <script src="js/moment.min.js"></script>
-        <!-- Custom Theme Scripts -->
-        <script src="js/custom.js"></script>
-        <script src="js/home.js"></script>
-        <script src="js/Utils.js"></script>
-        <script src="js/forms.js"></script>
-        <script src="js/multifield.js"></script>
-        <script src="js/validator.js"></script>
-        <script src="js/actaDonacion.js"></script>
-        <script src="js/Proxy.js"></script>
-        <script src="js/BaseDatos.js"></script>      
-        <script src="js/objects/Contenedor.js"></script>
-        <script src="js/objects/ActaDecomiso.js"></script>
-        <script src="js/objects/ActaDonacion.js"></script>
-        <script src="js/objects/ActaDevolucion.js"></script>
-        <script src="js/objects/ActaDestruccion.js"></script>
-        <script src="js/objects/Decomiso.js"></script>
-        <script src="js/objects/Distrito.js"></script>
-        <script src="js/objects/Funcionario.js"></script>
-        <script src="js/objects/Interesado.js"></script>
-        <script src="js/objects/Lugar.js"></script>
-        <script src="js/objects/Persona.js"></script>
-        <script src="js/objects/Policia.js"></script>
-        <script src="js/objects/Testigo.js"></script>  
-        <script src="js/objects/Usuario.js"></script>   
-        <script src="fileinput/js/plugins/sortable.js" type="text/javascript"></script>
-        <script src="fileinput/js/fileinput.js" type="text/javascript"></script>
-        <script src="fileinput/js/locales/es.js" type="text/javascript"></script> 
-        <script src="fileinput/themes/explorer/theme.js" type="text/javascript"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/chosen.jquery.js"></script>
+    <script src="js/jquery.maskedinput.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="js/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="js/nprogress.js"></script>
+    <!--Date-->
+    <script src="js/daterangepicker.js"></script>
+    <script src="js/moment.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="js/custom.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/Utils.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/multifield.js"></script>
+    <script src="js/validator.js"></script>
+    <script src="js/actaDonacion.js"></script>
+    <script src="js/Proxy.js"></script>
+    <script src="js/BaseDatos.js"></script>      
+    <script src="js/objects/Contenedor.js"></script>
+    <script src="js/objects/ActaDecomiso.js"></script>
+    <script src="js/objects/ActaDonacion.js"></script>
+    <script src="js/objects/ActaDevolucion.js"></script>
+    <script src="js/objects/ActaDestruccion.js"></script>
+    <script src="js/objects/Decomiso.js"></script>
+    <script src="js/objects/Distrito.js"></script>
+    <script src="js/objects/Funcionario.js"></script>
+    <script src="js/objects/Interesado.js"></script>
+    <script src="js/objects/Lugar.js"></script>
+    <script src="js/objects/Persona.js"></script>
+    <script src="js/objects/Policia.js"></script>
+    <script src="js/objects/Testigo.js"></script>  
+    <script src="js/objects/Usuario.js"></script>   
+    <script src="fileinput/js/plugins/sortable.js" type="text/javascript"></script>
+    <script src="fileinput/js/fileinput.js" type="text/javascript"></script>
+    <script src="fileinput/js/locales/es.js" type="text/javascript"></script> 
+    <script src="fileinput/themes/explorer/theme.js" type="text/javascript"></script>
 </html>

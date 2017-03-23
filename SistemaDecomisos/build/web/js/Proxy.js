@@ -125,9 +125,9 @@ Proxy.listadoPolicias = function () {
                     $("#nomPoli").append(d);
                     $("#nomPoli2").append(d);
                 }
-                $('[data-rel="chos"],[rel="chos"]').chosen({ width:"100%" });
+                $('[data-rel="chos"],[rel="chos"]').chosen({width: "100%"});
                 $('[data-rel="chos"],[rel="chos"]').chosen();
-                $('[data-rel="chos2"],[rel="chos2"]').chosen({ width:"100%" });
+                $('[data-rel="chos2"],[rel="chos2"]').chosen({width: "100%"});
                 $('[data-rel="chos2"],[rel="chos2"]').chosen();
             } else {
                 var opt = document.createElement('option');
@@ -332,20 +332,25 @@ Proxy.listaDecomisos = function () {
             actasDecomisos = new Contenedor();
             actasDecomisos.items = data;
             var table = $('#decomisosTable').dataTable();
-            for(i=0;i<actasDecomisos.size();i++){
-                var actaDecomiso = actasDecomisos.get(i);
-                table.fnAddData([
-                actaDecomiso.idDecomiso,
-                actaDecomiso.fecha,
-                actaDecomiso.hora,
-                actaDecomiso.lugar.distrito.idDistrito,
-                actaDecomiso.policia.nombre + " " +actaDecomiso.policia.apellido1+ " " +actaDecomiso.policia.apellido2,
-                actaDecomiso.interesado.nombre + " " +actaDecomiso.interesado.apellido1 + " " +actaDecomiso.interesado.apellido2,
-                "Perecedero",
-                "<button>Acta Donacion</button>"
-            ]); 
-            }
-            
+            for (i = 0; i < actasDecomisos.size(); i++) {
+            var actaDecomiso = actasDecomisos.get(i);
+                    table.fnAddData([
+                            actaDecomiso.idDecomiso,
+                            actaDecomiso.fecha,
+                            actaDecomiso.hora,
+                            actaDecomiso.lugar.distrito.idDistrito,
+                            actaDecomiso.policia.nombre + " " + actaDecomiso.policia.apellido1 + " " + actaDecomiso.policia.apellido2,
+                            actaDecomiso.interesado.nombre + " " + actaDecomiso.interesado.apellido1 + " " + actaDecomiso.interesado.apellido2,
+                            "Perecedero",
+                            '   <div>  ' +
+                            '   <button class="btn-donacion">Acta Donación</button>  ' +
+                            '   <button class="btn-devolucion">Acta Devolución</button>  ' +
+                            '   <button class="btn-destruccion">Acta Destrucción</button>  ' +
+                            '  </div>  '
+
+                    ]);
+        }
+
         }
     });
 };

@@ -1,6 +1,7 @@
 var erroresDev = new Array();
 
 $(document).ready(function () {
+    $("#num_acta_dec2").val(id);
     $('#enviarActa_Dev').click(function () {
         if (checkActaDev())
             enviarActaDevolucion();

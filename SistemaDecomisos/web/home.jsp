@@ -70,9 +70,8 @@
                                     <div class="quick-actions_homepage">
                                         <ul class="quick-actions">
                                             <li class="bg_lb"> <a href="actaDecomiso.jsp"> <i class="fa fa-wpforms fa-2x"></i></br>Registrar Acta de Decomiso </a> </li>
-                                            <li class="bg_lb"> <a href="actaDonacion.jsp"> <i class="fa fa-wpforms fa-2x"></i></br>Registrar Acta de Donación</a> </li>
+                                            <li class="bg_lb"> <a href="listaDecomisos.jsp"> <i class="fa fa-wpforms fa-2x"></i></br>Listado actas de decomiso</a> </li>
                                             <li class="bg_lb"> <a href="actaDestruccion.jsp"> <i class="fa fa-wpforms fa-2x"></i></br>Registrar Acta de Destrucción</a> </li>
-                                            <li class="bg_lb"> <a href="actaDevolucion.jsp"> <i class="fa fa-wpforms fa-2x"></i></br>Registrar Acta de Devolucion</a> </li>
                                         </ul>
                                     </div>
                                 </div>

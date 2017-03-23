@@ -21,9 +21,8 @@
             <li><a><i class="fa fa-edit"></i> Gestionar Decomisos <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
                     <li><a href="actaDecomiso.jsp">Registrar acta de decomiso</a></li>
-                    <li><a href="actaDonacion.jsp">Registrar acta de donación</a></li>
+                    <li><a href="listaDecomisos.jsp">Listado actas de decomiso</a></li>
                     <li><a href="actaDestruccion.jsp">Registrar acta de destrucción</a></li>
-                    <li><a href="actaDevolucion.jsp">Registrar acta de devolución</a></li>
                 </ul>
             </li>
             <li><a><i class="fa fa-bar-chart-o"></i> Ver Reportes <span class="fa fa-chevron-down"></span></a>

@@ -321,3 +321,31 @@ Proxy.actaDestruccion = function (criterio) {
         }
     });
 };
+Proxy.listaDecomisos = function () {
+
+    $.ajax({
+        url: "/SistemaDecomisos/Servlet?action=listaDecomisos",
+        type: "POST",
+        dataType: 'json',
+        contentType: "application/x-www-form-urlencoded",
+        success: function (data) {
+            actasDecomisos = new Contenedor();
+            actasDecomisos.items = data;
+            var table = $('#decomisosTable').dataTable();
+            for(i=0;i<actasDecomisos.size;i++){
+                var actaDecomiso = actasDecomisos.get(i);
+                table.fnAddData([
+                actaDecomiso.idDecomiso,
+                actaDecomiso.fecha,
+                actaDecomiso.hora,
+                actaDecomiso.lugar.distrito,
+                actaDecomiso.policia.nombre + " " +actaDecomiso.policia.apellido1+ " " +actaDecomiso.policia.apellido2,
+                actaDecomiso.interesado.nombre + " " +actaDecomiso.interesado.apellido1 + " " +actaDecomiso.interesado.apellido2,
+                "Perecedero",
+                "<button>Acta Donacion</button>"
+            ]); 
+            }
+            
+        }
+    });
+};

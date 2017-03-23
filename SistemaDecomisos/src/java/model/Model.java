@@ -683,7 +683,7 @@ public class Model {
             if (con != null) {
 
                 String sql = " select A.idDecomiso as idD, A.fecha as fecha, A.lugar as lugar,\n"
-                        + " DES_NOMBRE as pNombre, I.nombre as iNombre, O.categoria as categoria\n"
+                        + " DES_NOMBRE as pNombre,DES_APELLIDO1 as pApellido1,DES_APELLIDO2 as pApellido2, I.nombre as iNombre, I.primerapellido as iApellido1, I.segundoapellido as iApellido2, O.categoria as categoria\n"
                         + " FROM ActaDecomiso A\n"
                         + " INNER JOIN rh_empleado P ON P.NUM_EMPLEADO = A.idPolicia\n"
                         + " INNER JOIN interesado I ON I.idInteresado = A.idInteresado\n"
@@ -693,7 +693,11 @@ public class Model {
                 int idD = 0;
                 Date fecha;
                 String pName;
+                String pApellido1;
+                String pApellido2;
                 String iName;
+                String iApellido1;
+                String iApellido2;
                 String cat;
                 int lugar;
                 while (rs.next()) {
@@ -701,12 +705,16 @@ public class Model {
                     idD = rs.getInt("idD");
                     fecha = rs.getDate("fecha");
                     pName = rs.getString("pNombre");
+                    pApellido1 = rs.getString("pApellido1");
+                    pApellido2 = rs.getString("pApellido2");
                     iName = rs.getString("iNombre");
+                    iApellido1 = rs.getString("iApellido1");
+                    iApellido2 = rs.getString("iApellido2");
                     cat = rs.getString("categoria");
                     lugar = rs.getInt("LUGAR");
-                    ActaDecomiso acta = new ActaDecomiso(idD, new Policia(0, "0", pName, "", ""),
+                    ActaDecomiso acta = new ActaDecomiso(idD, new Policia(0, "0", pName,pApellido1,pApellido2),
                             new Testigo(), new Lugar(new Distrito(lugar, ""), ""), fecha, "", new Interesado(0, fecha, new Lugar(), "",
-                                    iName, "", "", ""), new Contenedor(), "");
+                                    iName, iApellido1, iApellido2, ""), new Contenedor(), "");
                     list.add(acta);
                 }
 

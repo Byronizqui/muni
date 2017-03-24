@@ -1,6 +1,7 @@
 drop user POLICIA_MUNICIPAL;
 create user POLICIA_MUNICIPAL identified by POLICIA_MUNICIPAL;
 grant create session,resource to POLICIA_MUNICIPAL;
+alter user POLICIA_MUNICIPAL quota unlimited on SIM;
 conn POLICIA_MUNICIPAL/POLICIA_MUNICIPAL
 
 alter table POLICIA_MUNICIPAL.ActaDevolucion drop constraint ActaDevolucion_fk;
@@ -21,6 +22,8 @@ drop sequence sequence_adecomiso;
 drop sequence sequence_adonacion;
 drop sequence sequence_adevolucion;
 drop sequence sequence_adestruccion;
+drop sequence cod_id_test;
+drop sequence sequence_user;
 
 drop table POLICIA_MUNICIPAL.Interesado;
 drop table POLICIA_MUNICIPAL.ActaDecomiso;
@@ -29,6 +32,8 @@ drop table POLICIA_MUNICIPAL.Objeto;
 drop table POLICIA_MUNICIPAL.ActaDevolucion;
 drop table POLICIA_MUNICIPAL.ActaDestruccion;
 drop table POLICIA_MUNICIPAL.RH_EMPLEADO;
+drop table POLICIA_MUNICIPAL.Usuario;
+drop table POLICIA_MUNICIPAL.Testigos;
 
 CREATE TABLE POLICIA_MUNICIPAL.RH_EMPLEADO
 (
@@ -227,7 +232,53 @@ NOPARALLEL
 MONITORING;
 
 
+create table POLICIA_MUNICIPAL.Usuario
+(IdUser number not null,
+nick varchar2(40)not null,
+contrasena varchar2(15)not null
+)
+TABLESPACE SIM
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          192K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
 
+create table POLICIA_MUNICIPAL.Testigos(
+IdTest number,
+nombre varchar2(30),
+apellido1 varchar2(30),
+apellido2 varchar2(30)
+)TABLESPACE SIM
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          192K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
 
 
 
@@ -237,6 +288,8 @@ create sequence sequence_adestruccion start with 1 increment by 1;
 create sequence sequence_adevolucion start with 1 increment by 1;
 create sequence sequence_adonacion start with 1 increment by 1;
 create sequence sequence_obj start with 1 increment by 1;
+create sequence cod_id_test start with 1 increment by 1;
+create sequence sequence_user start with 1 increment by 1;
 
 
 alter table POLICIA_MUNICIPAL.ActaDecomiso add constraint ActaDecomiso_pk primary key(IdDecomiso);
@@ -246,6 +299,8 @@ alter table POLICIA_MUNICIPAL.Objeto add constraint Objeto_pk primary key(IdObje
 alter table POLICIA_MUNICIPAL.Interesado add constraint Interesado_pk primary key(IdInteresado);
 alter table POLICIA_MUNICIPAL.ActaDonacion add constraint ActaDonacion_pk primary key(IdDonacion);
 alter table POLICIA_MUNICIPAL.RH_EMPLEADO add constraint RH_EMPLEADO_PK primary key (NUM_EMPLEADO);
+alter table POLICIA_MUNICIPAL.Testigos add constraint Testigos_pk primary key(IdTest);
+alter table POLICIA_MUNICIPAL.Usuario add constraint UsuarioM_pk primary key(IdUser);
 
 
 
@@ -285,6 +340,37 @@ foreign key(Idt2) references POLICIA_MUNICIPAL.RH_EMPLEADO;
 
 PROMPT PRC_INS_REG
 
+PROMPT PRC_INS_Int
+create or replace procedure prc_ins_int
+(
+Pnombre in varchar2,
+Pcedula in varchar2,
+Pprimerapellido in varchar2,
+Psegundoapellido in varchar2,
+Pfechanac in date,
+Presidencia in varchar2,
+Pfoto in varchar2
+)is
+begin
+insert into POLICIA_MUNICIPAL.Interesado(IdInteresado,nombre,cedula,primerapellido,segundoapellido,fechanac,residencia,fotografia)
+values(cod_id_int.nextval,Pnombre,Pcedula,Pprimerapellido,Psegundoapellido,Pfechanac,Presidencia,Pfoto);
+commit;
+end prc_ins_int;
+/
+show error;
+
+create or replace procedure prc_ins_user
+(
+Pnick in varchar2,
+Pcontrasena in varchar2
+)is
+begin
+insert into Usuario(IdUser,nick,contrasena)
+values(sequence_user.nextval,Pnick,Pcontrasena);
+commit;
+end prc_ins_user;
+/
+show error;
 
 PROMPT PRC_INS_Int
 create or replace procedure prc_ins_int
@@ -536,6 +622,7 @@ values (112,1201,'Bayron','Picado','Obando',sysdate);
 insert into POLICIA_MUNICIPAL.ActaDecomiso (IdDecomiso,IdPolicia,IdInteresado,lugar,fecha,Idacompanante,observaciones,idtest)
 values (002,1200,12221,2,sysdate,1201,'Robo',1201);
 insert into POLICIA_MUNICIPAL.Objeto(IdObjeto,descripcion,cantidad,IdDecomiso) values(003,'Droga',3,001,'P');
+exec prc_ins_user('mario','123');
 commit;
 
 CREATE OR REPLACE PROCEDURE prc_prueba(PIdPolicia in number,catCur OUT SYS_REFCURSOR)

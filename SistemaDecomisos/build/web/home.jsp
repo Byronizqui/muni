@@ -72,6 +72,7 @@
                                             <li class="bg_lb"> <a href="actaDecomiso.jsp"> <i class="fa fa-wpforms fa-2x"></i></br>Registrar Acta de Decomiso </a> </li>
                                             <li class="bg_lb"> <a href="listaDecomisos.jsp"> <i class="fa fa-wpforms fa-2x"></i></br>Listado actas de decomiso</a> </li>
                                             <li class="bg_lb"> <a href="actaDestruccion.jsp"> <i class="fa fa-wpforms fa-2x"></i></br>Registrar Acta de Destrucción</a> </li>
+                                            <li class="bg_lb"> <a href="listaInteresados.jsp"> <i class="fa fa-wpforms fa-2x"></i></br>Listado Interesados</a></li>
                                         </ul>
                                     </div>
                                 </div>

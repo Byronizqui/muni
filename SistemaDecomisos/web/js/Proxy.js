@@ -321,6 +321,47 @@ Proxy.actaDestruccion = function (criterio) {
         }
     });
 };
+
+//************************************************************************
+Proxy.listadoInteresados = function () {
+
+    $.ajax({
+        url: "/SistemaDecomisos/Servlet?action=listadoInteresados",
+        type: "POST",
+        dataType: 'json',
+        contentType: "application/x-www-form-urlencoded",
+        success: function (data) {
+            /*usuarios = new Contenedor();
+            usuarios.items = data;
+            usuariosTable = document.getElementById("usuariosTable");
+            store(usuariosTable.modelId, usuarios);
+            Table.refresh(usuariosTable, "");
+            */
+           dibujarTabla(data);
+        }
+    });
+};
+
+Proxy.getInteresado = function (idInteresado) {
+
+    $.ajax({
+        url: "/SistemaDecomisos/Servlet?action=getInteresado",
+        type: "POST",
+        data: "cedula=" + idInteresado,
+        dataType: 'json',
+        contentType: "application/x-www-form-urlencoded",
+        success: function (data) {
+            /*usuarios = new Contenedor();
+            usuarios.items = data;
+            usuariosTable = document.getElementById("usuariosTable");
+            store(usuariosTable.modelId, usuarios);
+            Table.refresh(usuariosTable, "");
+            */           
+            displayInteresado(data);
+        }
+    });
+};
+//*************************************************************************
 Proxy.listaDecomisos = function () {
 
     $.ajax({
@@ -342,11 +383,16 @@ Proxy.listaDecomisos = function () {
                             actaDecomiso.policia.nombre + " " + actaDecomiso.policia.apellido1 + " " + actaDecomiso.policia.apellido2,
                             actaDecomiso.interesado.nombre + " " + actaDecomiso.interesado.apellido1 + " " + actaDecomiso.interesado.apellido2,
                             "Perecedero",
-                            '   <div>  ' +
+                            '   <div style="display:inline-block;">  ' +
                             '   <button class="btn-donacion">Acta Donación</button>  ' +
+                            '  </div>  '+
+                            '   <div style="display:inline-block;">  ' +
                             '   <button class="btn-devolucion">Acta Devolución</button>  ' +
+                            '  </div>  '+
+                            '   <div style="display:inline-block;">  ' +
                             '   <button class="btn-destruccion">Acta Destrucción</button>  ' +
                             '  </div>  '
+                    
 
                     ]);
         }

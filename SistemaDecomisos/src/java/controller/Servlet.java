@@ -68,9 +68,11 @@ public class Servlet extends HttpServlet {
             ActaDevolucion actaDevolucion;
             ActaDestruccion actaDestruccion;
             Usuario usuario;
+            Interesado interesado;
             List<Funcionario> funcionarios;
             List<Policia> policias;
             List<Usuario> usuarios;
+            List<Interesado> interesados;
             switch (accion) {
                 case "userLogin":
                     if (model == null) {
@@ -140,7 +142,7 @@ public class Servlet extends HttpServlet {
                     //res = model.guardarPolicia(actaDecomiso.getPolicia()); ya no se hace
                     res = model.guardarTestigo(actaDecomiso.getTestigo());
                     int ultInte;
-                    if (res == 2){
+                    if (res == 2) {
                         ultInte = model.ultimoInteresado();
                         actaDecomiso.getInteresado().setIdInteresado(ultInte);
                     }
@@ -151,7 +153,7 @@ public class Servlet extends HttpServlet {
                         actaDecomiso.setIdDecomiso(fin + 1);
                     }
                     res = model.guardarActaDecomiso(actaDecomiso);
-                    if (res == 2){
+                    if (res == 2) {
                         int uAc = model.ultimaActaDecomiso();
                         int r = model.guardarObjetos(actaDecomiso.getDecomisos(), uAc);
                     }
@@ -177,10 +179,10 @@ public class Servlet extends HttpServlet {
                    // model.guardarActaDecomiso(actaDevolucion.getDecomiso());
                     //boolean var = model.isInteresado(actaDecomiso.getInteresado());
                    /* res = model.guardarInteresado(actaDevolucion.getInteresado());
-                    if (res != 2) {
-                        res = model.getIdInteresado(actaDevolucion.getInteresado().getIdentificacion());
-                        actaDevolucion.getInteresado().setIdInteresado(res);
-                    }*/
+                     if (res != 2) {
+                     res = model.getIdInteresado(actaDevolucion.getInteresado().getIdentificacion());
+                     actaDevolucion.getInteresado().setIdInteresado(res);
+                     }*/
                     //res = model.guardarPolicia(actaDevolucion.getPolicia());
                     int fin4 = model.ultimaActaDevolucion();
                     if (fin4 == -1) {
@@ -222,18 +224,29 @@ public class Servlet extends HttpServlet {
                     json = gson.toJson(usuarios);
                     out.write(json);
                     break;
+                case "listadoInteresados":
+                    interesados = model.listadoInteresados();
+                    json = gson.toJson(interesados);
+                    out.write(json);
+                    break;
                 case "guardarUsuario":
                     json = request.getParameter("usuario");// se obtiene un json del cliente, proviene de un objeto Usuario
                     usuario = gson.fromJson(json, Usuario.class);
                     res = model.guardarUsuario(usuario);
                     out.write(res.toString());// Se envía el objeto Usuario como json al cliente
                     break;
-                case "listaDecomisos":{
+                case "listaDecomisos":
                     List<ActaDecomiso> list = model.imprimeDecomisos();
                     json = gson.toJson(list);
                     out.write(json);
-                }
-                break;
+                    break;
+                case "getInteresado":
+                    String cedula = request.getParameter("cedula");
+                    interesado = model.getInteresado(cedula);
+                    json = gson.toJson(interesado);
+                    out.write(json);
+                    break;
+
             }
         } catch (Exception e) {
             System.out.println(e);

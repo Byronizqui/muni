@@ -23,6 +23,7 @@
                     <li><a href="actaDecomiso.jsp">Registrar acta de decomiso</a></li>
                     <li><a href="listaDecomisos.jsp">Listado actas de decomiso</a></li>
                     <li><a href="actaDestruccion.jsp">Registrar acta de destrucción</a></li>
+                    <li><a href="listaInteresados.jsp">Listado Interesados</a></li>
                 </ul>
             </li>
             <li><a><i class="fa fa-bar-chart-o"></i> Ver Reportes <span class="fa fa-chevron-down"></span></a>

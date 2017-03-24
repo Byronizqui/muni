@@ -763,5 +763,96 @@ public class Model {
         }
         return last;
     }
+    
+    public List<Interesado> listadoInteresados() {
+        Connection con = null;
+        List<Interesado> interesados = new ArrayList<Interesado>();
+        try {
+            con = Pool.getConnection();
+            PreparedStatement pstmt = null;
+            ResultSet rs = null;
+            if (con != null) {
 
+                String sql = "select * from Interesado ";
+                pstmt = con.prepareStatement(sql);
+                rs = pstmt.executeQuery();
+                int idInteresado = 0;
+                Date fechaNac;
+                Lugar domicilio = new Lugar();
+                String nombre = "";
+                String apellido1 = "";
+                String apellido2 = "";
+                String identificacion = "";
+                while (rs.next()) {
+                    idInteresado = rs.getInt("IdInteresado");
+                    identificacion = rs.getString("cedula");
+                    nombre = rs.getString("nombre");
+                    apellido1 = rs.getString("primerapellido");
+                    apellido2 = rs.getString("segundoapellido");
+                    //fechaNac = rs.getDate("fechanac");
+                    domicilio.setDireccionExacta(rs.getString("residencia"));
+                    interesados.add(new Interesado(idInteresado,null, domicilio, identificacion, 
+                    nombre,apellido1,apellido2,""));
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            interesados = null;
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+                interesados = null;
+            }
+        }
+        return interesados;
+    }
+    
+    public Interesado getInteresado(String cedula) {
+        Connection con = null;
+        Interesado interesado = null;
+        try {
+            con = Pool.getConnection();
+            PreparedStatement pstmt = null;
+            ResultSet rs = null;
+            if (con != null) {
+
+                String sql = "select * from Interesado where cedula="+cedula;
+                pstmt = con.prepareStatement(sql);
+                rs = pstmt.executeQuery();
+                int idInteresado = 0;
+                Date fechaNac;
+                Lugar domicilio = new Lugar();
+                String nombre = "";
+                String apellido1 = "";
+                String apellido2 = "";
+                String identificacion = "";
+                while (rs.next()) {
+                    idInteresado = rs.getInt("IdInteresado");
+                    identificacion = rs.getString("cedula");
+                    nombre = rs.getString("nombre");
+                    apellido1 = rs.getString("primerapellido");
+                    apellido2 = rs.getString("segundoapellido");
+                    fechaNac = rs.getDate("fechanac");
+                    domicilio.setDireccionExacta(rs.getString("residencia"));
+                    interesado = new Interesado(idInteresado,fechaNac, domicilio, identificacion, 
+                    nombre,apellido1,apellido2,"");
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            interesado = null;
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+                interesado = null;
+            }
+        }
+        return interesado;
+    } 
 }

@@ -22,7 +22,6 @@
                 <ul class="nav child_menu">
                     <li><a href="actaDecomiso.jsp">Registrar acta de decomiso</a></li>
                     <li><a href="listaDecomisos.jsp">Listado actas de decomiso</a></li>
-                    <li><a href="actaDestruccion.jsp">Registrar acta de destrucción</a></li>
                     <li><a href="listaInteresados.jsp">Listado Interesados</a></li>
                 </ul>
             </li>

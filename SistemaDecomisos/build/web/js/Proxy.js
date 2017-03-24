@@ -40,7 +40,7 @@ Proxy.ultimaActa = function () {
         contentType: "application/x-www-form-urlencoded",
         success: function (data) {
             $('#nActa').html(" ");
-            $('#nActa').append("<bl>" + data + "</bl>");
+            $('#nActa').append(data);
         }
     });
 };
@@ -52,7 +52,7 @@ Proxy.ultimaActaDonacion = function () {
         contentType: "application/x-www-form-urlencoded",
         success: function (data) {
             $('#nActa_donac').html(" ");
-            $('#nActa_donac').append("<bl>" + data + "</bl>");
+            $('#nActa_donac').append(data);
         }
     });
 };
@@ -65,7 +65,7 @@ Proxy.ultimaActaDestruccion = function () {
         contentType: "application/x-www-form-urlencoded",
         success: function (data) {
             $('#nActa_dest').html(" ");
-            $('#nActa_dest').append("<bl>" + data + "</bl>");
+            $('#nActa_dest').append(data);
         }
     });
 };
@@ -78,7 +78,7 @@ Proxy.ultimaActaDevolucion = function () {
         contentType: "application/x-www-form-urlencoded",
         success: function (data) {
             $('#nActa_dev').html(" ");
-            $('#nActa_dev').append("<bl>" + data + "</bl>");
+            $('#nActa_dev').append(data);
         }
     });
 };
@@ -127,6 +127,31 @@ Proxy.listadoPolicias = function () {
                 }
                 $('[data-rel="chos"],[rel="chos"]').chosen({width: "100%"});
                 $('[data-rel="chos"],[rel="chos"]').chosen();
+            } else {
+                var opt = document.createElement('option');
+                opt.value = 0;
+                opt.innerHTML = "Lista vacia";
+                select.appendChild(opt);
+            }
+
+            
+        }
+    });
+};
+
+Proxy.listadoInteresadosCombo = function () {
+
+    $.ajax({
+        url: "/SistemaDecomisos/Servlet?action=listadoInteresados",
+        type: "POST",
+        dataType: 'json',
+        contentType: "application/x-www-form-urlencoded",
+        success: function (data) {
+            if (data != null) {
+                for (var i = 0; i < data.length; i++) {
+                    var d = "<option value='" + data[i].idInteresado + "'>" + data[i].identificacion + " - " + data[i].nombre + " " + data[i].apellido1 + " " + data[i].apellido2 + "</option>";
+                    $("#nomInteresado").append(d);
+                }
                 $('[data-rel="chos2"],[rel="chos2"]').chosen({width: "100%"});
                 $('[data-rel="chos2"],[rel="chos2"]').chosen();
             } else {
@@ -332,12 +357,12 @@ Proxy.listadoInteresados = function () {
         contentType: "application/x-www-form-urlencoded",
         success: function (data) {
             /*usuarios = new Contenedor();
-            usuarios.items = data;
-            usuariosTable = document.getElementById("usuariosTable");
-            store(usuariosTable.modelId, usuarios);
-            Table.refresh(usuariosTable, "");
-            */
-           dibujarTabla(data);
+             usuarios.items = data;
+             usuariosTable = document.getElementById("usuariosTable");
+             store(usuariosTable.modelId, usuarios);
+             Table.refresh(usuariosTable, "");
+             */
+            dibujarTabla(data);
         }
     });
 };
@@ -352,11 +377,11 @@ Proxy.getInteresado = function (idInteresado) {
         contentType: "application/x-www-form-urlencoded",
         success: function (data) {
             /*usuarios = new Contenedor();
-            usuarios.items = data;
-            usuariosTable = document.getElementById("usuariosTable");
-            store(usuariosTable.modelId, usuarios);
-            Table.refresh(usuariosTable, "");
-            */           
+             usuarios.items = data;
+             usuariosTable = document.getElementById("usuariosTable");
+             store(usuariosTable.modelId, usuarios);
+             Table.refresh(usuariosTable, "");
+             */
             displayInteresado(data);
         }
     });
@@ -374,29 +399,40 @@ Proxy.listaDecomisos = function () {
             actasDecomisos.items = data;
             var table = $('#decomisosTable').dataTable();
             for (i = 0; i < actasDecomisos.size(); i++) {
-            var actaDecomiso = actasDecomisos.get(i);
-                    table.fnAddData([
-                            actaDecomiso.idDecomiso,
-                            actaDecomiso.fecha,
-                            actaDecomiso.hora,
-                            actaDecomiso.lugar.distrito.idDistrito,
-                            actaDecomiso.policia.nombre + " " + actaDecomiso.policia.apellido1 + " " + actaDecomiso.policia.apellido2,
-                            actaDecomiso.interesado.nombre + " " + actaDecomiso.interesado.apellido1 + " " + actaDecomiso.interesado.apellido2,
-                            "Perecedero",
-                            '   <div style="display:inline-block;">  ' +
+                var actaDecomiso = actasDecomisos.get(i);
+                table.fnAddData([
+                    actaDecomiso.idDecomiso,
+                    actaDecomiso.fecha,
+                    actaDecomiso.hora,
+                    obtenerDistrito(actaDecomiso.lugar.distrito.idDistrito),
+                    actaDecomiso.policia.nombre + " " + actaDecomiso.policia.apellido1 + " " + actaDecomiso.policia.apellido2,
+                    actaDecomiso.interesado.nombre + " " + actaDecomiso.interesado.apellido1 + " " + actaDecomiso.interesado.apellido2,
+                    '   <div style="display:inline-block;">  ' +
                             '   <button class="btn-donacion">Acta Donación</button>  ' +
-                            '  </div>  '+
+                            '  </div>  ' +
                             '   <div style="display:inline-block;">  ' +
                             '   <button class="btn-devolucion">Acta Devolución</button>  ' +
-                            '  </div>  '+
+                            '  </div>  ' +
                             '   <div style="display:inline-block;">  ' +
                             '   <button class="btn-destruccion">Acta Destrucción</button>  ' +
                             '  </div>  '
-                    
 
-                    ]);
-        }
+
+                ]);
+            }
 
         }
     });
 };
+function obtenerDistrito(index) {
+    var distrito = "Heredia";
+    if (index == 1)
+        distrito = "Mercedes";
+    else if (index == 2)
+        distrito = "San Francisco";
+    else if (index == 3)
+        distrito = "Ulloa";
+    else if (index == 4)
+        distrito = "Vara Blanca";
+    return distrito;
+}

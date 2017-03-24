@@ -1,6 +1,7 @@
 var erroresDes = new Array();
 
 $(document).ready(function () {
+    $("#num_acta_dec1").val(id);
     $('[data-rel="chosen"],[rel="chosen"]').chosen();
     $("#fechaDes").datepicker({
         dateFormat: "dd/mm/yy",
@@ -35,6 +36,10 @@ function putNumActaDestruccion() {
 
 function checkActaDes() {
     var bool = true;
+    if($('#num_acta_dec1').val() === ""){
+        bool = false;
+        errores_don.push("El campo del número de Acta de Decomiso relacionada con el acta actual no puede estar en blanco");
+    }
     if ($('#nom_policiaDes').val() === "") {
         bool = false;
         erroresDes.push("Por favor indique el nombre del policía a cargo de la devolución.");
@@ -70,8 +75,8 @@ function enviarActaDes() {
     var interesado = new Interesado(1, fecha, lugar, "", "", "", "", "");
     var decomisos = new Contenedor();
     decomisos.add(new Decomiso(0,"some", 1, "asdad"));
-    var decomiso = new ActaDecomiso(1, policia, test, lugar, fecha, "", interesado, decomisos, "");
-    var actaDestruccion = new ActaDestruccion(1, fecha, /*policia,*/ testigo1, testigo2, lugar, encargado, decomiso);
+    var decomiso = new ActaDecomiso($("#num_acta_dec1").val(), policia, test, lugar, fecha, "", interesado, decomisos, "");
+    var actaDestruccion = new ActaDestruccion(document.getElementById("nActa_dest").innerHTML.replace(" ",""), fecha, /*policia,*/ testigo1, testigo2, lugar, encargado, decomiso);
     Proxy.actaDestruccion(JSON.stringify(actaDestruccion, replacer));
 }
 
@@ -92,9 +97,11 @@ function actaDestruccionModal() {
     $('#exitoDes').modal('show');
     window.setTimeout(hide_modalDest, 2000);
     document.getElementById("acta_destruccion").reset();
+    
 }
 
 
 function hide_modalDest() {
     $('#exitoDes').modal('hide');
+    window.location.href = "listaDecomisos.jsp";
 }

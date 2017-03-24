@@ -231,7 +231,7 @@ public class Model {
                 String sql = "{call prc_ins_adecomiso('" + acta.getIdDecomiso() + "',"
                         + "'" + acta.getPolicia().getIdPolicia() + "',"
                         + "'" + acta.getInteresado().getIdInteresado() + "',"
-                        + "'1',"
+                        + "'"+acta.getLugar().getDistrito().getIdDistrito()+"',"
                         + "'" + sdf.format(acta.getFecha()) + "',"
                         + "'111',"
                         + "'" + acta.getObservaciones() + "',"
@@ -294,7 +294,8 @@ public class Model {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
                 String sql = "{call prc_ins_adestruccion('" + actaDestruccion.getIdDestruccion() + "',"
                         + "'" + sdf.format(actaDestruccion.getFecha()) + "',"
-                        //  + "'" + actaDestruccion.getPolicia().getIdPolicia() + "',"
+                        //+ "'" + actaDestruccion.getPolicia().getIdPolicia() + "',"
+                        +"1200,"
                         + "'" + actaDestruccion.getTestigo1().getIdTestigo() + "',"
                         + "'" + actaDestruccion.getTestigo2().getIdTestigo() + "',"
                         + "'" + actaDestruccion.getLugar().getDireccionExacta() + "',"
@@ -416,6 +417,34 @@ public class Model {
             if (con != null) {
 
                 String sql = "select *  from ( select ActaDevolucion.*, max(IdDevolucion) over () as max_pk from ActaDevolucion) where IdDevolucion = max_pk";
+                pstmt = con.createStatement();
+                rs = pstmt.executeQuery(sql);
+                while (rs.next()) {
+                    last = rs.getInt("max_pk");
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return last;
+    }
+    public int ultimoTestigo() {
+        Connection con = null;
+        int last = -1;
+        try {
+            con = Pool.getConnection();
+            Statement pstmt = null;
+            ResultSet rs = null;
+            if (con != null) {
+
+                String sql = "select *  from ( select Testigos.*, max(IdTest) over () as max_pk from Testigos) where IdTest = max_pk";
                 pstmt = con.createStatement();
                 rs = pstmt.executeQuery(sql);
                 while (rs.next()) {
@@ -682,12 +711,11 @@ public class Model {
             ResultSet rs = null;
             if (con != null) {
 
-                String sql = " select A.idDecomiso as idD, A.fecha as fecha, A.lugar as lugar,\n"
-                        + " DES_NOMBRE as pNombre,DES_APELLIDO1 as pApellido1,DES_APELLIDO2 as pApellido2, I.nombre as iNombre, I.primerapellido as iApellido1, I.segundoapellido as iApellido2, O.categoria as categoria\n"
-                        + " FROM ActaDecomiso A\n"
-                        + " INNER JOIN rh_empleado P ON P.NUM_EMPLEADO = A.idPolicia\n"
-                        + " INNER JOIN interesado I ON I.idInteresado = A.idInteresado\n"
-                        + " INNER JOIN objeto O ON A.idDecomiso = O.idDecomiso ";
+                String sql = " select A.idDecomiso as idD, A.fecha as fecha,A.hora as hora, A.lugar as lugar,\n" +
+"                        DES_NOMBRE as pNombre,DES_APELLIDO1 as pApellido1,DES_APELLIDO2 as pApellido2, I.nombre as iNombre, I.primerapellido as iApellido1, I.segundoapellido as iApellido2\n" +
+"                        FROM ActaDecomiso A\n" +
+"                        INNER JOIN rh_empleado P ON P.NUM_EMPLEADO = A.idPolicia\n" +
+"                        INNER JOIN interesado I ON I.idInteresado = A.idInteresado";
                 pstmt = con.createStatement();
                 rs = pstmt.executeQuery(sql);
                 int idD = 0;
@@ -698,22 +726,23 @@ public class Model {
                 String iName;
                 String iApellido1;
                 String iApellido2;
-                String cat;
+                String hora;
                 int lugar;
                 while (rs.next()) {
                     java.sql.Timestamp t = rs.getTimestamp("fecha");
                     idD = rs.getInt("idD");
                     fecha = rs.getDate("fecha");
+                    hora = rs.getString("hora");
                     pName = rs.getString("pNombre");
                     pApellido1 = rs.getString("pApellido1");
                     pApellido2 = rs.getString("pApellido2");
                     iName = rs.getString("iNombre");
                     iApellido1 = rs.getString("iApellido1");
                     iApellido2 = rs.getString("iApellido2");
-                    cat = rs.getString("categoria");
+                    
                     lugar = rs.getInt("LUGAR");
                     ActaDecomiso acta = new ActaDecomiso(idD, new Policia(0, "0", pName,pApellido1,pApellido2),
-                            new Testigo(), new Lugar(new Distrito(lugar, ""), ""), fecha, "", new Interesado(0, fecha, new Lugar(), "",
+                            new Testigo(), new Lugar(new Distrito(lugar, ""), ""), fecha, hora, new Interesado(0, fecha, new Lugar(), "",
                                     iName, iApellido1, iApellido2, ""), new Contenedor(), "");
                     list.add(acta);
                 }

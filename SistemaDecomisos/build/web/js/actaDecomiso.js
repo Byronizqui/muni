@@ -117,7 +117,7 @@ function enviarActa() {
             "En algun lugar de heredia", "NA");
     var decomisos = obtenerDecomisosTabla();
     var observaciones = $("#observaciones").val();
-    var actaDecomiso = new ActaDecomiso(0, policia, testigo, lugar,
+    var actaDecomiso = new ActaDecomiso(document.getElementById("nActa").innerHTML.replace(" ",""), policia, testigo, lugar,
             fechaDecomiso, horaDecomiso, interesado,
             decomisos, observaciones);
     Proxy.actaDecomiso(JSON.stringify(actaDecomiso, replacer));

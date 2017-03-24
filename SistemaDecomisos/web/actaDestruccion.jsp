@@ -33,7 +33,13 @@
         <link href="css/custom.min.css" rel="stylesheet">
         <link href="css/forms.css" rel="stylesheet">
         <link rel="shortcut icon" href="media/images/logo2.ico" type="image/x-icon" />
-
+         <script>
+            "<%
+                String id = "";
+                id = request.getParameter("id");
+            %>"
+                id= "<%=id%>";
+        </script>
 
     </head>
     <body class="nav-md">
@@ -77,6 +83,13 @@
                                 <div class="x_content">
                                     <br />
                                     <form id="acta_destruccion" role="form" class="form-horizontal form-label-left">
+                                        <div class="form-group status"  id="groupNumActa">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Nº de Acta de Decomiso<span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="number" id="num_acta_dec1" required="required" class="form-control col-md-7 col-xs-12" disabled>
+                                            </div>
+                                        </div>
                                         <div class="form-group status"  id="groupFecha">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha en la que se realiza la destrucción<span class="required">*</span>
                                             </label>

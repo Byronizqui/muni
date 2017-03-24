@@ -359,6 +359,21 @@ end prc_ins_int;
 /
 show error;
 
+PROMPT PRC_INS_Int
+create or replace procedure prc_ins_test
+(
+Pnombre in varchar2,
+Pprimerapellido in varchar2,
+Psegundoapellido in varchar2
+)is
+begin
+insert into POLICIA_MUNICIPAL.Testigos(IdTest,nombre,apellido1,apellido2)
+values(cod_id_test.nextval,Pnombre,Pprimerapellido,Psegundoapellido);
+commit;
+end prc_ins_test;
+/
+show error;
+
 create or replace procedure prc_ins_user
 (
 Pnick in varchar2,

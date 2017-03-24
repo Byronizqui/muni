@@ -2,6 +2,27 @@ var erroresDev = new Array();
 
 $(document).ready(function () {
     $("#num_acta_dec2").val(id);
+    
+    Proxy.listadoPolicias();
+    Proxy.listadoInteresadosCombo();
+    $('[data-rel="chosen"],[rel="chosen"]').chosen();
+    $("#fecha_dev").datepicker({
+        dateFormat: "dd/mm/yy",
+        closeText: 'Cerrar',
+        prevText: '<Ant',
+        nextText: 'Sig>',
+        currentText: 'Hoy',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+        dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+        weekHeader: 'Sm',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: ''
+    });
     $('#enviarActa_Dev').click(function () {
         if (checkActaDev())
             enviarActaDevolucion();
@@ -40,19 +61,19 @@ function checkActaDev(){
 
 function enviarActaDevolucion(){
     //var actaDecomiso = $('#num_acta_dec2').val();
-    var nomPolicia = $('#nom_policiaDev').val();
-    var policia = new Policia(1, "2","a", "b", "c"); 
-    var id = $('#id_interesadoDev').val();
+    var policiaID = $("#nomPoli option:selected").val();
+    var policia = new Policia(policiaID, "a", "nomPoli", "c", 1);
     var fecha= $('#fecha_dev').val();
     var distrito = new Distrito(0, "");
     var lugar = new Lugar(distrito, "");
     var fech = new Date("02/03/2016");
     var decomisos = new Contenedor();
     decomisos.add(new Decomiso(0,"some", 1, "asdad"));
-    var interesado = new Interesado(1, fecha, lugar, "", "", "", "", "");
+    var interesadoID = $("#nomInteresado option:selected").val();
+    var interesado = new Interesado(interesadoID, fecha, lugar, "", "", "", "", "");
     var test = new Testigo(1, "", "", "", "");
-    var actaDecomiso = new ActaDecomiso(1, policia, test, lugar, fech, "", interesado, decomisos, "");
-    var actaDevolucion = new ActaDevolucion(0, policia, actaDecomiso, interesado, fecha); 
+    var actaDecomiso = new ActaDecomiso($("#num_acta_dec2").val(), policia, test, lugar, fech, "", interesado, decomisos, "");
+    var actaDevolucion = new ActaDevolucion(document.getElementById("nActa_dev").innerHTML.replace(" ",""), policia, actaDecomiso, interesado, fecha); 
     Proxy.actaDevolucion(JSON.stringify(actaDevolucion, replacer));
 }
 /*
@@ -70,6 +91,7 @@ function actaDevolucionModal() {
 
 function hide_modalDev() {
     $('#exitoDev').modal('hide');
+    window.location.href = "listaDecomisos.jsp";
 }
 
 

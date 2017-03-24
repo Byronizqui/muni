@@ -18,11 +18,14 @@
         <!-- Bootstrap -->
         <link rel="stylesheet" href="css/bootstrap.css">
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/chosen.css">
         <!-- Font Awesome -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
         <!-- NProgress -->
         <link href="css/nprogress.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 
         <!-- Custom Theme Style -->
@@ -89,22 +92,25 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre_policia">Nombre del Policía Municipal que realizó la devolución<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" id="nom_policiaDev" required="required" class="form-control col-md-7 col-xs-12">
-                                                <span class="fa fa-search form-control-feedback right" aria-hidden="true"></span>
+                                                <select class="form-control" data-rel="chos" name="nomPoli" id="nomPoli">
+
+                                                </select>
                                             </div>
+                                            
                                         </div>
                                         <div class="form-group status" id="groupIdInteresado">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_interesado">Identificación del interesado</label>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_interesado">Interesado</label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" id="id_interesadoDev" class="form-control col-md-7 col-xs-12">
-                                                <span class="fa fa-indent form-control-feedback right" aria-hidden="true"></span>
+                                                <select class="form-control chosen-select" data-rel="chos2" name="nomInteresado" id="nomInteresado">
+
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="form-group status"  id="groupFecha">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12">Fecha de la devolución<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="fecha_dev" class="date-picker form-control col-md-7 col-xs-12" type="date" min="2016-01-01" max="2100-01-01"  required>
+                                                <input id="fecha_dev" class="date-picker form-control col-md-7 col-xs-12" type="text" required>
                                                 <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
                                                 <span class="alert-dismissible form-control-static"> Ejemplo 10/10/2016</span>
                                             </div>
@@ -154,6 +160,9 @@
 
         <!-- jQuery -->
         <script src="js/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="js/chosen.jquery.js"></script>
         <!-- Bootstrap -->
         <script src="js/bootstrap.min.js"></script>
         <!-- FastClick -->

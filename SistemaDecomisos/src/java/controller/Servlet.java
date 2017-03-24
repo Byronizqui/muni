@@ -135,17 +135,17 @@ public class Servlet extends HttpServlet {
                     actaDecomiso = gson.fromJson(finalJson, ActaDecomiso.class);
                     //boolean var = model.isInteresado(actaDecomiso.getInteresado());
                     res = model.guardarInteresado(actaDecomiso.getInteresado());
-                    if (res != 2) {
+                    //if (res != 2) {
                         res = model.getIdInteresado(actaDecomiso.getInteresado().getIdentificacion());
                         actaDecomiso.getInteresado().setIdInteresado(res);
-                    }
+                    //}
                     //res = model.guardarPolicia(actaDecomiso.getPolicia()); ya no se hace
                     res = model.guardarTestigo(actaDecomiso.getTestigo());
-                    int ultInte;
+                    /*int ultInte;
                     if (res == 2) {
                         ultInte = model.ultimoInteresado();
                         actaDecomiso.getInteresado().setIdInteresado(ultInte);
-                    }
+                    }*/
                     int fin = model.ultimaActaDecomiso();
                     if (fin == -1) {
                         actaDecomiso.setIdDecomiso(1);
@@ -197,15 +197,20 @@ public class Servlet extends HttpServlet {
                 case "guardarActaDestruccion":
                     json = request.getParameter("actaDestruccion");
                     finalJson = new String(json.getBytes("iso-8859-1"), "UTF-8");
+                    
                     actaDestruccion = gson.fromJson(finalJson, ActaDestruccion.class);
                     res = model.guardarTestigo(actaDestruccion.getTestigo1());
+                    int idTestigo1 = model.ultimoTestigo();
                     res = model.guardarTestigo(actaDestruccion.getTestigo2());
+                    int idTestigo2 = model.ultimoTestigo();
                     int u = model.ultimaActaDestruccion();
                     if (u == -1) {
                         actaDestruccion.setIdDestruccion(1);
                     } else {
                         actaDestruccion.setIdDestruccion(u + 1);
                     }
+                    actaDestruccion.getTestigo1().setIdTestigo(idTestigo1);
+                    actaDestruccion.getTestigo2().setIdTestigo(idTestigo2);
                     res = model.guardarActaDestruccion(actaDestruccion);
                     out.write(res.toString());
                     break;
@@ -219,6 +224,7 @@ public class Servlet extends HttpServlet {
                     json = gson.toJson(policias);
                     out.write(json);
                     break;
+                    
                 case "listadoUsuarios":
                     usuarios = model.listadoUsuarios();
                     json = gson.toJson(usuarios);

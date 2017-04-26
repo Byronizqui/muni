@@ -8,10 +8,15 @@ package controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
+import database.Pool;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +25,7 @@ import model.ActaDonacion;
 import model.ActaDevolucion;
 import model.ActaDestruccion;
 import model.*;
+import net.sf.jasperreports.engine.JasperRunManager;
 
 /**
  *
@@ -136,8 +142,8 @@ public class Servlet extends HttpServlet {
                     //boolean var = model.isInteresado(actaDecomiso.getInteresado());
                     res = model.guardarInteresado(actaDecomiso.getInteresado());
                     //if (res != 2) {
-                        res = model.getIdInteresado(actaDecomiso.getInteresado().getIdentificacion());
-                        actaDecomiso.getInteresado().setIdInteresado(res);
+                    res = model.getIdInteresado(actaDecomiso.getInteresado().getIdentificacion());
+                    actaDecomiso.getInteresado().setIdInteresado(res);
                     //}
                     //res = model.guardarPolicia(actaDecomiso.getPolicia()); ya no se hace
                     res = model.guardarTestigo(actaDecomiso.getTestigo());
@@ -176,9 +182,9 @@ public class Servlet extends HttpServlet {
                     json = request.getParameter("actaDevolucion");
                     finalJson = new String(json.getBytes("iso-8859-1"), "UTF-8");
                     actaDevolucion = gson.fromJson(finalJson, ActaDevolucion.class);
-                   // model.guardarActaDecomiso(actaDevolucion.getDecomiso());
+                    // model.guardarActaDecomiso(actaDevolucion.getDecomiso());
                     //boolean var = model.isInteresado(actaDecomiso.getInteresado());
-                   /* res = model.guardarInteresado(actaDevolucion.getInteresado());
+                    /* res = model.guardarInteresado(actaDevolucion.getInteresado());
                      if (res != 2) {
                      res = model.getIdInteresado(actaDevolucion.getInteresado().getIdentificacion());
                      actaDevolucion.getInteresado().setIdInteresado(res);
@@ -197,7 +203,7 @@ public class Servlet extends HttpServlet {
                 case "guardarActaDestruccion":
                     json = request.getParameter("actaDestruccion");
                     finalJson = new String(json.getBytes("iso-8859-1"), "UTF-8");
-                    
+
                     actaDestruccion = gson.fromJson(finalJson, ActaDestruccion.class);
                     res = model.guardarTestigo(actaDestruccion.getTestigo1());
                     int idTestigo1 = model.ultimoTestigo();
@@ -224,7 +230,7 @@ public class Servlet extends HttpServlet {
                     json = gson.toJson(policias);
                     out.write(json);
                     break;
-                    
+
                 case "listadoUsuarios":
                     usuarios = model.listadoUsuarios();
                     json = gson.toJson(usuarios);
@@ -252,6 +258,28 @@ public class Servlet extends HttpServlet {
                     json = gson.toJson(interesado);
                     out.write(json);
                     break;
+                case "printPDF": {
+                    File reportFile = new File(request.getSession().getServletContext().getRealPath("Reportes/reporte.jasper"));
+                    Map<String, Object> parametros = new HashMap<>();
+                    String tituloVal = request.getParameter("tituloVal");
+                    String titulo = "";
+                    switch (tituloVal) {
+                        case "r_deco": {
+                            titulo = "Reporte de decomisos";
+                        }
+                    }
+                    parametros.put("titulo", titulo);
+                    byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), parametros, Pool.getConnection());
+                    response.setContentType("application/pdf");
+                    response.setContentLength(bytes.length);
+
+                    try (ServletOutputStream outputStream = response.getOutputStream()) {
+                        outputStream.write(bytes, 0, bytes.length);
+                        outputStream.flush();
+                    } catch (IOException e) {
+                        
+                    }
+                }
 
             }
         } catch (Exception e) {

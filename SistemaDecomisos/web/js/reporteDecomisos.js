@@ -43,6 +43,9 @@ $(document).ready(function () {
     });
     Proxy.listadoInteresados();
     Proxy.listadoPolicias();
+    $("#btnSendData").click(function(){
+        sendData(); 
+    });
 });
 
 function dibujarTabla(dataJson) {
@@ -55,3 +58,16 @@ function dibujarTabla(dataJson) {
     $('[data-rel="lInt"],[rel="lInt"]').chosen({width: "100%"});
     $('[data-rel="lInt"],[rel="lInt"]').chosen();
 }
+
+function sendData(){
+    var tipoReporte = document.getElementsByName("tipo_reporte");
+    var reporteVal;
+    for (var i =0; i < tipoReporte.length; i++){
+        if(tipoReporte[i].checked){
+            reporteVal = tipoReporte[i].value;
+            break;
+        }
+    }
+    
+    Proxy.reportes(reporteVal);
+};

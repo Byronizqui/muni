@@ -134,7 +134,7 @@ Proxy.listadoPolicias = function () {
                 select.appendChild(opt);
             }
 
-            
+
         }
     });
 };
@@ -385,6 +385,26 @@ Proxy.getInteresado = function (idInteresado) {
             displayInteresado(data);
         }
     });
+};
+
+Proxy.reportes = function (p_data) {
+
+    window.open("http://localhost:8080/SistemaDecomisos/Reportes?action=printPDF&tituloVal="+ p_data, "_blank");
+    /*$.ajax({
+        url: "/SistemaDecomisos/Reportes?action=printPDF",
+        type: "POST",
+        data: "tituloVal=" + p_data,
+        success: function (data) {
+            /*usuarios = new Contenedor();
+             usuarios.items = data;
+             usuariosTable = document.getElementById("usuariosTable");
+             store(usuariosTable.modelId, usuarios);
+             Table.refresh(usuariosTable, "");
+             
+           $("#pdfGenerated").append('<object id="' + 1 + '" data="' + Config.server + "getPDF.json?pdfPath=" + this.pathToPdfFile + '" type="application/pdf" width="600" height="800"></object>');
+        }
+    });
+    */
 };
 //*************************************************************************
 Proxy.listaDecomisos = function () {

@@ -139,6 +139,31 @@ Proxy.listadoPolicias = function () {
     });
 };
 
+Proxy.actualizarInteresado = function (interesado) {
+    var s = Interesado.to(JSON.parse(interesado));
+    var ns = JSON.stringify(s, replacer);
+    $.ajax({
+        url: "/SistemaDecomisos/Servlet?action=actualizarInteresado",
+        type: "POST",
+        data: {
+            interesado : ns
+        },
+        dataType: 'json',
+        contentType: "application/x-www-form-urlencoded",
+        success: function (data) {
+            if (data === 2) {
+                //actaDecomisoModal();
+                //Proxy.ultimaActa();
+                window.location.href="listaInteresados.jsp";
+            } else {
+                alert("No se guardó");
+                $("#login").html("Iniciar Sesi\u00F3n ");
+                errorLogin();
+            }
+        }
+    });
+};
+
 Proxy.listadoInteresadosCombo = function () {
 
     $.ajax({

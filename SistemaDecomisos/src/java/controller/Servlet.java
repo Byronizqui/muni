@@ -252,6 +252,14 @@ public class Servlet extends HttpServlet {
                     json = gson.toJson(interesado);
                     out.write(json);
                     break;
+                case "actualizarInteresado":
+                    System.out.println("HIJUEPUTAAAAAAAAA!!!!!!!!!!!!!!!!!");
+                    json = request.getParameter("interesado");
+                    finalJson = new String(json.getBytes("iso-8859-1"), "UTF-8");                    
+                    interesado = gson.fromJson(finalJson, Interesado.class);
+                    res = model.actualizarInteresado(interesado);
+                    out.write(res.toString());
+                    break;
 
             }
         } catch (Exception e) {

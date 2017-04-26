@@ -464,6 +464,44 @@ public class Model {
         return last;
     }
 
+    public int actualizarInteresado(Interesado interesado) {
+        Connection con = null;
+        int res = 0;//res =0 cuando hay error en conexion
+        try {
+            con = Pool.getConnection();
+            CallableStatement pstmt = null;
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
+            ResultSet rs = null;
+            if (con != null) {
+
+                String sql = "{call prc_upd_int('" + interesado.getNombre() + "',"
+                        + "'" + interesado.getIdentificacion() + "',"
+                        + "'" + interesado.getApellido1() + "',"
+                        + "'" + interesado.getApellido2() + "',"
+                        + "'" + sdf.format(interesado.getFechaNacimiento()) + "',"
+                        + "'" + interesado.getDomicilio().getDireccionExacta() + "',"
+                        + "'" + interesado.getFoto()
+                        + "')}";
+                pstmt = con.prepareCall(sql);
+
+                pstmt.executeUpdate();
+                res = 2;// res = 2 cuando indica exito!
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            res = 1;//res  = 1 cuando hay excepcion, ejemplo: llave primaria repetida
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+                res = 1;//res  = 1 cuando hay excepcion, ejemplo: llave primaria repetida
+            }
+        }
+        return res;
+    }
+    
     public int guardarInteresado(Interesado interesado) {
         Connection con = null;
         int res = 0;//res =0 cuando hay error en conexion

@@ -73,7 +73,7 @@
                                 <form id="demo-form" data-parsley-validate>
                                     <div class="col-md-1">
                                         <label>Tipo de reporte:</label>  <br/>
-                                        <input type="radio" name="gender" id="r_deco" value="r_deco" />Decomiso
+                                        <input type="radio" name="gender" id="r_deco" value="r_deco" checked/>Decomiso
                                         <input type="radio" name="gender" id="r_des" value="r_des"   />Destrucción
                                         <input type="radio" name="gender" id="r_dev" value="r_dev"   />Devolución
                                         <input type="radio" name="gender" id="r_dona" value="r_dona" />Donación
@@ -93,7 +93,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <label>Categorías:</label><br/>
-                                        <input type="checkbox" name="categorias[]" id="perecederos" value="perecederos" data-parsley-mincheck="2" /> Perecederos
+                                        <input type="checkbox" name="categorias[]" id="perecederos" value="perecederos" /> Perecederos
                                         <br />
                                         <input type="checkbox" name="categorias[]" id="no_perecederos" value="no_perecederos" /> No perecederos
                                         <br />
@@ -105,6 +105,7 @@
                                     <div class="col-md-2 ">
                                         <label>Distrito: </label>
                                         <select class="form-control" data-rel="chosen" name="distrito" id="distrito">
+                                            <option value="todos_distritos">Todos los distritos</option>
                                             <option value="heredia">Heredia</option>
                                             <option value="mercedes">Mercedes</option>
                                             <option value="san_frencisco">San Francisco</option>
@@ -115,14 +116,15 @@
                                     <div class="col-md-2 ">
                                         <label>Interesado: </label>
                                         <select class="form-control" data-rel="lInt" name="interesadoChosen" id="interesadoChosen">
-                                            
+                                            <option value="todos_interesados">Todos los interesados</option>
+                                           
                                             
                                         </select>
                                     </div>
                                     <div class="col-md-2 ">
                                         <label>Policia </label>
                                         <select class="form-control" data-rel="chos" name="nomPol" id="nomPoli">
-                                            
+                                            <option value="todos_policias">Todos los policías</option>
                                         </select>
                                     </div>
                                 </form>

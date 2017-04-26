@@ -4,39 +4,54 @@
  * and open the template in the editor.
  */
 
-
-$('input[name="daterange"]').daterangepicker({
- "locale": {
-        "format": "MM/DD/YYYY",
-        "separator": " - ",
-        "applyLabel": "Aplicar",
-        "cancelLabel": "Cancelar",
-        "fromLabel": "Desde",
-        "toLabel": "Hasta",
-        "customRangeLabel": "Custom",
-        "daysOfWeek": [
-            "Do",
-            "Lu",
-            "Ma",
-            "Mi",
-            "Ju",
-            "Vi",
-            "Sa"
-        ],
-        "monthNames": [
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agusto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"
-        ],
-        "firstDay": 1
-    }
+$(document).ready(function () {
+    $('[data-rel="chosen"],[rel="chosen"]').chosen();
+    $('input[name="daterange"]').daterangepicker({
+        "locale": {
+            "format": "MM/DD/YYYY",
+            "separator": " - ",
+            "applyLabel": "Aplicar",
+            "cancelLabel": "Cancelar",
+            "fromLabel": "Desde",
+            "toLabel": "Hasta",
+            "customRangeLabel": "Custom",
+            "daysOfWeek": [
+                "Do",
+                "Lu",
+                "Ma",
+                "Mi",
+                "Ju",
+                "Vi",
+                "Sa"
+            ],
+            "monthNames": [
+                "Enero",
+                "Febrero",
+                "Marzo",
+                "Abril",
+                "Mayo",
+                "Junio",
+                "Julio",
+                "Agusto",
+                "Septiembre",
+                "Octubre",
+                "Noviembre",
+                "Diciembre"
+            ],
+            "firstDay": 1
+        }
+    });
+    Proxy.listadoInteresados();
+    Proxy.listadoPolicias();
 });
+
+function dibujarTabla(dataJson) {
+    for (var i = 0; i < dataJson.length; i++) {
+        var a = "<option value='" + dataJson[i].identificacion + "'>" + dataJson[i].nombre +
+                " " + dataJson[i].apellido1 +
+                " " + dataJson[i].apellido2 + "</option>";
+        $("#interesadoChosen").append(a);
+    }
+    $('[data-rel="lInt"],[rel="lInt"]').chosen({width: "100%"});
+    $('[data-rel="lInt"],[rel="lInt"]').chosen();
+}

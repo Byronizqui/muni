@@ -47,8 +47,6 @@
                         <%@ include file="Fragmentos/side.jspf" %>
                     </div>
                 </div>
-
-                <!-- top navigation -->
                 <div class="top_nav">
                     <div class="nav_menu">
                         <nav>
@@ -63,7 +61,7 @@
                     <div class="">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Reporte de decomisos</h2>
+                                <h2>Reportes</h2>
                                 <ul class="nav navbar-right panel_toolbox">
 
                                 </ul>
@@ -116,31 +114,20 @@
                                     </div>
                                     <div class="col-md-2 ">
                                         <label>Interesado: </label>
-                                        <select class="form-control" data-rel="chosen" name="distrito" id="distrito">
-                                            <option value="heredia">Heredia</option>
-                                            <option value="mercedes">Mercedes</option>
-                                            <option value="san_frencisco">San Francisco</option>
-                                            <option value="ulloa">Ulloa</option>
-                                            <option value="vara_blanca">Vara Blanca</option>
+                                        <select class="form-control" data-rel="lInt" name="interesadoChosen" id="interesadoChosen">
+                                            
+                                            
                                         </select>
                                     </div>
                                     <div class="col-md-2 ">
                                         <label>Policia </label>
-                                        <select class="form-control" data-rel="chosen" name="distrito" id="distrito">
-                                            <option value="heredia">Heredia</option>
-                                            <option value="mercedes">Mercedes</option>
-                                            <option value="san_frencisco">San Francisco</option>
-                                            <option value="ulloa">Ulloa</option>
-                                            <option value="vara_blanca">Vara Blanca</option>
+                                        <select class="form-control" data-rel="chos" name="nomPol" id="nomPoli">
+                                            
                                         </select>
                                     </div>
                                 </form>
                             </div>
                             <span class="alignright btn btn-primary">Imprimir reporte</span>
-
-                            </form>
-                            <!-- end form for validations -->
-
                         </div>
                     </div>
                 </div>
@@ -151,31 +138,21 @@
                 </div>
                 <div class="clearfix"></div>
             </footer>
-            <!-- /footer content -->
         </div>
-    </div>
-
-    <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-
-    <!-- Bootstrap -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/chosen.jquery.js"></script>
-    <!-- FastClick -->
-    <script src="js/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="js/nprogress.js"></script>
-    <!--Date-->
-    <script src="js/daterangepicker.js"></script>
-    <script src="js/moment.min.js"></script>
-    <!-- Custom Theme Scripts -->
-
-    <script src="js/daterangepicker.js"></script>
-    <script src="js/custom.min.js"></script>
-
-    <script src="js/Proxy.js"></script>
-    <script src="js/reporteDecomisos.js"></script>
-
-</body>
+        <script src="js/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="js/chosen.jquery.js"></script>
+        <script src="js/reporteDecomisos.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/daterangepicker.js"></script>
+        <script src="js/moment.min.js"></script>
+        <script src="js/custom.js"></script>
+        <script src="js/validator.js"></script>
+        <script src="js/daterangepicker.js"></script>
+        <script src="js/moment.min.js"></script>
+        <script src="js/daterangepicker.js"></script>
+        <script src="js/Proxy.js"></script>
+    </body>
 
 </html>

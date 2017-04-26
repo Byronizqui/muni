@@ -359,6 +359,25 @@ end prc_ins_int;
 /
 show error;
 
+PROMPT PRC_UPD_Int
+create or replace procedure prc_upd_int
+(
+Pnombre in varchar2,
+Pcedula in varchar2,
+Pprimerapellido in varchar2,
+Psegundoapellido in varchar2,
+Pfechanac in date,
+Presidencia in varchar2,
+Pfoto in varchar2
+)is
+begin
+update POLICIA_MUNICIPAL.Interesado set nombre=Pnombre,primerapellido=Pprimerapellido,segundoapellido=Psegundoapellido,fechanac=Pfechanac,residencia=Presidencia,fotografia=Pfoto
+where cedula=Pcedula;
+commit;
+end prc_upd_int;
+/
+show error;
+
 PROMPT PRC_INS_Int
 create or replace procedure prc_ins_test
 (

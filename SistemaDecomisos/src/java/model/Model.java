@@ -922,4 +922,38 @@ public class Model {
         }
         return interesado;
     } 
+    
+    public Integer[] obtenerCantidadDecomisos() {
+     
+        Connection con = null;
+        Integer[] list = new Integer[5];
+
+        try {
+            con = Pool.getConnection();
+            Statement pstmt = null;
+            ResultSet rs = null;
+            if (con != null) {
+
+                String sql = "SELECT lugar, count(lugar) as cantidad FROM actadecomiso group by lugar order by lugar";
+                pstmt = con.createStatement();
+                rs = pstmt.executeQuery(sql);
+                while (rs.next()) {
+                    int lugar = rs.getInt("lugar");
+                    int cantidad = rs.getInt("cantidad");
+                    list[lugar] = cantidad;
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
+        return list;
+    }
 }

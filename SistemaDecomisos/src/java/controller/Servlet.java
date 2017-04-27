@@ -136,16 +136,16 @@ public class Servlet extends HttpServlet {
                     //boolean var = model.isInteresado(actaDecomiso.getInteresado());
                     res = model.guardarInteresado(actaDecomiso.getInteresado());
                     //if (res != 2) {
-                        res = model.getIdInteresado(actaDecomiso.getInteresado().getIdentificacion());
-                        actaDecomiso.getInteresado().setIdInteresado(res);
+                    res = model.getIdInteresado(actaDecomiso.getInteresado().getIdentificacion());
+                    actaDecomiso.getInteresado().setIdInteresado(res);
                     //}
                     //res = model.guardarPolicia(actaDecomiso.getPolicia()); ya no se hace
                     res = model.guardarTestigo(actaDecomiso.getTestigo());
                     /*int ultInte;
-                    if (res == 2) {
-                        ultInte = model.ultimoInteresado();
-                        actaDecomiso.getInteresado().setIdInteresado(ultInte);
-                    }*/
+                     if (res == 2) {
+                     ultInte = model.ultimoInteresado();
+                     actaDecomiso.getInteresado().setIdInteresado(ultInte);
+                     }*/
                     int fin = model.ultimaActaDecomiso();
                     if (fin == -1) {
                         actaDecomiso.setIdDecomiso(1);
@@ -197,7 +197,7 @@ public class Servlet extends HttpServlet {
                 case "guardarActaDestruccion":
                     json = request.getParameter("actaDestruccion");
                     finalJson = new String(json.getBytes("iso-8859-1"), "UTF-8");
-                    
+
                     actaDestruccion = gson.fromJson(finalJson, ActaDestruccion.class);
                     res = model.guardarTestigo(actaDestruccion.getTestigo1());
                     int idTestigo1 = model.ultimoTestigo();
@@ -224,7 +224,7 @@ public class Servlet extends HttpServlet {
                     json = gson.toJson(policias);
                     out.write(json);
                     break;
-                    
+
                 case "listadoUsuarios":
                     usuarios = model.listadoUsuarios();
                     json = gson.toJson(usuarios);
@@ -253,12 +253,16 @@ public class Servlet extends HttpServlet {
                     out.write(json);
                     break;
                 case "actualizarInteresado":
-                    System.out.println("HIJUEPUTAAAAAAAAA!!!!!!!!!!!!!!!!!");
                     json = request.getParameter("interesado");
-                    finalJson = new String(json.getBytes("iso-8859-1"), "UTF-8");                    
+                    finalJson = new String(json.getBytes("iso-8859-1"), "UTF-8");
                     interesado = gson.fromJson(finalJson, Interesado.class);
                     res = model.actualizarInteresado(interesado);
                     out.write(res.toString());
+                    break;
+                case "obtenerCantidadDecomisos":
+                    Integer[] cantidadDecomisos = model.obtenerCantidadDecomisos();
+                    json = gson.toJson(cantidadDecomisos);
+                    out.write(json);
                     break;
 
             }

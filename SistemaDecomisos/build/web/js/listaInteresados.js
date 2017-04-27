@@ -32,6 +32,14 @@ function dibujarFila(rowData) {
 }
 
 function verPerfilInteresado(idInteresado){     
+    /*sessionStorage.setItem()
+    window.location.href="PerfilInteresado.jsp?id="+idInteresado;
+    Proxy.getInteresado(idInteresado);*/
+    if (typeof(Storage) !== "undefined") {
+        sessionStorage.idInteresado = idInteresado;
+    }else{
+        alert("Sorry! No Web Storage support..");
+        
+    }
     window.location.href="PerfilInteresado.jsp";
-    Proxy.getInteresado(idInteresado);
 }

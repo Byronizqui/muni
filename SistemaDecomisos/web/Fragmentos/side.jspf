@@ -27,7 +27,7 @@
             </li>
             <li><a><i class="fa fa-bar-chart-o"></i> Ver Reportes <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                    <li><a href="#">Gráfico de zonas</a></li>
+                    <li><a href="reporteMapa.jsp">Decomisos por Distrito</a></li>
                     <li><a href="#">Zonas recientes</a></li>
                     <li><a href="reporteDecomisos.jsp">Reportes</a></li>
                 </ul>

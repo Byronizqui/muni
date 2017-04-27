@@ -129,14 +129,14 @@
                                         <div class="form-group status"  id="groupFechaNac">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fecha_Nac">Fecha de nacimiento del interesado</label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="fechaNac" class="form-control col-md-7 col-xs-12" type="date">
+                                                <input id="fechaNac" class="form-control col-md-7 col-xs-12" type="text">
                                                 <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
                                             </div>
                                         </div>
                                         <span class="alert">¡Datos requeridos (*) incompletos! <br/>Complete la información correctamente</span>
                                         <div class="form-group">
                                             <div class="col-md-9 col-md-offset-3">
-                                                <button type="submit" class="btn btn-primary" id="guardar_interesado"><i class="fa fa-save"></i> Guardar </button>
+                                                <button class="btn btn-primary" id="guardar_interesado"><i class="fa fa-save"></i> Guardar </button>
                                                 <button type="reset" class="btn btn-danger" id="cancelar_interesado"><i class="fa fa-remove"></i> Cancelar </button>
                                             </div>
                                         </div>
@@ -177,6 +177,7 @@
         <!-- NProgress -->
         <script src="js/nprogress.js"></script>
         <!--Date-->
+        <script src="js/timepicki.js"></script>
         <script src="js/daterangepicker.js"></script>
         <script src="js/moment.min.js"></script>
         <!-- Custom Theme Scripts -->
@@ -187,19 +188,22 @@
         <script src="js/multifield.js"></script>
         <script src="js/validator.js"></script>
         <script src="js/Proxy.js"></script>
-        <script src="js/PerfilInteresado.js"></script>     
-        <script src="js/BaseDatos.js"></script>        
+        <script src="js/objects/Interesado.js"></script>
         <script src="js/objects/ActaDecomiso.js"></script>
         <script src="js/objects/ActaDonacion.js"></script>
+        <script src="js/objects/ActaDevolucion.js"></script>
+        <script src="js/objects/ActaDestruccion.js"></script>
         <script src="js/objects/Decomiso.js"></script>
         <script src="js/objects/Distrito.js"></script>
         <script src="js/objects/Funcionario.js"></script>
-        <script src="js/objects/Interesado.js"></script>
+        <script src="js/objects/Contenedor.js"></script>
         <script src="js/objects/Lugar.js"></script>
         <script src="js/objects/Persona.js"></script>
         <script src="js/objects/Policia.js"></script>
         <script src="js/objects/Testigo.js"></script>  
-        <script src="js/objects/Usuario.js"></script>  
+        <script src="js/objects/Usuario.js"></script> 
+        <script src="js/BaseDatos.js"></script>
+        <script src="js/PerfilInteresado.js"></script>   
         <script src="fileinput/js/plugins/sortable.js" type="text/javascript"></script>
         <script src="fileinput/js/fileinput.js" type="text/javascript"></script>
         <script src="fileinput/js/locales/es.js" type="text/javascript"></script> 

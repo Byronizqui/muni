@@ -6145,7 +6145,7 @@ button.close {
   margin-top: 10px;
 }
 .popover.left {
-  margin-left: -10px;
+  margin-left: 30%;
 }
 .popover-title {
   padding: 8px 14px;

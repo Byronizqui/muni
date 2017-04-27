@@ -461,3 +461,42 @@ function obtenerDistrito(index) {
         distrito = "Vara Blanca";
     return distrito;
 }
+Proxy.obtenerCantidadDecomisos = function () {
+    $.ajax({
+        url: "/SistemaDecomisos/Servlet?action=obtenerCantidadDecomisos",
+        type: "POST",
+        dataType: 'json',
+        contentType: "application/x-www-form-urlencoded",
+        success: function (data) {//va a recibir una lista
+            /*
+             * 0:heredia
+             * 1:mercedes
+             * 2:san francisco
+             * 3:ulloa
+             * 4:vara blanca
+             **/
+            var arreglo = data;
+            var total = 0;
+            
+            for(j = 0;j<arreglo.length;j++){
+                var item = arreglo[j];
+                if(item == null){
+                    total +=0;
+                }else{
+                    total+=item;
+                }
+            }
+            for(i = 0;i<arreglo.length;i++){
+                var item = arreglo[i];
+                var cantidad = 0;
+                if(item !=null)
+                    cantidad = item;
+                var porcentaje = Math.round(calcularPorcentaje(cantidad,total));
+               
+                var contenido = "Cantidad: "+cantidad+"\tPorcentaje: "+porcentaje+"%";
+                editarEstadistica(i,contenido);
+                $('[data-toggle="popover"]').popover(); 
+            }
+        }
+    });
+};

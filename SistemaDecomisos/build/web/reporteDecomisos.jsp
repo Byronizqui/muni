@@ -68,16 +68,20 @@
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
-                            <div class="x_content">
+                            <div>
 
                                 <!-- start form for validation -->
                                 <form id="demo-form" data-parsley-validate>
-                                    <div class="col-md-1">
-                                        <label>Tipo de reporte:</label>  <br/>
+                                    <div class="col-xs-2">
+                                        <label>Tipo de reporte:</label><br/>
                                         <input type="radio" name="tipo_reporte" id="r_deco" value="r_deco" checked/>Decomiso
+                                        <br/>
                                         <input type="radio" name="tipo_reporte" id="r_des" value="r_des"   />Destrucción
+                                        <br/>
                                         <input type="radio" name="tipo_reporte" id="r_dev" value="r_dev"   />Devolución
+                                        <br/>
                                         <input type="radio" name="tipo_reporte" id="r_dona" value="r_dona" />Donación
+                                        <br/>
                                     </div>
                                     <div class="col-md-2">
                                         <label>Rango de fechas</label>
@@ -122,7 +126,7 @@
 
                                         </select>
                                     </div>
-                                    <div class="col-md-2 ">
+                                    <div class="col-md-2">
                                         <label>Policia </label>
                                         <select class="form-control" data-rel="chos" name="nomPol" id="nomPoli">
                                             <option value="todos_policias">Todos los policías</option>
@@ -133,7 +137,7 @@
                             <span id="btnSendData" class="alignright btn btn-primary">Imprimir reporte</span>
                         </div>
                     </div>
-                    <div id="pdfGenerated" class="pdfResponsive">
+                    <div id="pdfGenerated" class="pdfResponsive ">
                         
                     </div>
                 </div

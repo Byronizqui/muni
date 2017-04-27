@@ -14,8 +14,8 @@ alter table POLICIA_MUNICIPAL.ActaDecomiso drop constraint ActaDecomiso_fk;
 alter table POLICIA_MUNICIPAL.ActaDecomiso drop constraint ActaDecomiso_fk1;
 alter table POLICIA_MUNICIPAL.ActaDecomiso drop constraint ActaDecomiso_fk2; 
 alter table POLICIA_MUNICIPAL.ActaDestruccion drop constraint ActaDestruccion_fk;
-alter table POLICIA_MUNICIPAL.ActaDestruccion drop constraint ActaDestruccion_fk1;
-alter table POLICIA_MUNICIPAL.ActaDestruccion drop constraint ActaDestruccion_fk2;
+--alter table POLICIA_MUNICIPAL.ActaDestruccion drop constraint ActaDestruccion_fk1;
+--alter table POLICIA_MUNICIPAL.ActaDestruccion drop constraint ActaDestruccion_fk2;
 drop sequence cod_id_int;
 drop sequence sequence_obj;
 drop sequence sequence_adecomiso;
@@ -331,10 +331,10 @@ foreign key (Idtest) references POLICIA_MUNICIPAL.RH_EMPLEADO;
 
 alter table POLICIA_MUNICIPAL.ActaDestruccion add constraint ActaDestruccion_fk
 foreign key(IdDecomiso) references ActaDecomiso;
-alter table POLICIA_MUNICIPAL.ActaDestruccion add constraint ActaDestruccion_fk1
-foreign key(Idt1) references POLICIA_MUNICIPAL.RH_EMPLEADO;
-alter table POLICIA_MUNICIPAL.ActaDestruccion add constraint ActaDestruccion_fk2
-foreign key(Idt2) references POLICIA_MUNICIPAL.RH_EMPLEADO;
+--alter table POLICIA_MUNICIPAL.ActaDestruccion add constraint ActaDestruccion_fk1
+--foreign key(Idt1) references POLICIA_MUNICIPAL.RH_EMPLEADO;
+--alter table POLICIA_MUNICIPAL.ActaDestruccion add constraint ActaDestruccion_fk2
+--foreign key(Idt2) references POLICIA_MUNICIPAL.RH_EMPLEADO;
 
 
 

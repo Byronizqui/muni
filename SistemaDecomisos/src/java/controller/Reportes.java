@@ -43,7 +43,7 @@ public class Reportes extends HttpServlet {
             String accion = request.getParameter("action");
             switch (accion) {
                 case "printPDF": {
-                    File reportFile = new File(request.getSession().getServletContext().getRealPath("Reportes/reporte.jasper"));
+                    File reportFile = new File(request.getSession().getServletContext().getRealPath("Reportes/reporteDestruccion.jasper"));
                     Map<String, Object> parametros = new HashMap<>();
                     String tituloVal = request.getParameter("tituloVal");
                     String titulo = "";
@@ -66,6 +66,7 @@ public class Reportes extends HttpServlet {
                         break;
                     }
                     parametros.put("titulo", titulo);
+                    parametros.put("p_robo", "Robo");
                     byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), parametros, Pool.getConnection());
                     response.setContentType("application/pdf");
                     response.setContentLength(bytes.length);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9a921b8d-078c-4023-af51-a5e471daad29">
-	<property name="ireport.zoom" value="1.0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5509e59a-e22c-4c93-8b01-61762e7a189e">
+	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
@@ -13,42 +13,41 @@
 			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
-	<scriptlet name="scriptlet1" class="net.sf.jasperreports.engine.JRDefaultScriptlet"/>
 	<parameter name="titulo" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT
      ACTADECOMISO."IDDECOMISO" AS ACTADECOMISO_IDDECOMISO,
-     ACTADECOMISO."IDPOLICIA" AS ACTADECOMISO_IDPOLICIA,
+     ACTADECOMISO."OBSERVACIONES" AS ACTADECOMISO_OBSERVACIONES,
      ACTADECOMISO."IDTEST" AS ACTADECOMISO_IDTEST
 FROM
      "POLICIA_MUNICIPAL"."ACTADECOMISO" ACTADECOMISO]]>
 	</queryString>
 	<field name="ACTADECOMISO_IDDECOMISO" class="java.math.BigDecimal"/>
-	<field name="ACTADECOMISO_IDPOLICIA" class="java.math.BigDecimal"/>
+	<field name="ACTADECOMISO_OBSERVACIONES" class="java.lang.String"/>
 	<field name="ACTADECOMISO_IDTEST" class="java.math.BigDecimal"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="102" splitType="Stretch">
-			<image>
-				<reportElement x="725" y="0" width="77" height="102" uuid="0773e0ce-690c-4a57-92ca-3fe966216246"/>
-				<imageExpression><![CDATA["cherry.jpg"]]></imageExpression>
-			</image>
+		<band height="132" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="721" height="66" backcolor="#000000" uuid="d71b5354-b67b-4b49-b314-118255506569"/>
+				<reportElement mode="Opaque" x="0" y="0" width="553" height="100" backcolor="#5A738E" uuid="5cb1a357-4fba-41a3-89f8-bfc6bdfc41f2"/>
 				<textField>
-					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="bbce7dc0-236f-4fd6-8e88-4484fa0350b2"/>
-					<textElement verticalAlignment="Bottom" markup="none">
-						<font isBold="false"/>
+					<reportElement style="Title" mode="Transparent" x="13" y="55" width="540" height="45" forecolor="#000000" backcolor="#63A1BE" uuid="46701b06-c444-4d0b-a78c-574b06395bc4"/>
+					<textElement markup="none">
+						<font size="28" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$P{titulo}]]></textFieldExpression>
 				</textField>
+				<image>
+					<reportElement x="0" y="0" width="274" height="55" uuid="ad2a038d-b7e7-40d5-b710-95e574fc5192"/>
+					<imageExpression><![CDATA["C:\\Users\\byron\\Desktop\\muni-master\\muni-master\\SistemaDecomisos\\web\\Reportes\\logo.png"]]></imageExpression>
+				</image>
 			</frame>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="70" width="721" height="32" forecolor="#000000" backcolor="#CC0000" uuid="280ccae6-b25e-4467-99a7-df37a15cf3c2"/>
+				<reportElement mode="Opaque" x="0" y="100" width="553" height="32" forecolor="#000000" backcolor="#63A1BE" uuid="810ebfaa-726b-45d7-be92-e7c38cea2eb3"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="553" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="e64b2d35-ee3d-46ef-bb32-a70ae917e8b1"/>
+					<reportElement x="-19" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="91176fb2-7d09-498e-b9fb-446aa35144f5"/>
 					<textElement textAlignment="Right">
 						<font size="12"/>
 					</textElement>
@@ -61,50 +60,50 @@ FROM
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="18" splitType="Stretch">
+		<band height="26" splitType="Stretch">
 			<staticText>
-				<reportElement style="Column header" x="0" y="0" width="265" height="18" forecolor="#000000" uuid="c4aff632-d3e1-4335-9cae-6c561bd00998"/>
+				<reportElement style="Column header" x="0" y="7" width="185" height="18" forecolor="#000000" uuid="b7095c44-41ac-41cc-b80a-2adf1bbc4131"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
-				<text><![CDATA[ACTADECOMISO_IDDECOMISO]]></text>
+				<text><![CDATA[Id de Decomiso]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="265" y="0" width="265" height="18" forecolor="#000000" uuid="1dab383f-55a8-41a1-a3e0-16e9da885b1d"/>
+				<reportElement style="Column header" x="185" y="7" width="185" height="18" forecolor="#000000" uuid="fe27c6a3-ada0-4c01-aa58-a323371ea624"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
-				<text><![CDATA[ACTADECOMISO_IDPOLICIA]]></text>
+				<text><![CDATA[Observaciones]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="530" y="0" width="265" height="18" forecolor="#000000" uuid="e6290910-c2d3-4f44-8614-fbe2206ed0e2"/>
+				<reportElement style="Column header" x="370" y="7" width="185" height="18" forecolor="#000000" uuid="594af537-b658-4199-98a9-28093020942d"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
-				<text><![CDATA[ACTADECOMISO_IDTEST]]></text>
+				<text><![CDATA[Testigo]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="18" splitType="Stretch">
 			<frame>
-				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="5c064589-626d-44f1-afd8-82e66eccd0d3"/>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="901966bc-4e81-45c2-9a9f-1b12b950d9aa"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="0" y="0" width="265" height="18" uuid="68e32ac6-bc33-4912-8779-549cbc55bcdc"/>
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="185" height="18" uuid="15fcc53d-b967-4887-a269-81c6829f38b5"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{ACTADECOMISO_IDDECOMISO}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="265" y="0" width="265" height="18" uuid="30266f17-6962-49ca-80b0-6d91800935c7"/>
+					<reportElement style="Detail" positionType="Float" x="185" y="0" width="185" height="18" uuid="181c6ef6-1c70-42fc-b063-58eaa145c150"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{ACTADECOMISO_IDPOLICIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{ACTADECOMISO_OBSERVACIONES}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="530" y="0" width="265" height="18" uuid="009ba9c9-8be8-4318-b459-29bd18845550"/>
+					<reportElement style="Detail" positionType="Float" x="370" y="0" width="185" height="18" uuid="2ed41c5e-193c-4f90-bfbb-e2975911f212"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
@@ -116,7 +115,7 @@ FROM
 	<columnFooter>
 		<band height="7" splitType="Stretch">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="9c548b63-f172-4a3d-a7ef-d1074ff6f72a"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="960dc7e6-ffb8-4232-887d-193bb12f2713"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
@@ -126,23 +125,23 @@ FROM
 	<pageFooter>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="802" height="25" forecolor="#D0B48E" backcolor="#000000" uuid="033116fe-e63c-409f-8e3b-2230cf6f50b1"/>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="fa4d353e-378c-475b-89f1-3c3e27902f37"/>
 				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="757" y="3" width="40" height="20" forecolor="#FFFFFF" uuid="a31e1a2e-9aff-4b57-8593-a2b1d98c5ac2"/>
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="6050fea5-a04b-423c-adfe-d7b8b8f8f662"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Column header" x="677" y="3" width="80" height="20" forecolor="#FFFFFF" uuid="190f81a6-04f1-4fbf-a399-eaa10c50dbc9"/>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="114eafea-b27d-4c88-94c9-77bdc4326fad"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
-					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#FFFFFF" uuid="f895c0d9-0a4b-4033-a4b6-3e9d23ab076c"/>
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="1122bc8f-41f4-4607-adcc-64afc4ae319b"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>

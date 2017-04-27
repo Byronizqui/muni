@@ -13,7 +13,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Reporte de Decomisos</title>
+        <title>Reportes</title>
         <!-- Bootstrap -->
         <link href="css/matrix-media.css" rel="stylesheet">
         <link href="css/matrix-style.css" rel="stylesheet">
@@ -28,6 +28,7 @@
         <!-- Custom Theme Style -->
         <link href="css/daterangepicker.css" rel="stylesheet">
         <link href="css/custom.min.css" rel="stylesheet">
+        <link href="css/reporteDecomisos.css" rel="stylesheet">
 
         <!-- Select2 -->
         <!-- Switchery -->
@@ -73,10 +74,10 @@
                                 <form id="demo-form" data-parsley-validate>
                                     <div class="col-md-1">
                                         <label>Tipo de reporte:</label>  <br/>
-                                        <input type="radio" name="gender" id="r_deco" value="r_deco" checked/>Decomiso
-                                        <input type="radio" name="gender" id="r_des" value="r_des"   />Destrucción
-                                        <input type="radio" name="gender" id="r_dev" value="r_dev"   />Devolución
-                                        <input type="radio" name="gender" id="r_dona" value="r_dona" />Donación
+                                        <input type="radio" name="tipo_reporte" id="r_deco" value="r_deco" checked/>Decomiso
+                                        <input type="radio" name="tipo_reporte" id="r_des" value="r_des"   />Destrucción
+                                        <input type="radio" name="tipo_reporte" id="r_dev" value="r_dev"   />Devolución
+                                        <input type="radio" name="tipo_reporte" id="r_dona" value="r_dona" />Donación
                                     </div>
                                     <div class="col-md-2">
                                         <label>Rango de fechas</label>
@@ -117,8 +118,8 @@
                                         <label>Interesado: </label>
                                         <select class="form-control" data-rel="lInt" name="interesadoChosen" id="interesadoChosen">
                                             <option value="todos_interesados">Todos los interesados</option>
-                                           
-                                            
+
+
                                         </select>
                                     </div>
                                     <div class="col-md-2 ">
@@ -129,10 +130,14 @@
                                     </div>
                                 </form>
                             </div>
-                            <span class="alignright btn btn-primary">Imprimir reporte</span>
+                            <span id="btnSendData" class="alignright btn btn-primary">Imprimir reporte</span>
                         </div>
                     </div>
-                </div>
+                    <div id="pdfGenerated" class="pdfResponsive">
+                        
+                    </div>
+                </div
+
             </div>
             <footer>
                 <div class="pull-right">

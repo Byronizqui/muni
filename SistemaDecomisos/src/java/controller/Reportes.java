@@ -43,30 +43,35 @@ public class Reportes extends HttpServlet {
             String accion = request.getParameter("action");
             switch (accion) {
                 case "printPDF": {
-                    File reportFile = new File(request.getSession().getServletContext().getRealPath("Reportes/reporteDestruccion.jasper"));
+                    File reportFile = null;
                     Map<String, Object> parametros = new HashMap<>();
                     String tituloVal = request.getParameter("tituloVal");
                     String titulo = "";
+                    String where = request.getParameter("data");
                     switch (tituloVal) {
                         case "r_deco": {
                             titulo = "Reporte de decomisos";
+                            reportFile = new File(request.getSession().getServletContext().getRealPath("Reportes/reporteDecomisos.jasper"));
                         }
                         break;
-                        case "r_des":{
+                        case "r_des": {
                             titulo = "Reporte de destrucción";
                         }
                         break;
-                        case "r_dev":{
+                        case "r_dev": {
                             titulo = "Reporte de devolución";
                         }
                         break;
-                        case "r_dona":{
+                        case "r_dona": {
                             titulo = "Reporte de donación";
                         }
                         break;
                     }
-                    parametros.put("titulo", titulo);
-                    parametros.put("p_robo", "Robo");
+                    if (!where.equals("")) {
+                        parametros.put("p_where", where);
+                    }else {
+                       parametros.put("p_where", ";"); 
+                    }
                     byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), parametros, Pool.getConnection());
                     response.setContentType("application/pdf");
                     response.setContentLength(bytes.length);

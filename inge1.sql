@@ -11,8 +11,8 @@ alter table POLICIA_MUNICIPAL.Objeto drop constraint Objeto_fk;
 alter table POLICIA_MUNICIPAL.ActaDonacion drop constraint ActaDonacion_fk; 
 alter table POLICIA_MUNICIPAL.ActaDonacion drop constraint ActaDonacion_fk1;
 alter table POLICIA_MUNICIPAL.ActaDecomiso drop constraint ActaDecomiso_fk; 
-alter table POLICIA_MUNICIPAL.ActaDecomiso drop constraint ActaDecomiso_fk1;
-alter table POLICIA_MUNICIPAL.ActaDecomiso drop constraint ActaDecomiso_fk2; 
+--alter table POLICIA_MUNICIPAL.ActaDecomiso drop constraint ActaDecomiso_fk1;
+--alter table POLICIA_MUNICIPAL.ActaDecomiso drop constraint ActaDecomiso_fk2; 
 alter table POLICIA_MUNICIPAL.ActaDestruccion drop constraint ActaDestruccion_fk;
 --alter table POLICIA_MUNICIPAL.ActaDestruccion drop constraint ActaDestruccion_fk1;
 --alter table POLICIA_MUNICIPAL.ActaDestruccion drop constraint ActaDestruccion_fk2;
@@ -151,7 +151,7 @@ MONITORING;
 create table POLICIA_MUNICIPAL.Objeto
 (
 IdObjeto number not null,
-descripcion varchar2(30)not null,
+descripcion varchar2(255)not null,
 cantidad number not null,
 IdDecomiso number not null,
 categoria varchar2(20)not null
@@ -321,10 +321,10 @@ foreign key (IdDecomiso) references ActaDecomiso;
 
 alter table POLICIA_MUNICIPAL.ActaDecomiso add constraint ActaDecomiso_fk
 foreign key (IdPolicia) references POLICIA_MUNICIPAL.RH_EMPLEADO;
-alter table POLICIA_MUNICIPAL.ActaDecomiso add constraint ActaDecomiso_fk1
-foreign key (IdInteresado) references Interesado;
-alter table POLICIA_MUNICIPAL.ActaDecomiso add constraint ActaDecomiso_fk2
-foreign key (Idtest) references POLICIA_MUNICIPAL.RH_EMPLEADO;
+--alter table POLICIA_MUNICIPAL.ActaDecomiso add constraint ActaDecomiso_fk1
+--foreign key (IdInteresado) references Interesado;
+--alter table POLICIA_MUNICIPAL.ActaDecomiso add constraint ActaDecomiso_fk2
+--foreign key (Idtest) references POLICIA_MUNICIPAL.RH_EMPLEADO;
 
 
 
@@ -655,7 +655,7 @@ insert into POLICIA_MUNICIPAL.RH_EMPLEADO (NUM_ENTIDAD,NUM_EMPLEADO,DES_NOMBRE,D
 values (112,1201,'Bayron','Picado','Obando',sysdate);
 insert into POLICIA_MUNICIPAL.ActaDecomiso (IdDecomiso,IdPolicia,IdInteresado,lugar,fecha,Idacompanante,observaciones,idtest, hora)
 values (002,1200,12221,2,sysdate,1201,'Robo',1201, '4:00 P.M');
-insert into POLICIA_MUNICIPAL.Objeto(IdObjeto,descripcion,cantidad,IdDecomiso) values(003,'Droga',3,001,'P');
+insert into POLICIA_MUNICIPAL.Objeto(IdObjeto,descripcion,cantidad,IdDecomiso, categoria) values(003,'Droga',3,002,'perecedero');
 exec prc_ins_user('mario','123');
 commit;
 

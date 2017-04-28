@@ -348,11 +348,12 @@ Proxy.actaDevolucion = function (criterio) {
     });
 };
 
-Proxy.reportes = function (p_data) {
+Proxy.reportes = function (p_tit, where) {
     $("#pdfFrame").remove();
     $("#pdfGenerated").append("<iframe id='pdfFrame' name='pdfFrame' width='560' height='315  src=''></iframe>");
     $("#pdfFrame").removeAttr("src");
-    $("#pdfFrame").attr('src', "http://localhost:8080/SistemaDecomisos/Reportes?action=printPDF&tituloVal=" + p_data);
+    $("#pdfFrame").attr('src', "http://localhost:8080/SistemaDecomisos/Reportes?action=printPDF&tituloVal=" 
+            + p_tit  + "&data=" + where);
 
 };
 

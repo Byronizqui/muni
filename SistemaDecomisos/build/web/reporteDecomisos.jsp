@@ -110,12 +110,12 @@
                                     <div class="col-md-2 ">
                                         <label>Distrito: </label>
                                         <select class="form-control" data-rel="chosen" name="distrito" id="distrito">
-                                            <option value="todos_distritos">Todos los distritos</option>
-                                            <option value="heredia">Heredia</option>
-                                            <option value="mercedes">Mercedes</option>
-                                            <option value="san_frencisco">San Francisco</option>
-                                            <option value="ulloa">Ulloa</option>
-                                            <option value="vara_blanca">Vara Blanca</option>
+                                            <option value="-1">Todos los distritos</option>
+                                            <option value="0">Heredia</option>
+                                            <option value="1">Mercedes</option>
+                                            <option value="2">San Francisco</option>
+                                            <option value="3">Ulloa</option>
+                                            <option value="4">Vara Blanca</option>
                                         </select>
                                     </div>
                                     <div class="col-md-2 ">

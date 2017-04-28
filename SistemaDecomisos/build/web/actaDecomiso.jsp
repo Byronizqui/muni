@@ -85,7 +85,7 @@ aaaaaaaaaaaaa
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Registrar Acta de Decomiso</h2><small>Nº de Acta <label id="nActa"></label></small>
+                                    <h2>Registrar Acta de Decomiso</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="alert alert-danger" id="errorList" style="background: #fff">
@@ -93,6 +93,12 @@ aaaaaaaaaaaaa
                                 <div class="x_content">
                                     <br />
                                     <form id="acta_decomiso" role="form" class="form-horizontal form-label-left">
+                                        <div class="form-group status" id="groupNumActa">
+                                            <label class="control-label  col-md-3 col-sm-3 col-xs-12" for="numActa">Nº de Acta </label>              
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="number" id="numActa" >
+                                            </div>
+                                        </div>
                                         <div class="form-group status">
                                             <label class="control-label col-sm-3 col-xs-12" for="distrito">Distrito<span class="required">*</span>
                                             </label>
@@ -245,6 +251,7 @@ aaaaaaaaaaaaa
                                             <table class="table" id="tabla">
                                                 <thead>
                                                     <tr>
+                                                        <th class="col-md-3">Proceso</th>
                                                         <th class="col-md-3">Categoría</th>
                                                         <th class="col-md-3">Cantidad</th>
                                                         <th class="col-md-3">Observaciones</th>
@@ -256,27 +263,53 @@ aaaaaaaaaaaaa
                                                     <!-- fila base para clonar y agregar al final -->
                                                     <tr class="fila-base">
                                                         <td>
-                                                            <select class="form-control categoria" id="categoria">
-                                                                <option value="perecederos">Perecedero</option>
-                                                                <option value="no_perecederos">No Perecedero</option>
+                                                            <select class="form-control proceso" id="proceso">
+                                                                <option selected="selected" value="bodega">Bodega</option>
+                                                                <option value="aduana">Aduana</option>
+                                                                <option value="donacion">Donacion</option>
+                                                                <option value="destruccion">Destruccion</option>
                                                             </select>
                                                         </td>
-                                                        <td><input id="cantidad"  type="number" min="1" class="form-control cantidad" required/></td>
-                                                        <td><textarea class="resizable_textarea form-control observaciones" required></textarea></td>
-                                                        <td class="eliminar btn-danger btn-xs btn-group-justified btn-round">Eliminar</td>
+                                                        <td>
+                                                            <select class="form-control" name="cate" id="categoria">
+                                                                <option selected="selected" value="discos">Discos</option>
+                                                                <option value="licor">Licor</option>
+                                                                <option value="perecederos">Cigarrillos</option>
+                                                                <option value="patinetas">Patinetas</option>
+                                                                <option value="perecederos">Perecedero</option>
+                                                                <option value="no_perecederos">No Perecedero</option>
+                                                                <option value="perecederos">Varios</option>
+                                                            </select>
+                                                        </td>
+                                                        <td><input required type="number" min="1" class="form-control cantidad"/></td>
+                                                        <td><textarea required id="proobs" class="resizable_textarea form-control observaciones"></textarea></td>
+                                                        <td class="eliminar" ><button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button></i></td>
                                                     </tr>
                                                     <!-- fin de código: fila base -->
                                                     <!-- Fila de ejemplo -->
                                                     <tr>
                                                         <td>
+                                                            <select class="form-control proceso" id="proceso">
+                                                                <option selected="selected" value="bodega">Bodega</option>
+                                                                <option value="aduana">Aduana</option>
+                                                                <option value="donacion">Donacion</option>
+                                                                <option value="destruccion">Destruccion</option>
+                                                            </select>
+                                                        </td>
+                                                        <td>
                                                             <select class="form-control" name="cate" id="categoria">
-                                                                <option  value="perecederos">Perecedero</option>
-                                                                <option selected="selected" value="no_perecederos">No Perecedero</option>
+                                                                <option selected="selected" value="discos">Discos</option>
+                                                                <option value="licor">Licor</option>
+                                                                <option value="perecederos">Cigarrillos</option>
+                                                                <option value="patinetas">Patinetas</option>
+                                                                <option value="perecederos">Perecedero</option>
+                                                                <option value="no_perecederos">No Perecedero</option>
+                                                                <option value="perecederos">Varios</option>
                                                             </select>
                                                         </td>
                                                         <td><input required type="number" min="1" class="form-control cantidad"/></td>
                                                         <td><textarea required id="proobs" class="resizable_textarea form-control observaciones"></textarea></td>
-                                                        <td class="eliminar btn-danger btn-xs btn-group-justified btn-round">Eliminar</td>
+                                                        <td class="eliminar" ><button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button></i></td>
                                                     </tr>
 
                                                     <!-- fin de código: fila de ejemplo -->
@@ -383,6 +416,7 @@ aaaaaaaaaaaaa
         <script src="js/validator.js"></script>
         <script src="js/actaDecomiso.js"></script>
         <script src="js/Proxy.js"></script>
+        <script src="js/login.js"></script>
         <script src="js/BaseDatos.js"></script>        
 
         <script src="js/objects/ActaDonacion.js"></script>

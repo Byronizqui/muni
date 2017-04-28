@@ -86,7 +86,7 @@ function sendData() {
         else {
             where += " and (c.categoria = 'no_perecederos' ";
         }
-
+    }
         switch (distrito) {
             case "0":
                 {
@@ -126,8 +126,6 @@ function sendData() {
                     where += ")";
             }
         }
-
-    }
 
 
 

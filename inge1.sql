@@ -653,8 +653,8 @@ insert into POLICIA_MUNICIPAL.RH_EMPLEADO (NUM_ENTIDAD,NUM_EMPLEADO,DES_NOMBRE,D
 values (112,1200,'Marco','Canales','Mesen',sysdate);
 insert into POLICIA_MUNICIPAL.RH_EMPLEADO (NUM_ENTIDAD,NUM_EMPLEADO,DES_NOMBRE,DES_APELLIDO1,DES_APELLIDO2,FEC_INGRESO)
 values (112,1201,'Bayron','Picado','Obando',sysdate);
-insert into POLICIA_MUNICIPAL.ActaDecomiso (IdDecomiso,IdPolicia,IdInteresado,lugar,fecha,Idacompanante,observaciones,idtest)
-values (002,1200,12221,2,sysdate,1201,'Robo',1201);
+insert into POLICIA_MUNICIPAL.ActaDecomiso (IdDecomiso,IdPolicia,IdInteresado,lugar,fecha,Idacompanante,observaciones,idtest, hora)
+values (002,1200,12221,2,sysdate,1201,'Robo',1201, '4:00 P.M');
 insert into POLICIA_MUNICIPAL.Objeto(IdObjeto,descripcion,cantidad,IdDecomiso) values(003,'Droga',3,001,'P');
 exec prc_ins_user('mario','123');
 commit;

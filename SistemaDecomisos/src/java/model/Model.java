@@ -40,8 +40,7 @@ public class Model {
 
                 String sql = "select 1 from Usuario "
                         + "where Usuario.nick='" + nick + "' "
-                        + "and Usuario.contrasena='" + pass + "' "
-                        ;
+                        + "and Usuario.contrasena='" + pass + "' ";
                 pstmt = con.prepareStatement(sql);
                 rs = pstmt.executeQuery();
                 if (rs.next()) {
@@ -231,7 +230,7 @@ public class Model {
                 String sql = "{call prc_ins_adecomiso('" + acta.getIdDecomiso() + "',"
                         + "'" + acta.getPolicia().getIdPolicia() + "',"
                         + "'" + acta.getInteresado().getIdInteresado() + "',"
-                        + "'"+acta.getLugar().getDistrito().getIdDistrito()+"',"
+                        + "'" + acta.getLugar().getDistrito().getIdDistrito() + "',"
                         + "'" + sdf.format(acta.getFecha()) + "',"
                         + "'111',"
                         + "'" + acta.getObservaciones() + "',"
@@ -295,7 +294,7 @@ public class Model {
                 String sql = "{call prc_ins_adestruccion('" + actaDestruccion.getIdDestruccion() + "',"
                         + "'" + sdf.format(actaDestruccion.getFecha()) + "',"
                         //+ "'" + actaDestruccion.getPolicia().getIdPolicia() + "',"
-                        +"1200,"
+                        + "1200,"
                         + "'" + actaDestruccion.getTestigo1().getIdTestigo() + "',"
                         + "'" + actaDestruccion.getTestigo2().getIdTestigo() + "',"
                         + "'" + actaDestruccion.getLugar().getDireccionExacta() + "',"
@@ -435,6 +434,7 @@ public class Model {
         }
         return last;
     }
+
     public int ultimoTestigo() {
         Connection con = null;
         int last = -1;
@@ -501,7 +501,7 @@ public class Model {
         }
         return res;
     }
-    
+
     public int guardarInteresado(Interesado interesado) {
         Connection con = null;
         int res = 0;//res =0 cuando hay error en conexion
@@ -749,11 +749,11 @@ public class Model {
             ResultSet rs = null;
             if (con != null) {
 
-                String sql = " select A.idDecomiso as idD, A.fecha as fecha,A.hora as hora, A.lugar as lugar,\n" +
-"                        DES_NOMBRE as pNombre,DES_APELLIDO1 as pApellido1,DES_APELLIDO2 as pApellido2, I.nombre as iNombre, I.primerapellido as iApellido1, I.segundoapellido as iApellido2\n" +
-"                        FROM ActaDecomiso A\n" +
-"                        INNER JOIN rh_empleado P ON P.NUM_EMPLEADO = A.idPolicia\n" +
-"                        INNER JOIN interesado I ON I.idInteresado = A.idInteresado";
+                String sql = " select A.idDecomiso as idD, A.fecha as fecha,A.hora as hora, A.lugar as lugar,\n"
+                        + "                        DES_NOMBRE as pNombre,DES_APELLIDO1 as pApellido1,DES_APELLIDO2 as pApellido2, I.nombre as iNombre, I.primerapellido as iApellido1, I.segundoapellido as iApellido2\n"
+                        + "                        FROM ActaDecomiso A\n"
+                        + "                        INNER JOIN rh_empleado P ON P.NUM_EMPLEADO = A.idPolicia\n"
+                        + "                        INNER JOIN interesado I ON I.idInteresado = A.idInteresado";
                 pstmt = con.createStatement();
                 rs = pstmt.executeQuery(sql);
                 int idD = 0;
@@ -777,9 +777,9 @@ public class Model {
                     iName = rs.getString("iNombre");
                     iApellido1 = rs.getString("iApellido1");
                     iApellido2 = rs.getString("iApellido2");
-                    
+
                     lugar = rs.getInt("LUGAR");
-                    ActaDecomiso acta = new ActaDecomiso(idD, new Policia(0, "0", pName,pApellido1,pApellido2),
+                    ActaDecomiso acta = new ActaDecomiso(idD, new Policia(0, "0", pName, pApellido1, pApellido2),
                             new Testigo(), new Lugar(new Distrito(lugar, ""), ""), fecha, hora, new Interesado(0, fecha, new Lugar(), "",
                                     iName, iApellido1, iApellido2, ""), new Contenedor(), "");
                     list.add(acta);
@@ -801,8 +801,8 @@ public class Model {
         //return usuarios;
         return list;
     }
-    
-    public int ultimoInteresado(){
+
+    public int ultimoInteresado() {
         Connection con = null;
         int last = -1;
         try {
@@ -830,7 +830,7 @@ public class Model {
         }
         return last;
     }
-    
+
     public List<Interesado> listadoInteresados() {
         Connection con = null;
         List<Interesado> interesados = new ArrayList<Interesado>();
@@ -858,8 +858,8 @@ public class Model {
                     apellido2 = rs.getString("segundoapellido");
                     //fechaNac = rs.getDate("fechanac");
                     domicilio.setDireccionExacta(rs.getString("residencia"));
-                    interesados.add(new Interesado(idInteresado,null, domicilio, identificacion, 
-                    nombre,apellido1,apellido2,""));
+                    interesados.add(new Interesado(idInteresado, null, domicilio, identificacion,
+                            nombre, apellido1, apellido2, ""));
                 }
             }
 
@@ -876,7 +876,7 @@ public class Model {
         }
         return interesados;
     }
-    
+
     public Interesado getInteresado(String cedula) {
         Connection con = null;
         Interesado interesado = null;
@@ -886,7 +886,7 @@ public class Model {
             ResultSet rs = null;
             if (con != null) {
 
-                String sql = "select * from Interesado where cedula="+cedula;
+                String sql = "select * from Interesado where cedula=" + cedula;
                 pstmt = con.prepareStatement(sql);
                 rs = pstmt.executeQuery();
                 int idInteresado = 0;
@@ -904,8 +904,8 @@ public class Model {
                     apellido2 = rs.getString("segundoapellido");
                     fechaNac = rs.getDate("fechanac");
                     domicilio.setDireccionExacta(rs.getString("residencia"));
-                    interesado = new Interesado(idInteresado,fechaNac, domicilio, identificacion, 
-                    nombre,apellido1,apellido2,"");
+                    interesado = new Interesado(idInteresado, fechaNac, domicilio, identificacion,
+                            nombre, apellido1, apellido2, "");
                 }
             }
 
@@ -921,10 +921,10 @@ public class Model {
             }
         }
         return interesado;
-    } 
-    
+    }
+
     public Integer[] obtenerCantidadDecomisos() {
-     
+
         Connection con = null;
         Integer[] list = new Integer[5];
 
@@ -946,7 +946,7 @@ public class Model {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-            
+
         } finally {
             try {
                 con.close();
@@ -957,9 +957,8 @@ public class Model {
         return list;
     }
 
-	/////////////////////////////////////reportes
-	
-	public List<ActaDevolucion> imprimeDevolucion() {
+    /////////////////////////////////////reportes
+    public List<ActaDevolucion> imprimeDevolucion() {
         Connection con = null;
         String devolucion = "";
         List<ActaDevolucion> list = new ArrayList();
@@ -970,40 +969,39 @@ public class Model {
             ResultSet rs = null;
             if (con != null) {
 
-                String sql = 
-"select a.IdDevolucion as IdD, a.fecha as fecha\n"+
-"i.idInteresado as idinte,P.NUM_EMPLEADO as numemp,P.DESNOMBRE as dnom,P.DES_APELLIDO1 as dap1,d.IdDecomiso as iddec\n"+
-"FROM PoliciaMunicipal.ActaDevolucion a\n"+
-"INNER JOIN rh_empleado P ON P.NUM_EMPLEADO = a.idPolicia\n"+
-"INNER JOIN ActaDecomiso d ON d.IdDecomiso = a.IdDecomiso\n"+
-"INNER JOIN interesado i ON i.idInteresado = a.idInteresado";
+                String sql
+                        = "select a.IdDevolucion as IdD, a.fecha as fecha\n"
+                        + "i.idInteresado as idinte,P.NUM_EMPLEADO as numemp,P.DESNOMBRE as dnom,P.DES_APELLIDO1 as dap1,d.IdDecomiso as iddec\n"
+                        + "FROM PoliciaMunicipal.ActaDevolucion a\n"
+                        + "INNER JOIN rh_empleado P ON P.NUM_EMPLEADO = a.idPolicia\n"
+                        + "INNER JOIN ActaDecomiso d ON d.IdDecomiso = a.IdDecomiso\n"
+                        + "INNER JOIN interesado i ON i.idInteresado = a.idInteresado";
                 pstmt = con.createStatement();
                 rs = pstmt.executeQuery(sql);
                 Date fecha;
-				String nombrepol;
-				String apepol;
+                String nombrepol;
+                String apepol;
                 int piddev;
                 int NUMEMP;
                 int idACTADECOMISO;
-				int idINTERESADO;
+                int idINTERESADO;
                 while (rs.next()) {
                     java.sql.Timestamp t = rs.getTimestamp("fecha");
                     idACTADECOMISO = rs.getInt("iddec");
-					idINTERESADO = rs.getInt("idinte");
+                    idINTERESADO = rs.getInt("idinte");
                     fecha = rs.getDate("fecha");
-					nombrepol=rs.getString("dnom");
-					apepol=rs.getString("dap1");
-					NUMEMP = rs.getInt("numemp");
-					piddev=  rs.getInt("idD");
-					
-					ActaDecomiso acta = new ActaDecomiso(0, new Policia(0, "0", "","",""),
+                    nombrepol = rs.getString("dnom");
+                    apepol = rs.getString("dap1");
+                    NUMEMP = rs.getInt("numemp");
+                    piddev = rs.getInt("idD");
+
+                    ActaDecomiso acta = new ActaDecomiso(0, new Policia(0, "0", "", "", ""),
                             new Testigo(), new Lugar(new Distrito(0, ""), ""), fecha, "", new Interesado(0, fecha, new Lugar(), "",
                                     "", "", "", ""), new Contenedor(), "");
-									
-									
-					ActaDevolucion aux=new ActaDevolucion(piddev,new Policia(NUMEMP,"0", nombrepol,apepol,""),
-					acta,new Interesado(idINTERESADO,fecha,new Lugar(new Distrito(0, ""), ""),"","","","",""),fecha);
-                    
+
+                    ActaDevolucion aux = new ActaDevolucion(piddev, new Policia(NUMEMP, "0", nombrepol, apepol, ""),
+                            acta, new Interesado(idINTERESADO, fecha, new Lugar(new Distrito(0, ""), ""), "", "", "", "", ""), fecha);
+
                     list.add(aux);
                 }
 
@@ -1023,18 +1021,9 @@ public class Model {
         //return usuarios;
         return list;
     }
-	
-	
-	
-	
-	
-	
-	
-	//////////////////////////////////////////////////////
-	
-	
-	
-	public List<ActaDonacion> imprimeDonacion() {
+
+    //////////////////////////////////////////////////////
+    public List<ActaDonacion> imprimeDonacion() {
         Connection con = null;
         String donacion = "";
         List<ActaDonacion> list = new ArrayList();
@@ -1045,34 +1034,32 @@ public class Model {
             ResultSet rs = null;
             if (con != null) {
 
-                String sql = " select a.IdDonacion as iddon,a.Institucion as ins,P.NUM_EMPLEADO as numemp,P.DESNOMBRE as dnom,P.DES_APELLIDO1 as dap1,d.IdDecomiso as iddec\n"+
-"FROM PoliciaMunicipal.ActaDonacion\n"+
-"INNER JOIN rh_empleado P ON P.NUM_EMPLEADO = a.idPolicia\n"+
-"INNER JOIN ActaDecomiso d ON d.IdDecomiso = a.IdDecomiso";
+                String sql = " select a.IdDonacion as iddon,a.Institucion as ins,P.NUM_EMPLEADO as numemp,P.DESNOMBRE as dnom,P.DES_APELLIDO1 as dap1,d.IdDecomiso as iddec\n"
+                        + "FROM PoliciaMunicipal.ActaDonacion\n"
+                        + "INNER JOIN rh_empleado P ON P.NUM_EMPLEADO = a.idPolicia\n"
+                        + "INNER JOIN ActaDecomiso d ON d.IdDecomiso = a.IdDecomiso";
 
                 pstmt = con.createStatement();
                 rs = pstmt.executeQuery(sql);
                 //Date fecha;
-				String nombrepol;
-				String apepol;
+                String nombrepol;
+                String apepol;
                 int piddon;
                 int NUMEMP;
                 String institucion;
                 while (rs.next()) {
                     java.sql.Timestamp t = rs.getTimestamp("fecha");
-                    iddon = rs.getInt("iddon");
-					institucion = rs.getString("ins");
-					nombrepol=rs.getString("dnom");
-					apepol=rs.getString("dap1");
-					NUMEMP = rs.getInt("numemp");
-					
-					
-					ActaDecomiso acta = new ActaDecomiso(0, new Policia(0, "0", "","",""),
-                            new Testigo(), new Lugar(new Distrito(0, ""), ""), new Date(0,0,0), "", new Interesado(0, new Date(0,0,0), new Lugar(), "",
+                    piddon = rs.getInt("iddon");
+                    institucion = rs.getString("ins");
+                    nombrepol = rs.getString("dnom");
+                    apepol = rs.getString("dap1");
+                    NUMEMP = rs.getInt("numemp");
+
+                    ActaDecomiso acta = new ActaDecomiso(0, new Policia(0, "0", "", "", ""),
+                            new Testigo(), new Lugar(new Distrito(0, ""), ""), new Date(0, 0, 0), "", new Interesado(0, new Date(0, 0, 0), new Lugar(), "",
                                     "", "", "", ""), new Contenedor(), "");
-									
-									
-					ActaDonacion aux=new ActaDonacion(iddon,institucion,new Policia(0,"",nombrepol,apepol,""),acta);
+
+                    ActaDonacion aux = new ActaDonacion(piddon, institucion, new Policia(0, "", nombrepol, apepol, ""), acta);
                     list.add(aux);
                 }
 
@@ -1092,17 +1079,5 @@ public class Model {
         //return usuarios;
         return list;
     }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	}
 
-
-
-
+}

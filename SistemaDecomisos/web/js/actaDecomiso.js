@@ -84,11 +84,12 @@ function obtenerDecomisosTabla() {
     var contenedor = new Contenedor();
     for (var i = 2; i < x.length; i++) {   //Toma una por una las filas de la tabla, i representa la fila
         var y = x[i].cells;  //y representa las columnas, por ejemplo y[3] es el precio en la tabla
-        var categoria = y[0].childNodes[1].value;
-        var cantidad = y[1].childNodes[0].value;
-        var observaciones = y[2].childNodes[0].value;
+        var proceso = y[0].childNodes[1].value;
+        var categoria = y[1].childNodes[1].value;
+        var cantidad = y[2].childNodes[0].value;
+        var observaciones = y[3].childNodes[0].value;
 
-        contenedor.add(new Decomiso(0, categoria, Number(cantidad), observaciones));
+        contenedor.add(new Decomiso(0, categoria, Number(cantidad), observaciones, proceso));
     }
     return contenedor;
 }
@@ -100,9 +101,9 @@ function enviarActa() {
     var policia = new Policia(policiaID, "a", "nomPoli", "c", 1);
     var testigo;
     if (pTestigo.selectedIndex === 1)
-        testigo = new Testigo(1, $('#id_testigo').val(), $('#nombre_testigoText').val(), "asd", "asd");
+        testigo = new Testigo(1201, $('#id_testigo').val(), $('#nombre_testigoText').val(), "asd", "asd");
     else 
-        testigo = new Testigo(1, " ", " ", " ", " ");
+        testigo = new Testigo(1201, " ", " ", " ", " ");
     var lugar = new Lugar(new Distrito(pDistrito.selectedIndex, pDistrito.options[pDistrito.selectedIndex].value), "Por el parque central");
     var fechaDecomiso = $('#datepicker').val();
     var horaDecomiso = $('#horaPicker').val();
@@ -116,8 +117,9 @@ function enviarActa() {
             $('#apellido2_interesado').val() === "" ? "NA" : $('#apellido2_interesado').val(),
             "En algun lugar de heredia", "NA");
     var decomisos = obtenerDecomisosTabla();
+    var nActa = $('#numActa').val();
     var observaciones = $("#observaciones").val();
-    var actaDecomiso = new ActaDecomiso(document.getElementById("nActa").innerHTML.replace(" ",""), policia, testigo, lugar,
+    var actaDecomiso = new ActaDecomiso(nActa/*document.getElementById("nActa").innerHTML.replace(" ","")*/, policia, testigo, lugar,
             fechaDecomiso, horaDecomiso, interesado,
             decomisos, observaciones);
     Proxy.actaDecomiso(JSON.stringify(actaDecomiso, replacer));
@@ -174,10 +176,10 @@ function checkActa() {
 //        bool = false;
 //        errores.push("El campo para la identificación del interesado, no puede estar vacío.");
 //    }
-    if ($('#proobs').val() === "") {
+    /*if ($('#proobs').val() === "") {
         bool = false;
         errores.push("Debe completar el campo de observaciones para cada producto.");
-    }
+    }*/
     if ($('#fecha').val() === "") {
         bool = false;
         errores.push("Por favor indique la fecha en que se realizó el decomiso.");

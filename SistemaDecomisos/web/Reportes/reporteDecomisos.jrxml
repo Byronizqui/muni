@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="decomisos" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="becb134b-fa53-465b-9850-f6a212e6ba64">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="4"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -17,7 +17,9 @@
 	<parameter name="p_where" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
-	<parameter name="parameter1" class="java.lang.String"/>
+	<parameter name="parameter1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT a.IdDecomiso, a.fecha,a.lugar,a.hora,b.nombre,c.categoria,d.DES_NOMBRE, d.DES_APELLIDO1, d.DES_APELLIDO2 
 FROM POLICIA_MUNICIPAL.ActaDecomiso a 
@@ -38,7 +40,10 @@ $P!{p_where}]]>
 	<field name="DES_NOMBRE" class="java.lang.String"/>
 	<field name="DES_APELLIDO1" class="java.lang.String"/>
 	<field name="DES_APELLIDO2" class="java.lang.String"/>
-	<variable name="variable1" class="java.lang.String"/>
+	<variable name="variable1" class="java.lang.String">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<variable name="variable2" class="java.lang.String"/>
 	<background>
 		<band height="555" splitType="Stretch">
 			<staticText>
@@ -97,21 +102,21 @@ element)]]></text>
 			<frame>
 				<reportElement x="4" y="0" width="798" height="14" uuid="58dac36e-64e8-4df6-b9a0-7d1bf9edc0b7"/>
 				<staticText>
-					<reportElement style="Column header" positionType="Float" x="91" y="0" width="95" height="14" forecolor="#000000" uuid="f719389d-20d1-49da-aa17-4a32df7c3df4"/>
+					<reportElement style="Column header" positionType="Float" x="118" y="0" width="95" height="14" forecolor="#000000" uuid="f719389d-20d1-49da-aa17-4a32df7c3df4"/>
 					<textElement>
 						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
 					</textElement>
 					<text><![CDATA[Lugar]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" positionType="Float" x="186" y="0" width="190" height="14" forecolor="#000000" uuid="b6f13079-a761-4c3a-85fc-c4267bf7acad"/>
-					<textElement textAlignment="Center">
+					<reportElement style="Column header" positionType="Float" x="213" y="0" width="190" height="14" forecolor="#000000" uuid="b6f13079-a761-4c3a-85fc-c4267bf7acad"/>
+					<textElement>
 						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
 					</textElement>
 					<text><![CDATA[Policia Municipal]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" positionType="Float" x="376" y="0" width="95" height="14" forecolor="#000000" uuid="22a545ca-c985-4fb9-af96-cf660713383e"/>
+					<reportElement style="Column header" positionType="Float" x="403" y="0" width="95" height="14" forecolor="#000000" uuid="22a545ca-c985-4fb9-af96-cf660713383e"/>
 					<textElement>
 						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
 					</textElement>
@@ -119,7 +124,7 @@ element)]]></text>
 				</staticText>
 			</frame>
 			<staticText>
-				<reportElement style="Column header" positionType="Float" x="0" y="0" width="95" height="14" forecolor="#000000" uuid="e88faa1b-8496-47e4-bee9-9afd8cc43f8b"/>
+				<reportElement style="Column header" positionType="Float" x="0" y="0" width="122" height="14" forecolor="#000000" uuid="e88faa1b-8496-47e4-bee9-9afd8cc43f8b"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
 				</textElement>
@@ -135,36 +140,31 @@ element)]]></text>
 			<frame>
 				<reportElement x="2" y="0" width="800" height="14" uuid="dc9b89aa-424e-4af0-909e-23b0fe41f0a7"/>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="93" y="0" width="95" height="14" uuid="30b6886c-8af3-4b5c-99e9-391218e7ba05"/>
+					<reportElement style="Detail" positionType="Float" x="120" y="0" width="95" height="14" uuid="30b6886c-8af3-4b5c-99e9-391218e7ba05"/>
 					<textElement>
 						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{LUGAR}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[($F{LUGAR}.intValue() == 00) ? "Heredia" : 
+($F{LUGAR}.intValue() == 02) ? "San Fancisco" : "."]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="188" y="0" width="95" height="14" uuid="5c3377a7-5226-4fb2-8204-28f9aec8abef"/>
+					<reportElement style="Detail" positionType="Float" x="215" y="0" width="190" height="14" uuid="5c3377a7-5226-4fb2-8204-28f9aec8abef"/>
 					<textElement>
 						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{DES_NOMBRE}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{DES_NOMBRE} + " " + $F{DES_APELLIDO1} 
++ " " + $F{DES_APELLIDO2}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="283" y="0" width="95" height="14" uuid="fd61b823-7538-44d8-af98-119884aaf277"/>
+					<reportElement style="Detail" positionType="Float" x="405" y="0" width="95" height="14" uuid="e528f206-87b5-4a1d-822b-dd8b55a94485"/>
 					<textElement>
 						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{DES_APELLIDO1}]]></textFieldExpression>
-				</textField>
-				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="378" y="0" width="95" height="14" uuid="e528f206-87b5-4a1d-822b-dd8b55a94485"/>
-					<textElement>
-						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{CATEGORIA}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{CATEGORIA}.compareTo("perecederos") == 00 ? "Perecederos" : "No perecederos"]]></textFieldExpression>
 				</textField>
 			</frame>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement style="Detail" positionType="Float" x="0" y="0" width="95" height="14" uuid="829d68b1-d19d-45dc-85d1-8a695dc4c818"/>
+				<reportElement style="Detail" positionType="Float" x="0" y="0" width="122" height="14" uuid="829d68b1-d19d-45dc-85d1-8a695dc4c818"/>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
 				</textElement>

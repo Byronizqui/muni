@@ -121,7 +121,8 @@ Proxy.listadoPolicias = function () {
         success: function (data) {
             if (data != null) {
                 for (var i = 0; i < data.length; i++) {
-                    var d = "<option value='" + data[i].idPolicia + "'>" + data[i].nombre + "</option>";
+                    var d = "<option value='" + data[i].idPolicia + "'>" + data[i].nombre 
+                            + " " + data[i].apellido1 + "</option>";
                     $("#nomPoli").append(d);
                     $("#nomPoli2").append(d);
                 }

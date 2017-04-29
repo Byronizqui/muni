@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRParameter;
 import net.sf.jasperreports.engine.JasperRunManager;
 
 /**
@@ -72,6 +74,7 @@ public class Reportes extends HttpServlet {
                     }else {
                        parametros.put("p_where", ";"); 
                     }
+                    parametros.put(JRParameter.REPORT_LOCALE, new Locale("es"));
                     byte[] bytes = JasperRunManager.runReportToPdf(reportFile.getPath(), parametros, Pool.getConnection());
                     response.setContentType("application/pdf");
                     response.setContentLength(bytes.length);

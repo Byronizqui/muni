@@ -122,9 +122,11 @@ Proxy.listadoPolicias = function () {
             if (data != null) {
                 for (var i = 0; i < data.length; i++) {
                     var d = "<option value='" + data[i].idPolicia + "'>" + data[i].nombre 
-                            + " " + data[i].apellido1 + "</option>";
+                            + " " + data[i].apellido1
+                            + " " + data[i].apellido2 + "</option>";
                     $("#nomPoli").append(d);
                     $("#nomPoli2").append(d);
+                    $("#nomPoli3").append(d);
                 }
                 $('[data-rel="chos"],[rel="chos"]').chosen({width: "100%"});
                 $('[data-rel="chos"],[rel="chos"]').chosen();

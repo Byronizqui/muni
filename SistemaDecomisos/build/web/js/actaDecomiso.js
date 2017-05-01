@@ -1,7 +1,9 @@
 var errores = new Array();
+var intActive = false;
 
 $(document).ready(function () {
     Proxy.listadoPolicias();
+    Proxy.listadoInteresados();
     $('[data-rel="chosen"],[rel="chosen"]').chosen();
     $("#id_interesado").mask("9-9999-9999");
     $("#fechaNac").datepicker({
@@ -73,6 +75,22 @@ $(document).ready(function () {
         layoutTemplates: {main2: '{preview} {remove} {browse}'},
         allowedFileExtensions: ["jpg", "png", "gif"]
     });
+    $("#addInteresado").click(function(){
+       $("#datosInteresado").show(1000);
+       $("#chosenInt").hide();
+       $("#backInte").removeClass("hidden");
+       $("#addInte").hide();
+       intActive = true;
+    });
+    $("#backInte").click(function(){
+        $("#datosInteresado").hide(1000);
+        $("#chosenInt").show();
+        $("#addInte").show();
+        $(this).addClass("hidden");
+        intActive = false;
+    });
+    
+    
 });
 
 function putNumActa() {
@@ -84,10 +102,9 @@ function obtenerDecomisosTabla() {
     var contenedor = new Contenedor();
     for (var i = 2; i < x.length; i++) {   //Toma una por una las filas de la tabla, i representa la fila
         var y = x[i].cells;  //y representa las columnas, por ejemplo y[3] es el precio en la tabla
-        var proceso = y[0].childNodes[1].value;
-        var categoria = y[1].childNodes[1].value;
-        var cantidad = y[2].childNodes[0].value;
-        var observaciones = y[3].childNodes[0].value;
+        var categoria = y[0].childNodes[1].value;
+        var cantidad = y[1].childNodes[0].value;
+        var observaciones = y[2].childNodes[0].value;
 
         contenedor.add(new Decomiso(0, categoria, Number(cantidad), observaciones, proceso));
     }
@@ -101,9 +118,9 @@ function enviarActa() {
     var policia = new Policia(policiaID, "a", "nomPoli", "c", 1);
     var testigo;
     if (pTestigo.selectedIndex === 1)
-        testigo = new Testigo(1201, $('#id_testigo').val(), $('#nombre_testigoText').val(), "asd", "asd");
-    else 
-        testigo = new Testigo(1201, " ", " ", " ", " ");
+        testigo = new Testigo(0, $('#id_testigo').val(), $('#nombre_testigoText').val(), $('#nombre_testigoText').val(), $('#nombre_testigoText').val());
+    else if(pTestigo.selectedIndex === 2)
+        testigo = new Testigo(0, " ", $("#nomPoli").val(), " ", " ");
     var lugar = new Lugar(new Distrito(pDistrito.selectedIndex, pDistrito.options[pDistrito.selectedIndex].value), "Por el parque central");
     var fechaDecomiso = $('#datepicker').val();
     var horaDecomiso = $('#horaPicker').val();
@@ -152,34 +169,6 @@ function checkActa() {
         bool = false;
         errores.push("Debe proveer una identificación para el policía encargado.");
     }
-
-    /*if ($('#id_policia').val() !== "") {
-     if (!idVerificator($('#id_policia').val(), document.getElementById('ext').checked)) {
-     bool = false;
-     errores.push("El número de identificación del policía tiene formato incorrecto.");
-     }
-     }*/
-
-//    if ($('#apellido1_interesado').val() === ""){
-//        bool = false;
-//        errores.push("El campo para el primer apellido del interesado, no puede estar vacío.");
-//    }
-//    if ($('#apellido2_interesado').val() === ""){
-//        bool = false;
-//        errores.push("El campo para el segundo apellido del interesado, no puede estar vacío.");
-//    }
-//    if ($('#nombre_interesado').val() === ""){
-//        bool = false;
-//        errores.push("El campo para el nombre del interesado, no puede estar vacío.");
-//    }
-//    if ($('#id_interesado').val() === ""){
-//        bool = false;
-//        errores.push("El campo para la identificación del interesado, no puede estar vacío.");
-//    }
-    /*if ($('#proobs').val() === "") {
-        bool = false;
-        errores.push("Debe completar el campo de observaciones para cada producto.");
-    }*/
     if ($('#fecha').val() === "") {
         bool = false;
         errores.push("Por favor indique la fecha en que se realizó el decomiso.");
@@ -231,4 +220,18 @@ function formatDate(date) {
         day = '0' + day;
 
     return [year, month, day].join('-');
+}
+
+function dibujarTabla(dataJson) {
+    for (var i = 0; i < dataJson.length; i++) {
+        if (dataJson[i].nombre !== "NA") {
+            var a = "<option value='" + dataJson[i].identificacion + "'>" + dataJson[i].nombre +
+                    " " + dataJson[i].apellido1 +
+                    " " + dataJson[i].apellido2 + "</option>";
+            $("#interesadoChosen").append(a);
+        }
+
+    }
+    $('[data-rel="lInt"],[rel="lInt"]').chosen();
+    $('[data-rel="lInt"],[rel="lInt"]').chosen();
 }

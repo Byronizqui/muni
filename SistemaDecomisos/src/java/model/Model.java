@@ -150,10 +150,13 @@ public class Model {
                 rs = pstmt.executeQuery();
                 int idFuncionario = 0;
                 String nombre = "";
+                String apellido1, apellido2;
                 while (rs.next()) {
                     nombre = rs.getString("DES_NOMBRE");
+                    apellido1 = rs.getString("DES_APELLIDO1");
+                    apellido2 = rs.getString("DES_APELLIDO2");
                     idFuncionario = rs.getInt("NUM_EMPLEADO");
-                    policias.add(new Policia(idFuncionario, "", nombre, "", ""));
+                    policias.add(new Policia(idFuncionario, "", nombre, apellido1, apellido2));
                 }
             }
         } catch (SQLException ex) {

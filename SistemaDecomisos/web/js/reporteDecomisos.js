@@ -5,6 +5,9 @@
  */
 
 $(document).ready(function () {
+    $('#logout').click(function () {
+        Proxy.userLogout("");
+    });
     $('[data-rel="chosen"],[rel="chosen"]').chosen();
     $('input[name="daterange"]').daterangepicker({
         "locale": {
@@ -68,6 +71,7 @@ function sendData() {
     var perecederos = document.getElementById("perecederos");
     var no_perecederos = document.getElementById("no_perecederos");
     var distrito = $("#distrito").val();
+    var policia = $("#nomPoli").val();
 
     var where = "WHERE 1=1";
     for (var i = 0; i < tipoReporte.length; i++) {
@@ -120,12 +124,32 @@ function sendData() {
                         where += ") and a.lugar = 3 ";
                 }
                 break;
+                case "4":
+                {
+                    if (where === "WHERE 1=1")
+                        where += " and a.lugar = 4 ";
+                    else
+                        where += ") and a.lugar = 4 ";
+                }
+                break;
+                case "4":
+                {
+                    if (where === "WHERE 1=1")
+                        where += " and a.lugar = 5 ";
+                    else
+                        where += ") and a.lugar = 5 ";
+                }
+                break;
             default :
             {
                 if (where !== "WHERE 1=1")
                     where += ")";
             }
         }
+        
+    if (policia !== "todos_policias"){
+        where += " and a.IdPolicia = " + policia;
+    }
 
 
 

@@ -118,7 +118,7 @@ aaaaaaaaaaaaa
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="distrito">Dirección específica del decomiso<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-xs-10" id="groupLugar">
-                                                <textarea required class="form-control" id="direccion"></textarea>
+                                                <textarea style="text-transform: uppercase" required class="form-control" id="direccion"></textarea>
                                             </div>
                                         </div>
                                         <div class="form-group status"  id="groupFecha">
@@ -159,7 +159,7 @@ aaaaaaaaaaaaa
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="info_policia">Nombre del Policía Municipal testigo<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select class="form-control chosen-select" data-rel="chos2" name="nomPoli" id="nomPoli2">
+                                                <select class="form-control chosen-select" data-rel="chos" name="nomPoli3" id="nomPoli3">
 
                                                 </select>
                                             </div>
@@ -169,7 +169,7 @@ aaaaaaaaaaaaa
                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre_testigo">Nombre del testigo<span class="required">*</span>
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="nombre_testigoText" required="required" class="form-control col-md-7 col-xs-12">
+                                                    <input style="text-transform: uppercase" type="text" id="nombre_testigoText" required="required" class="form-control col-md-7 col-xs-12">
                                                     <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
                                                 </div>
                                             </div>
@@ -181,65 +181,94 @@ aaaaaaaaaaaaa
                                                     <span class="fa fa-indent form-control-feedback right" aria-hidden="true"></span>
                                                 </div>
                                             </div>
+                                            <div class="form-group status" id="apellido1Civil">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="apellido1Civil">Primer apellido del testigo<span class="required">*</span>
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input style="text-transform: uppercase" type="text" id="id_testigo" required class="form-control col-md-7 col-xs-12">
+                                                    <span class="fa fa-indent form-control-feedback right" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group status" id="apellido2Civil">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_testigo">Segundo apellido del testigo<span class="required">*</span>
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input style="text-transform: uppercase" type="text" id="id_testigo" required class="form-control col-md-7 col-xs-12">
+                                                    <span class="fa fa-indent form-control-feedback right" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="x_title">
                                             <div class="clearfix"></div>
                                         </div>
                                         <span class="section">Datos del Interesado</span>
+                                        <div class="col-md-3 " id="chosenInt">
+                                            <label>Interesado: </label>
+                                            <select class="form-control" data-rel="lInt" name="interesadoChosen" id="interesadoChosen">
+                                            </select>
+                                        </div>
+                                        <div id="addInte" class="col-md-3">
+                                            <label>Nuevo interesado </label><br/>
+                                            <button id="addInteresado" type="button" class="btn btn-info"><i class="fa fa-user"></i></button>
+                                        </div>
+                                        <button id="backInte" type="button" class="hidden btn btn-toolbar btn-danger">Cambiar a interesado conocido</button>
+                                        <div id="datosInteresado" hidden="hidden">
+                                            <div class="form-group status" id="groupFotoInteresado">           
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
+                                                    <div class="kv-avatar center-block" style="width:200px">
+                                                        <input id="avatar-2" name="avatar-2" type="file" class="file-loading">
+                                                    </div>
 
-                                        <div class="form-group status" id="groupFotoInteresado">           
-                                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                                <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
-                                                <div class="kv-avatar center-block" style="width:200px">
-                                                    <input id="avatar-2" name="avatar-2" type="file" class="file-loading">
                                                 </div>
+                                            </div>
+                                            <div class="form-group status" id="groupIdInteresado">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_interesado">Identificación del interesado</label>
+                                                <div class="col-md-6 col-sm-6">
+                                                    <label class="radio-inline">
+                                                        <input id="nac" type="radio" name="idI" value="nac" checked="checked"> Nacional<br>
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                        <input id="ext" type="radio" name="idI" value="ext"> Extranjero<br>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="text" id="id_interesado" class="form-control col-md-7 col-xs-12">
+                                                    <span class="fa fa-indent form-control-feedback right" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group status" id="groupApellido1Interesado">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="apellido1_interesado">Primer Apellido </label>              
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input style="text-transform: uppercase" type="text" id="apellido1_interesado" class="form-control col-md-7 col-xs-12">
+                                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group status" id="groupApellido2Interesado">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="apellido2_interesado">Segundo Apellido </label>              
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input style="text-transform: uppercase" type="text" id="apellido2_interesado" class="form-control col-md-7 col-xs-12">
+                                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group status" id="groupNombreInteresado">
+                                                <label class="control-label  col-md-3 col-sm-3 col-xs-12" for="nombre_interesado">Nombre </label>              
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input style="text-transform: uppercase" type="text" id="nombre_interesado" class="form-control col-md-7 col-xs-12">
+                                                    <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                                                </div>
+                                            </div>
 
+                                            <div class="form-group status"  id="groupFechaNac">
+                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fecha_Nac">Fecha de nacimiento del interesado</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="fechaNac" class="form-control col-md-7 col-xs-12" type="text">
+                                                    <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group status" id="groupIdInteresado">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_interesado">Identificación del interesado</label>
-                                            <div class="col-md-6 col-sm-6">
-                                                <label class="radio-inline">
-                                                    <input id="nac" type="radio" name="idI" value="nac" checked="checked"> Nacional<br>
-                                                </label>
-                                                <label class="radio-inline">
-                                                    <input id="ext" type="radio" name="idI" value="ext"> Extranjero<br>
-                                                </label>
-                                            </div>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" id="id_interesado" class="form-control col-md-7 col-xs-12">
-                                                <span class="fa fa-indent form-control-feedback right" aria-hidden="true"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group status" id="groupApellido1Interesado">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="apellido1_interesado">Primer Apellido </label>              
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" id="apellido1_interesado" class="form-control col-md-7 col-xs-12">
-                                                <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group status" id="groupApellido2Interesado">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="apellido2_interesado">Segundo Apellido </label>              
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" id="apellido2_interesado" class="form-control col-md-7 col-xs-12">
-                                                <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
-                                            </div>
-                                        </div>
-                                        <div class="form-group status" id="groupNombreInteresado">
-                                            <label class="control-label  col-md-3 col-sm-3 col-xs-12" for="nombre_interesado">Nombre </label>              
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" id="nombre_interesado" class="form-control col-md-7 col-xs-12">
-                                                <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
-                                            </div>
+                                            
                                         </div>
 
-                                        <div class="form-group status"  id="groupFechaNac">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fecha_Nac">Fecha de nacimiento del interesado</label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input id="fechaNac" class="form-control col-md-7 col-xs-12" type="text">
-                                                <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
-                                            </div>
-                                        </div>
                                         <!-- Cabecera de la tabla -->
                                         <div class="x_title">
                                             <div class="clearfix"></div>
@@ -248,10 +277,10 @@ aaaaaaaaaaaaa
                                         </div>
                                         <span class="section">Datos de Decomisos</span>
                                         <div class="form-group">
-                                            <table class="table" id="tabla">
+                                            <table class="table table-condensed" id="tabla">
                                                 <thead>
                                                     <tr>
-                                                        <th class="col-md-3">Proceso</th>
+                                                     
                                                         <th class="col-md-3">Categoría</th>
                                                         <th class="col-md-3">Cantidad</th>
                                                         <th class="col-md-3">Observaciones</th>
@@ -261,41 +290,27 @@ aaaaaaaaaaaaa
                                                 <!-- Cuerpo de la tabla con los campos -->
                                                 <tbody>
                                                     <!-- fila base para clonar y agregar al final -->
-                                                    <tr class="fila-base">
-                                                        <td>
-                                                            <select class="form-control proceso" id="proceso">
-                                                                <option selected="selected" value="bodega">Bodega</option>
-                                                                <option value="aduana">Aduana</option>
-                                                                <option value="donacion">Donacion</option>
-                                                                <option value="destruccion">Destruccion</option>
-                                                            </select>
-                                                        </td>
+                                                    <tr>
+                                                        
                                                         <td>
                                                             <select class="form-control" name="cate" id="categoria">
                                                                 <option selected="selected" value="discos">Discos</option>
                                                                 <option value="licor">Licor</option>
-                                                                <option value="perecederos">Cigarrillos</option>
+                                                                <option value="cigarrillos">Cigarrillos</option>
                                                                 <option value="patinetas">Patinetas</option>
                                                                 <option value="perecederos">Perecedero</option>
                                                                 <option value="no_perecederos">No Perecedero</option>
-                                                                <option value="perecederos">Varios</option>
+                                                                <option value="varios">Varios</option>
                                                             </select>
                                                         </td>
                                                         <td><input required type="number" min="1" class="form-control cantidad"/></td>
-                                                        <td><textarea required id="proobs" class="resizable_textarea form-control observaciones"></textarea></td>
-                                                        <td class="eliminar" ><button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button></i></td>
+                                                        <td><textarea style="text-transform: uppercase" required id="proobs" class="resizable_textarea form-control observaciones"></textarea></td>
+                                                        <td class="eliminar" ><button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button></td>
                                                     </tr>
                                                     <!-- fin de código: fila base -->
                                                     <!-- Fila de ejemplo -->
                                                     <tr>
-                                                        <td>
-                                                            <select class="form-control proceso" id="proceso">
-                                                                <option selected="selected" value="bodega">Bodega</option>
-                                                                <option value="aduana">Aduana</option>
-                                                                <option value="donacion">Donacion</option>
-                                                                <option value="destruccion">Destruccion</option>
-                                                            </select>
-                                                        </td>
+                                                        
                                                         <td>
                                                             <select class="form-control" name="cate" id="categoria">
                                                                 <option selected="selected" value="discos">Discos</option>
@@ -308,7 +323,7 @@ aaaaaaaaaaaaa
                                                             </select>
                                                         </td>
                                                         <td><input required type="number" min="1" class="form-control cantidad"/></td>
-                                                        <td><textarea required id="proobs" class="resizable_textarea form-control observaciones"></textarea></td>
+                                                        <td><textarea style="text-transform: uppercase" required id="proobs" class="resizable_textarea form-control observaciones"></textarea></td>
                                                         <td class="eliminar" ><button type="button" class="btn btn-danger"><i class="fa fa-remove"></i></button></i></td>
                                                     </tr>
 
@@ -325,7 +340,7 @@ aaaaaaaaaaaaa
                                         <div class="form-group">
                                             <label class="col-md-3 col-sm-3 col-xs-12">Observaciones</label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <textarea id="observaciones" class="resizable_textarea form-control"></textarea>
+                                                <textarea style="text-transform: uppercase" id="observaciones" class="resizable_textarea form-control"></textarea>
                                                 <span class="fa fa-edit form-control-feedback right" aria-hidden="true"></span>
                                             </div>
                                         </div>

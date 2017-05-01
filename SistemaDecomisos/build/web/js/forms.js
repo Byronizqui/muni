@@ -6,9 +6,9 @@
 
 $(document).ready(function(){
     $("#nombre_testigo").change(function(){
-        if($("#nombre_testigo").val() == "civil" ){
-            $('#info_testigo_civil').show(); //muestro mediante id
-            $('#info_testigo_policia').hide();
+        if($("#nombre_testigo").val() === "civil" ){
+            $('#info_testigo_civil').show(1000); //muestro mediante id
+            $('#info_testigo_policia').hide(1000);
         }
     });
     ver_info_testigo();
@@ -16,17 +16,17 @@ $(document).ready(function(){
 
 function ver_info_testigo(){
     $("#nombre_testigo").change(function(){
-        if($("#nombre_testigo").val() == "civil" ){
+        if($("#nombre_testigo").val() === "civil" ){
             $('#info_testigo_civil').show(); //muestro mediante id
             $('#info_testigo_policia').hide();
         }
-        if($("#nombre_testigo").val() == "policia"){
-            $('#info_testigo_civil').hide(); //muestro mediante id
-            $('#info_testigo_policia').show();
+        if($("#nombre_testigo").val() === "policia"){
+            $('#info_testigo_civil').hide(1000); //muestro mediante id
+            $('#info_testigo_policia').show(1000);
         }
-        if($("#nombre_testigo").val() == "vacio"){
-            $('#info_testigo_civil').hide(); //muestro mediante id
-            $('#info_testigo_policia').hide();
+        if($("#nombre_testigo").val() === "vacio"){
+            $('#info_testigo_civil').hide(1000); //muestro mediante id
+            $('#info_testigo_policia').hide(1000);
         }
     });
 }

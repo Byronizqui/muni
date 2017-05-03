@@ -121,6 +121,9 @@ function enviarActa() {
         testigo = new Testigo(0, $('#id_testigo').val(), $('#nombre_testigoText').val(), $('#nombre_testigoText').val(), $('#nombre_testigoText').val());
     else if(pTestigo.selectedIndex === 2)
         testigo = new Testigo(0, " ", $("#nomPoli").val(), " ", " ");
+    else {
+        testigo = new Testigo(0, " ", " ", " ", " ");
+    }
     var lugar = new Lugar(new Distrito(pDistrito.selectedIndex, pDistrito.options[pDistrito.selectedIndex].value), "Por el parque central");
     var fechaDecomiso = $('#datepicker').val();
     var horaDecomiso = $('#horaPicker').val();

@@ -25,7 +25,7 @@
         <!-- NProgress -->
         <link href="css/nprogress.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-     
+
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link href="fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
 
@@ -33,12 +33,12 @@
         <link href="css/custom.min.css" rel="stylesheet">
         <link href="css/forms.css" rel="stylesheet">
         <link rel="shortcut icon" href="media/images/logo2.ico" type="image/x-icon" />
-         <script>
+        <script>
             "<%
                 String id = "";
                 id = request.getParameter("id");
             %>"
-                id= "<%=id%>";
+            id = "<%=id%>";
         </script>
 
     </head>
@@ -54,7 +54,7 @@
                         <%@ include file="Fragmentos/side.jspf" %>
                     </div>
                 </div>
-                
+
                 <!-- top navigation -->
                 <div class="top_nav">
                     <div class="nav_menu">
@@ -67,8 +67,8 @@
                     </div>
                 </div>
                 <!-- /top navigation -->
-                
-                 <!-- page content -->
+
+                <!-- page content -->
                 <div class="right_col" role="main">
                     <div class="form_decomiso">
                         <!-- form input mask -->
@@ -96,20 +96,20 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input id="fechaDes" class="date-picker form-control col-md-7 col-xs-12" type="text" required>
                                                 <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
-                                                <span class="alert-dismissible form-control-static"> Ejemplo 10/10/2016</span>
                                             </div>
                                         </div>
                                         <div class="form-group status">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre_policia">Nombre del Policía Municipal a cargo de la destrucción<span class="required">*</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <div id="groupNombrePolicia">
-                                                        <input type="text" id="nom_policiaDes" class="form-control col-md-7 col-xs-12" required="required">
-                                                        <span class="fa fa-search form-control-feedback right" aria-hidden="true"></span>
-                                                    </div>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre_policia">Nombre del Policía Municipal a cargo de la destrucción<span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div id="groupNombrePolicia">
+                                                    <select class="form-control" data-rel="chos" name="nomPol" id="nomPoli">
+                                                        
+                                                    </select>
                                                 </div>
+                                            </div>
                                         </div>
-                                        
+
                                         <div class="form-group status">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="distrito">Distrito/dirección específica donde se realiza la destrucción<span class="required">*</span>
                                             </label>
@@ -156,7 +156,7 @@
                                                         <td><input type="text" class="form-control" id="nombre_testigo2"/></td>
                                                         <td><input type="text" class="form-control" id="apellido1_testigo2"/></td>
                                                         <td><input type="text" class="form-control" id="apellido2_testigo2"/></td>
-                                                     </tr>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                             <div class="ln_solid"></div>
@@ -174,7 +174,7 @@
                         </div>
                     </div>
                 </div>
-                 
+
                 <!-- footer content -->
                 <footer>
                     <div class="pull-right">
@@ -185,7 +185,7 @@
                 <!-- /footer content -->
             </div>
         </div>
-        
+
         <div id="exitoDes" class="modal fade" role="dialog">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -200,43 +200,43 @@
             </div>
         </div>     
     </body>
-    
+
     <!-- jQuery -->
-        <script src="js/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="js/chosen.jquery.js"></script>
-        <!-- Bootstrap -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- FastClick -->
-        <script src="js/fastclick.js"></script>
-        <!-- NProgress -->
-        <script src="js/nprogress.js"></script>
-        <!--Date-->
-        <script src="js/daterangepicker.js"></script>
-        <script src="js/moment.min.js"></script>
-        <!-- Custom Theme Scripts -->
-        <script src="js/custom.js"></script>
-        <script src="js/home.js"></script>
-        <script src="js/Utils.js"></script>
-        <script src="js/forms.js"></script>
-        <script src="js/multifield.js"></script>
-        <script src="js/validator.js"></script>
-        <script src="js/actaDestruccion.js"></script>
-        <script src="js/Proxy.js"></script>
-        <script src="js/BaseDatos.js"></script>     
-        <script src="js/objects/Contenedor.js"></script>
-        <script src="js/objects/ActaDecomiso.js"></script>
-        <script src="js/objects/ActaDonacion.js"></script>
-        <script src="js/objects/ActaDevolucion.js"></script>       
-        <script src="js/objects/ActaDestruccion.js"></script>
-        <script src="js/objects/Decomiso.js"></script>
-        <script src="js/objects/Distrito.js"></script>
-        <script src="js/objects/Funcionario.js"></script>
-        <script src="js/objects/Interesado.js"></script>
-        <script src="js/objects/Lugar.js"></script>
-        <script src="js/objects/Persona.js"></script>
-        <script src="js/objects/Policia.js"></script>
-        <script src="js/objects/Testigo.js"></script>  
-        <script src="js/objects/Usuario.js"></script>   
+    <script src="js/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="js/chosen.jquery.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="js/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="js/nprogress.js"></script>
+    <!--Date-->
+    <script src="js/daterangepicker.js"></script>
+    <script src="js/moment.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="js/custom.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/Utils.js"></script>
+    <script src="js/forms.js"></script>
+    <script src="js/multifield.js"></script>
+    <script src="js/validator.js"></script>
+    <script src="js/actaDestruccion.js"></script>
+    <script src="js/Proxy.js"></script>
+    <script src="js/BaseDatos.js"></script>     
+    <script src="js/objects/Contenedor.js"></script>
+    <script src="js/objects/ActaDecomiso.js"></script>
+    <script src="js/objects/ActaDonacion.js"></script>
+    <script src="js/objects/ActaDevolucion.js"></script>       
+    <script src="js/objects/ActaDestruccion.js"></script>
+    <script src="js/objects/Decomiso.js"></script>
+    <script src="js/objects/Distrito.js"></script>
+    <script src="js/objects/Funcionario.js"></script>
+    <script src="js/objects/Interesado.js"></script>
+    <script src="js/objects/Lugar.js"></script>
+    <script src="js/objects/Persona.js"></script>
+    <script src="js/objects/Policia.js"></script>
+    <script src="js/objects/Testigo.js"></script>  
+    <script src="js/objects/Usuario.js"></script>   
 </html>

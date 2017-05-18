@@ -1,6 +1,9 @@
+/* global Proxy */
+
 var erroresDes = new Array();
 
 $(document).ready(function () {
+    
     $("#num_acta_dec1").val(id);
     $('[data-rel="chosen"],[rel="chosen"]').chosen();
     $("#fechaDes").datepicker({
@@ -27,6 +30,7 @@ $(document).ready(function () {
             erroresActaDes();
     });
     putNumActaDestruccion();
+    Proxy.listadoPolicias();
 });
 
 
@@ -64,7 +68,7 @@ function checkActaDes() {
 }
 
 function enviarActaDes() {
-    var policia = new Policia("2", "a", "b", "c", 1);
+    var policia = new Policia($("#nomPoli").val(), "a", "b", "c", 1);
     var testigo1 = new Testigo(1, "1", $('#nombre_testigo1').val(), $('#apellido1_testigo1').val(), $('#apellido2_testigo1').val());
     var testigo2 = new Testigo(1, "1", $('#nombre_testigo2').val(), $('#apellido1_testigo2').val(), $('#apellido2_testigo2').val());
     var pDistrito = document.getElementById("distritoDes");
@@ -76,7 +80,7 @@ function enviarActaDes() {
     var decomisos = new Contenedor();
     decomisos.add(new Decomiso(0,"some", 1, "asdad"));
     var decomiso = new ActaDecomiso($("#num_acta_dec1").val(), policia, test, lugar, fecha, "", interesado, decomisos, "");
-    var actaDestruccion = new ActaDestruccion(document.getElementById("nActa_dest").innerHTML.replace(" ",""), fecha, /*policia,*/ testigo1, testigo2, lugar, encargado, decomiso);
+    var actaDestruccion = new ActaDestruccion(document.getElementById("nActa_dest").innerHTML.replace(" ",""), fecha, policia, testigo1, testigo2, lugar, encargado, decomiso);
     Proxy.actaDestruccion(JSON.stringify(actaDestruccion, replacer));
 }
 

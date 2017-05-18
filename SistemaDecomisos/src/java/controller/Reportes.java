@@ -8,7 +8,6 @@ package controller;
 import database.Pool;
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Locale;
@@ -58,14 +57,17 @@ public class Reportes extends HttpServlet {
                         break;
                         case "r_des": {
                             titulo = "Reporte de destrucción";
+                            reportFile = new File(request.getSession().getServletContext().getRealPath("Reportes/reporteDestruccion.jasper"));
                         }
                         break;
                         case "r_dev": {
                             titulo = "Reporte de devolución";
+                            reportFile = new File(request.getSession().getServletContext().getRealPath("Reportes/reporteDevolucion.jasper"));
                         }
                         break;
                         case "r_dona": {
                             titulo = "Reporte de donación";
+                            reportFile = new File(request.getSession().getServletContext().getRealPath("Reportes/reporteDonacion.jasper"));
                         }
                         break;
                     }

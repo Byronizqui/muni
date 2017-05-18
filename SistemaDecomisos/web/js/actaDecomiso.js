@@ -139,7 +139,7 @@ function enviarActa() {
     var decomisos = obtenerDecomisosTabla();
     var nActa = $('#numActa').val();
     var observaciones = $("#observaciones").val();
-    var actaDecomiso = new ActaDecomiso(nActa/*document.getElementById("nActa").innerHTML.replace(" ","")*/, policia, testigo, lugar,
+    var actaDecomiso = new ActaDecomiso(nActa, policia, testigo, lugar,
             fechaDecomiso, horaDecomiso, interesado,
             decomisos, observaciones);
     Proxy.actaDecomiso(JSON.stringify(actaDecomiso, replacer));

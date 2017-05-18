@@ -40,7 +40,7 @@
                 String id = "";
                 id = request.getParameter("id");
             %>"
-                id= "<%=id%>";
+            id = "<%=id%>";
         </script>
     </head>
     <body class="nav-md">
@@ -97,7 +97,6 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input id="fecha_don" class="date-picker form-control col-md-7 col-xs-12" type="text" required>
                                                 <span class="fa fa-calendar form-control-feedback right" aria-hidden="true"></span>
-                                                <span class="alert-dismissible form-control-static"> Ejemplo 10/10/2016</span>
                                             </div>
                                         </div>
                                         <div class="form-group status" id="groupInstitucion">
@@ -113,8 +112,8 @@
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <div id="groupNombrePolicia">
-                                                    <input type="text" id="nom_policia" class="form-control col-md-7 col-xs-12" required="required">
-                                                    <span class="fa fa-search form-control-feedback right" aria-hidden="true"></span>
+                                                    <select class="form-control" data-rel="chos" name="nomPol" id="nomPoli">
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -122,7 +121,7 @@
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="donacion">Detalles de la donación<span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-xs-10" id="groupDonacion">
-                                                <textarea required class="form-control" id="donacion" type="text"></textarea>
+                                                <textarea required class="form-control" id="detallesDona" type="text"></textarea>
                                             </div>
                                         </div>
                                         <div class="ln_solid"></div>

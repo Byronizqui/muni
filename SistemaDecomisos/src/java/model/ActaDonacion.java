@@ -7,7 +7,6 @@ package model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 
 /**
@@ -16,19 +15,23 @@ import java.util.List;
  */
 public class ActaDonacion implements Serializable,Jsonable{
     private int idDonacion;
+    private Date fecha;
     private String institucion;
     private Policia policia;
     private ActaDecomiso decomiso;
+    private String detalles;
 
     public ActaDonacion(){
         
     }
     
-    public ActaDonacion(int idDonacion, String institucion, Policia policia, ActaDecomiso decomiso) {
+    public ActaDonacion(int idDonacion, Date fecha, String institucion, Policia policia, ActaDecomiso decomiso, String detalles) {
         this.idDonacion = idDonacion;
+        this.fecha = fecha;
         this.institucion = institucion;
         this.policia = policia;
         this.decomiso = decomiso;
+        this.detalles = detalles;
     }
 
     public int getIdDonacion() {
@@ -70,6 +73,21 @@ public class ActaDonacion implements Serializable,Jsonable{
         this.decomiso = decomiso;
     }
     
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(String detalles) {
+        this.detalles = detalles;
+    }
     
     
 }

@@ -18,7 +18,7 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT a.IdDecomiso, a.fecha,a.lugar,a.hora,b.nombre,c.categoria, c.descripcion, c.cantidad, d.DES_NOMBRE, d.DES_APELLIDO1, d.DES_APELLIDO2
+		<![CDATA[SELECT a.IdDecomiso, a.fecha,a.lugar,a.hora,b.nombre,b.primerapellido, b.segundoapellido,c.categoria, c.descripcion, c.cantidad, d.DES_NOMBRE, d.DES_APELLIDO1, d.DES_APELLIDO2
 , d.DES_APELLIDO2 FROM POLICIA_MUNICIPAL.ActaDecomiso a
 INNER JOIN POLICIA_MUNICIPAL.Interesado b 
 ON a.IdInteresado=b.IdInteresado 
@@ -33,6 +33,8 @@ $P!{p_where}]]>
 	<field name="LUGAR" class="java.math.BigDecimal"/>
 	<field name="HORA" class="java.lang.String"/>
 	<field name="NOMBRE" class="java.lang.String"/>
+	<field name="PRIMERAPELLIDO" class="java.lang.String"/>
+	<field name="SEGUNDOAPELLIDO" class="java.lang.String"/>
 	<field name="CATEGORIA" class="java.lang.String"/>
 	<field name="DESCRIPCION" class="java.lang.String"/>
 	<field name="CANTIDAD" class="java.math.BigDecimal"/>
@@ -104,7 +106,7 @@ $P!{p_where}]]>
 					<text><![CDATA[Policia Municipal]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" positionType="Float" mode="Transparent" x="459" y="0" width="95" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="22a545ca-c985-4fb9-af96-cf660713383e"/>
+					<reportElement style="Column header" positionType="Float" mode="Transparent" x="459" y="0" width="81" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="22a545ca-c985-4fb9-af96-cf660713383e"/>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
 						<font fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="true" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single"/>
@@ -112,7 +114,7 @@ $P!{p_where}]]>
 					<text><![CDATA[Categoría]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" positionType="Float" mode="Transparent" x="554" y="0" width="95" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="1628edc1-371f-4d1b-a4e0-3aa5d695c344"/>
+					<reportElement style="Column header" positionType="Float" mode="Transparent" x="648" y="0" width="55" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="1628edc1-371f-4d1b-a4e0-3aa5d695c344"/>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
 						<font fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="true" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single"/>
@@ -120,12 +122,20 @@ $P!{p_where}]]>
 					<text><![CDATA[Cantidad]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" positionType="Float" mode="Transparent" x="649" y="0" width="95" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="024a3b37-209b-4303-bc4b-3a2bfd993cbd"/>
+					<reportElement style="Column header" positionType="Float" mode="Transparent" x="703" y="0" width="95" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="024a3b37-209b-4303-bc4b-3a2bfd993cbd"/>
 					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
 						<font fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="true" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
 						<paragraph lineSpacing="Single"/>
 					</textElement>
 					<text><![CDATA[Descripción]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" mode="Transparent" x="540" y="0" width="108" height="14" forecolor="#000000" backcolor="#FFFFFF" uuid="dbf27b70-6081-4a5e-8cba-dd877852a600"/>
+					<textElement textAlignment="Left" verticalAlignment="Top" rotation="None" markup="none">
+						<font fontName="Arial" size="12" isBold="true" isItalic="false" isUnderline="true" isStrikeThrough="false" pdfFontName="Helvetica" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<text><![CDATA[Interesado]]></text>
 				</staticText>
 			</frame>
 			<staticText>
@@ -160,7 +170,10 @@ $P!{p_where}]]>
 						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
 					<textFieldExpression><![CDATA[($F{LUGAR}.intValue() == 00) ? "Heredia" : 
-($F{LUGAR}.intValue() == 02) ? "San Fancisco" : "."]]></textFieldExpression>
+($F{LUGAR}.intValue() == 01) ? "Mercedes" : 
+($F{LUGAR}.intValue() == 02) ? "San Fancisco" : 
+($F{LUGAR}.intValue() == 03) ? "Ulloa" : 
+($F{LUGAR}.intValue() == 04) ? "Vara Blanca" : "."]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 					<reportElement style="Detail" positionType="Float" x="294" y="0" width="167" height="14" uuid="5c3377a7-5226-4fb2-8204-28f9aec8abef">
@@ -182,26 +195,36 @@ $P!{p_where}]]>
 					<textFieldExpression><![CDATA[$F{IDDECOMISO}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="461" y="0" width="95" height="14" uuid="16594198-1c13-413a-b8fe-6c5e68d55d41"/>
+					<reportElement style="Detail" positionType="Float" x="461" y="0" width="81" height="14" uuid="16594198-1c13-413a-b8fe-6c5e68d55d41"/>
 					<textElement>
 						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{CATEGORIA}.compareTo("perecederos") == 00 ?
+					<textFieldExpression><![CDATA[$F{CATEGORIA}.compareTo("perecedero") == 00 ?
 "Perecederos" : "No perecederos"]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="556" y="0" width="95" height="14" uuid="8236148a-8f1a-4fe3-a223-8ffa61aa1611"/>
+					<reportElement style="Detail" positionType="Float" x="650" y="0" width="55" height="14" uuid="8236148a-8f1a-4fe3-a223-8ffa61aa1611"/>
 					<textElement>
 						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{CANTIDAD}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-					<reportElement style="Detail" positionType="Float" x="651" y="0" width="95" height="14" uuid="66f6384c-2e30-4a30-ae26-6a5d85ad155c"/>
+					<reportElement style="Detail" positionType="Float" x="705" y="0" width="95" height="14" uuid="66f6384c-2e30-4a30-ae26-6a5d85ad155c"/>
 					<textElement>
 						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{DESCRIPCION}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="542" y="0" width="108" height="14" uuid="aaf0b748-876f-413d-9433-adc426137fe2">
+						<printWhenExpression><![CDATA[new Boolean($V{id_grupo_COUNT}.intValue()==1)]]></printWhenExpression>
+					</reportElement>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{NOMBRE} + " " + $F{PRIMERAPELLIDO}
++ " " + $F{SEGUNDOAPELLIDO}]]></textFieldExpression>
 				</textField>
 			</frame>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
@@ -211,7 +234,7 @@ $P!{p_where}]]>
 				<textElement>
 					<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/mm/yyyy").format($F{FECHA})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{FECHA})]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

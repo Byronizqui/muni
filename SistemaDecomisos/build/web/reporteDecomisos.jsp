@@ -90,13 +90,13 @@
                                                 <div class="controls">
                                                     <div class="input-prepend input-group">
                                                         <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                                                        <input type="text" name="daterange" value="01/01/2016 - 01/31/2016" />
+                                                        <input type="text" name="daterange" value="01/01/2017 - 07/31/2017" id="rangoFechas"/>
                                                     </div>
                                                 </div>
                                             </div>
                                         </fieldset>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-2" id="lCategorias">
                                         <label>Categorías:</label><br/>
                                         <input type="checkbox" name="categorias[]" id="perecederos" value="perecederos" /> Perecederos
                                         <br />
@@ -107,7 +107,7 @@
                                         <input type="checkbox" name="categorias[]" id="cigarros" value="cigarros"/> Cigarros
                                         <br />
                                     </div>
-                                    <div class="col-md-2 ">
+                                    <div class="col-md-2 " id="lDistritos">
                                         <label>Distrito: </label>
                                         <select class="form-control" data-rel="chosen" name="distrito" id="distrito">
                                             <option value="-1">Todos los distritos</option>
@@ -118,7 +118,7 @@
                                             <option value="4">Vara Blanca</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-2 ">
+                                    <div class="col-md-2 " id="lInteresados">
                                         <label>Interesado: </label>
                                         <select class="form-control" data-rel="lInt" name="interesadoChosen" id="interesadoChosen">
                                             <option value="todos_interesados">Todos los interesados</option>
@@ -126,7 +126,7 @@
 
                                         </select>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-2" id="lPolicias">
                                         <label>Policia </label>
                                         <select class="form-control" data-rel="chos" name="nomPol" id="nomPoli">
                                             <option value="todos_policias">Todos los policías</option>

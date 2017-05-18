@@ -1,3 +1,5 @@
+/* global Proxy */
+
 var errores_don = new Array();
 
 
@@ -27,6 +29,7 @@ $(document).ready(function () {
            erroresActaDonacion();
     });
     putNumActaDonacion();
+    Proxy.listadoPolicias();
 });
 
 function putNumActaDonacion(){
@@ -34,19 +37,21 @@ function putNumActaDonacion(){
 }
 
 function enviarActaDonacion(){
-    var nomPolicia = $('#nom_policia').val();
-    var policia = new Policia(1 ,"2", "a", "b", "c"); 
+    var nomPolicia = $('#nomPoli').val();
+    var policia = new Policia(nomPolicia,"2", "a", "b", "c"); 
     var institucion= $('#institucion').val();
     var test = new Testigo(1, "", "", "", "");
     var fech = new Date("02/03/2016");
+    var fechaDona = $('#fecha_don').val();
     var distrito = new Distrito(0, "");
     var lugar = new Lugar(distrito, "");
     var inter = new Interesado(1, "20/03/2016", lugar, "", "", "", "", "");
     var decomisos = new Contenedor();
     decomisos.add(new Decomiso(0,"some", 1, "asdad"));
+    var detalles = $("#detallesDona").val();
     var actaDecomiso = new ActaDecomiso($("#num_acta_dec1").val(), policia, test, lugar, fech, "", inter, decomisos, "");
     //(int idInteresado, Date fechaNacimiento, Lugar domicilio, String identificacion, String nombre, String apellido1, String apellido2)
-    var actaDonacion = new ActaDonacion(document.getElementById("nActa_donac").innerHTML.replace(" ",""), institucion, policia, actaDecomiso); 
+    var actaDonacion = new ActaDonacion(document.getElementById("nActa_donac").innerHTML.replace(" ",""),fechaDona, institucion, policia, actaDecomiso, detalles); 
     Proxy.actaDonacion(JSON.stringify(actaDonacion, replacer));
 }
 

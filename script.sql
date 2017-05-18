@@ -125,9 +125,12 @@ MONITORING;
 
 create table POLICIA_MUNICIPAL.ActaDonacion
 (IdDonacion number not null,
+fecha date,
 Institucion varchar2(20)not null,
 IdPolicia number not null,
-IdDecomiso number not null)
+IdDecomiso number not null,
+detalles varchar2(255)not null
+)
 TABLESPACE SIM
 PCTUSED    0
 PCTFREE    10
@@ -536,13 +539,15 @@ show error;
 PROMPT PRC_INS_ADONACION
 create or replace procedure prc_ins_adonacion
 (PIdDonacion in number,
+PFecha in date,
 PInstitucion in varchar2,
 PIdPolicia in number,
-PIdDecomiso in number
+PIdDecomiso in number,
+PDetalles in varchar2
 )is
 begin
-insert into POLICIA_MUNICIPAL.ActaDonacion(IdDonacion,Institucion,IdPolicia,IdDecomiso)
-values(PIdDonacion,PInstitucion,PIdPolicia,PIdDecomiso);
+insert into POLICIA_MUNICIPAL.ActaDonacion(IdDonacion,fecha,Institucion,IdPolicia,IdDecomiso,detalles)
+values(PIdDonacion,PFecha,PInstitucion,PIdPolicia,PIdDecomiso,PDetalles);
 commit;
 end prc_ins_adonacion;
 /
@@ -553,13 +558,15 @@ show error;
 PROMPT PROCEDURE SELECCIONAR ACTA DONACION
 CREATE OR REPLACE PROCEDURE prc_sel_adonacion
 (PIdDonacion in number,
+PFecha out date,
 PInstitucion out varchar2,
 PIdPolicia out number,
-PIdDecomiso out number
+PIdDecomiso out number,
+PDetalles out varchar2
 )
 AS
 BEGIN
-   SELECT Institucion,IdPolicia,IdDecomiso INTO PInstitucion,PIdPolicia,PIdDecomiso      
+   SELECT Institucion,IdPolicia,IdDecomiso,fecha,detalles INTO PInstitucion,PIdPolicia,PIdDecomiso,PFecha,PDetalles      
    FROM POLICIA_MUNICIPAL.ActaDonacion 
    WHERE ActaDonacion.IdDonacion = PIdDonacion;
 end prc_sel_adonacion;
@@ -574,6 +581,7 @@ PROMPT PRC_INS_ADESTRUCCION
 create or replace procedure prc_ins_adestruccion
 (PIdDestruccion in number,
 Pfecha in date,
+PIdPolicia in number,
 Pidt1 in number,
 Pidt2 in number,
 Plugar in varchar2,
@@ -581,8 +589,8 @@ PEncargado in varchar2,
 PIdDecomiso in number
 )is
 begin
-insert into POLICIA_MUNICIPAL.ActaDestruccion(IdDestruccion,fecha,idt1,idt2,lugar,Encargado,IdDecomiso)
-values(PIdDestruccion,Pfecha,Pidt1,Pidt2,Plugar,PEncargado,PIdDecomiso);
+insert into POLICIA_MUNICIPAL.ActaDestruccion(IdDestruccion,fecha,IdPolicia,idt1,idt2,lugar,Encargado,IdDecomiso)
+values(PIdDestruccion,Pfecha,PIdPolicia,Pidt1,Pidt2,Plugar,PEncargado,PIdDecomiso);
 commit;
 end prc_ins_adestruccion;
 /

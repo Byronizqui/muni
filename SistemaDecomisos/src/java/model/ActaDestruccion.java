@@ -16,7 +16,7 @@ import java.util.List;
 public class ActaDestruccion implements Serializable,Jsonable{
     private int idDestruccion;
     private Date fecha;
-  //  private Policia policia;
+    private Policia policia;
     private Testigo testigo1;
     private Testigo testigo2;
     private Lugar lugar;
@@ -26,10 +26,10 @@ public class ActaDestruccion implements Serializable,Jsonable{
     public ActaDestruccion() {
     }
 
-    public ActaDestruccion(int idDestrucion, Date fecha, /*Policia policia,*/ Testigo testigo1, Testigo testigo2, Lugar lugar, String encargado, ActaDecomiso decomiso) {
+    public ActaDestruccion(int idDestrucion, Date fecha, Policia policia, Testigo testigo1, Testigo testigo2, Lugar lugar, String encargado, ActaDecomiso decomiso) {
         this.idDestruccion = idDestrucion;
         this.fecha = fecha;
-        //this.policia = policia;
+        this.policia = policia;
         this.testigo1 = testigo1;
         this.testigo2 = testigo2;
         this.lugar = lugar;
@@ -45,9 +45,9 @@ public class ActaDestruccion implements Serializable,Jsonable{
         return fecha;
     }
 
-//    public Policia getPolicia() {
-//        return policia;
-//    }
+    public Policia getPolicia() {
+        return policia;
+    }
 
     public Testigo getTestigo1() {
         return testigo1;
@@ -77,9 +77,9 @@ public class ActaDestruccion implements Serializable,Jsonable{
         this.fecha = fecha;
     }
 
-//    public void setPolicia(Policia policia) {
-//        this.policia = policia;
-//    }
+    public void setPolicia(Policia policia) {
+        this.policia = policia;
+    }
 
     public void setTestigo1(Testigo testigo1) {
         this.testigo1 = testigo1;

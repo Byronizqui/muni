@@ -263,12 +263,15 @@ public class Model {
         int res = 0;
         try {
             con = Pool.getConnection();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
             CallableStatement pstmt = null;
             if (con != null) {
                 String sql = "{call prc_ins_adonacion('" + actaDon.getIdDonacion() + "',"
+                        + "'" + sdf.format(actaDon.getFecha()) + "',"
                         + "'" + actaDon.getInstitucion() + "',"
                         + "'" + actaDon.getPolicia().getIdPolicia() + "',"
-                        + "'" + actaDon.getDecomiso().getIdDecomiso()
+                        + "'" + actaDon.getDecomiso().getIdDecomiso() + "',"
+                        + "'" + actaDon.getDetalles()
                         + "')}";
                 pstmt = con.prepareCall(sql);
                 pstmt.executeUpdate();
@@ -294,10 +297,9 @@ public class Model {
             CallableStatement pstmt = null;
             if (con != null) {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
-                String sql = "{call prc_ins_adestruccion('" + actaDestruccion.getIdDestruccion() + "',"
-                        + "'" + sdf.format(actaDestruccion.getFecha()) + "',"
-                        //+ "'" + actaDestruccion.getPolicia().getIdPolicia() + "',"
-                        + "1200,"
+                String sql = "{call prc_ins_adestruccion('" + actaDestruccion.getIdDestruccion() + "', "
+                        + "'" + sdf.format(actaDestruccion.getFecha()) + "', "
+                        + "'" + actaDestruccion.getPolicia().getIdPolicia() + "',"
                         + "'" + actaDestruccion.getTestigo1().getIdTestigo() + "',"
                         + "'" + actaDestruccion.getTestigo2().getIdTestigo() + "',"
                         + "'" + actaDestruccion.getLugar().getDireccionExacta() + "',"
@@ -1026,61 +1028,61 @@ public class Model {
     }
 
     //////////////////////////////////////////////////////
-    public List<ActaDonacion> imprimeDonacion() {
-        Connection con = null;
-        String donacion = "";
-        List<ActaDonacion> list = new ArrayList();
-
-        try {
-            con = Pool.getConnection();
-            Statement pstmt = null;
-            ResultSet rs = null;
-            if (con != null) {
-
-                String sql = " select a.IdDonacion as iddon,a.Institucion as ins,P.NUM_EMPLEADO as numemp,P.DESNOMBRE as dnom,P.DES_APELLIDO1 as dap1,d.IdDecomiso as iddec\n"
-                        + "FROM PoliciaMunicipal.ActaDonacion\n"
-                        + "INNER JOIN rh_empleado P ON P.NUM_EMPLEADO = a.idPolicia\n"
-                        + "INNER JOIN ActaDecomiso d ON d.IdDecomiso = a.IdDecomiso";
-
-                pstmt = con.createStatement();
-                rs = pstmt.executeQuery(sql);
-                //Date fecha;
-                String nombrepol;
-                String apepol;
-                int piddon;
-                int NUMEMP;
-                String institucion;
-                while (rs.next()) {
-                    java.sql.Timestamp t = rs.getTimestamp("fecha");
-                    piddon = rs.getInt("iddon");
-                    institucion = rs.getString("ins");
-                    nombrepol = rs.getString("dnom");
-                    apepol = rs.getString("dap1");
-                    NUMEMP = rs.getInt("numemp");
-
-                    ActaDecomiso acta = new ActaDecomiso(0, new Policia(0, "0", "", "", ""),
-                            new Testigo(), new Lugar(new Distrito(0, ""), ""), new Date(0, 0, 0), "", new Interesado(0, new Date(0, 0, 0), new Lugar(), "",
-                                    "", "", "", ""), new Contenedor(), "");
-
-                    ActaDonacion aux = new ActaDonacion(piddon, institucion, new Policia(0, "", nombrepol, apepol, ""), acta);
-                    list.add(aux);
-                }
-
-            }
-
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-            // usuarios = null;
-        } finally {
-            try {
-                con.close();
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-                //usuarios = null;
-            }
-        }
-        //return usuarios;
-        return list;
-    }
+//    public List<ActaDonacion> imprimeDonacion() {
+//        Connection con = null;
+//        String donacion = "";
+//        List<ActaDonacion> list = new ArrayList();
+//
+//        try {
+//       public List<ActaDonacion> imprimeDonacion()     con = Pool.getConnection();
+//            Statement pstmt = null;
+//            ResultSet rs = null;
+//            if (con != null) {
+//
+//                String sql = " select a.IdDonacion as iddon,a.Institucion as ins,P.NUM_EMPLEADO as numemp,P.DESNOMBRE as dnom,P.DES_APELLIDO1 as dap1,d.IdDecomiso as iddec\n"
+//                        + "FROM PoliciaMunicipal.ActaDonacion\n"
+//                        + "INNER JOIN rh_empleado P ON P.NUM_EMPLEADO = a.idPolicia\n"
+//                        + "INNER JOIN ActaDecomiso d ON d.IdDecomiso = a.IdDecomiso";
+//
+//                pstmt = con.createStatement();
+//                rs = pstmt.executeQuery(sql);
+//                //Date fecha;
+//                String nombrepol;
+//                String apepol;
+//                int piddon;
+//                int NUMEMP;
+//                String institucion;
+//                while (rs.next()) {
+//                    java.sql.Timestamp t = rs.getTimestamp("fecha");
+//                    piddon = rs.getInt("iddon");
+//                    institucion = rs.getString("ins");
+//                    nombrepol = rs.getString("dnom");
+//                    apepol = rs.getString("dap1");
+//                    NUMEMP = rs.getInt("numemp");
+//
+//                    ActaDecomiso acta = new ActaDecomiso(0, new Policia(0, "0", "", "", ""),
+//                            new Testigo(), new Lugar(new Distrito(0, ""), ""), new Date(0, 0, 0), "", new Interesado(0, new Date(0, 0, 0), new Lugar(), "",
+//                                    "", "", "", ""), new Contenedor(), "");
+//
+//                    ActaDonacion aux = new ActaDonacion(piddon, institucion, new Policia(0, "", nombrepol, apepol, ""), acta);
+//                    list.add(aux);
+//                }
+//
+//            }
+//
+//        } catch (SQLException ex) {
+//            System.out.println(ex.getMessage());
+//            // usuarios = null;
+//        } finally {
+//            try {
+//                con.close();
+//            } catch (SQLException ex) {
+//                System.out.println(ex.getMessage());
+//                //usuarios = null;
+//            }
+//        }
+//        //return usuarios;
+//        return list;
+//    }
 
 }
